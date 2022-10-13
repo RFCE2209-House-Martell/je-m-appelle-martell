@@ -6,7 +6,9 @@ const OutfitList = (props) => {
 
 
   return(
+    <div>
 
+    </div>
   )
 }
 

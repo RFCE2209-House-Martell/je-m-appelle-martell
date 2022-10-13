@@ -4,7 +4,9 @@ const RelatedCard = (props) => {
 
 
   return (
+    <div>
 
+    </div>
   )
 }
 
