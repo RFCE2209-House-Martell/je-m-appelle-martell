@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Qa = () => {
+const Qa = () => {
   return (<div>Qa</div>);
 }
 

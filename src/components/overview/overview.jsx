@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Overview = () => {
+const Overview = () => {
   return (<div>Overview</div>);
 }
 
