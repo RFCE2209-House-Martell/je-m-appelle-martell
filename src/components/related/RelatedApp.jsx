@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import OutfitList from './OutfitList.jsx';
+import RelatedList from './RelatedList.jsx'
 
 
 const RelatedApp = (props) => {
