@@ -4,7 +4,9 @@ const OutfitCard = (props) => {
 
 
   return (
+    <div>
 
+    </div>
   )
 }
 
