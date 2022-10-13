@@ -7,7 +7,7 @@ const RelatedApp = (props) => {
 
   return (
     <div>
-    <h1>This is where Related to stuff will go</h1>
+    <h1>This is where Related to stuff will go helllooo</h1>
     </div>
   );
 }
