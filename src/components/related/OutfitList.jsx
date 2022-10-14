@@ -5,9 +5,10 @@ import AddOutfitCard from './AddOutfitCard.jsx'
 const OutfitList = (props) => {
 
 
-  return(
-    <div>
-
+  return (
+    <div className='content'>
+        <AddOutfitCard />
+        <AddOutfitCard />
     </div>
   )
 }
