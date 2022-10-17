@@ -6,9 +6,15 @@ const OutfitList = (props) => {
 
 
   return (
-    <div className='content'>
+    <div>
+      <button>previos</button>
+      <span>
         <AddOutfitCard />
+      </span>
+      <span>
         <OutfitCard />
+      </span>
+      <button>Next</button>
     </div>
   )
 }

@@ -7,7 +7,7 @@ import RelatedList from './RelatedList.jsx';
 
 const RelatedApp = (props) => {
   return (
-    <div className='content'>
+    <div>
       <h1>Related Products</h1>
       <RelatedList />
       <h1>Your Outfit</h1>

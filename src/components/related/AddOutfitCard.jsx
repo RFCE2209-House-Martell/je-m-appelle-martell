@@ -13,9 +13,9 @@ const AddOutfitCard = (props) => {
 
 
   return (
-    <div style={componentStyle}>
+    <span style={componentStyle}>
       <button>+</button>
-    </div>
+    </span>
   )
 }
 
