@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ImageGallery from './imageGallery.jsx';
 import StyleSelector from './styleSelector.jsx';
 import axios from 'axios';
+import './overviewStyles.css';
 
 const Overview = (props) => {
   const [data, setData] = useState({});

@@ -6,7 +6,7 @@ import Ratings from './components/ratings/ratings.jsx';
 import RelatedApp from './components/related/RelatedApp.jsx';
 
 const App = () => {
-  const [productId, setProductId] = useState(1);
+  const [productId, setProductId] = useState(66642);
   const [avgStars, setAvgStars] = useState(0);
 
   return (<div>
