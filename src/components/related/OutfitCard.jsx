@@ -20,8 +20,8 @@ const OutfitCard = (props) => {
   // }
 
   return (
-    <div style={componentStyle}>
-      <div>
+    <span style={componentStyle}>
+      {/* <div>
         <img />
         <div>
           <button>x</button>
@@ -30,8 +30,9 @@ const OutfitCard = (props) => {
           <h2>price</h2>
           <h2>rating</h2>
         </div>
-      </div>
-    </div>
+      </div> */}
+      1
+    </span>
   )
 }
 

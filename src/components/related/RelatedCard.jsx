@@ -2,17 +2,16 @@ import React from 'react';
 
 const RelatedCard = (props) => {
 
-  // const componentStyle = {
-  //   height: '300px',
-  //   width: '200px',
-  //   borderStyle: 'solid',
-  //   borderColor: 'black',
-  //   opacity: '0'
-  // }
+  const componentStyle = {
+    height: '300px',
+    width: '200px',
+    borderStyle: 'solid',
+    borderColor: 'black'
+  }
 
   return (
-    <span>
-      <div>
+    <span style={componentStyle}>
+      {/* <div>
         <img />
         <div>
           <button>star</button>
@@ -21,7 +20,7 @@ const RelatedCard = (props) => {
           <h2>price</h2>
           <h2>rating</h2>
         </div>
-      </div>
+      </div> */}
         {props.product}
     </span>
   )
