@@ -4,7 +4,6 @@ const QuestionsAPI = {
 
   // QUESTIONS
   getQuestionsById: (id) => {
-
     const headers = {
       Authorization: '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'
     };
@@ -12,7 +11,6 @@ const QuestionsAPI = {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642`, { headers: headers }).then((res) => {
       return res.data.results;
     });
-
   },
 
   updateHelpfulQuestion: () => {
@@ -59,18 +57,25 @@ const QuestionsAPI = {
 
   // ANSWERS
 
-  getAnswersById: () => {
-    const url = '/qa/questions/:question_id/answers';
+  getAllAnswersById: (questionID) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/640766/answers`;
 
-    const config = {
-      headers: {
-        Authorization: value1,
-      },
-      params: {
-        question_id: ''
-      }
+    const headers = {
+      Authorization: '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'
     };
 
+    // const config = {
+    //   headers: {
+    //     Authorization: value1,
+    //   },
+    //   params: {
+    //     question_id: ''
+    //   }
+    // };
+
+    return axios.get(url, { headers: headers }).then((res) => {
+      return res.data.results;
+    }).catch((err) => console.log('axios error retreiving answers'));
   },
 
   createAnswer: () => {
