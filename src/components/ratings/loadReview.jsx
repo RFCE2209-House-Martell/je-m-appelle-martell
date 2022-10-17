@@ -2,14 +2,14 @@ import React from 'react';
 
 const LoadReview = (props) => {
   return (
-  <div>
-    Each Review Stars:
+  <li>
+    Stars:
     {props.review.rating}
-    Username: {props.review.reviewer_name}
-    Date: {props.review.date}
-    <div>
-      Recommended: {props.review.recommend}
-    </div>
+    , Username: {props.review.reviewer_name}
+    , Date: {props.review.date}
+    {props.review.recommend && (<div>
+      ✓ I recommend this product
+    </div>)}
     <div>
       Title: {props.review.summary}
     </div>
@@ -17,12 +17,17 @@ const LoadReview = (props) => {
       Body: {props.review.body}
     </div>
     <div>
-      Helpfulness: {props.review.helpfulness}
+      Helpful? Yes ({props.review.helpfulness}) | Report
     </div>
-    <div>
+    {props.review.response && <div>
       Response: {props.review.response}
-    </div>
-  </div>
+    </div>}
+    {(props.review.photos.length > 0) ? (
+      props.review.photos.map((photo, index) => {
+        return <img key={index} src={`${photo.url}`} height='50' />
+      })
+    ) : <div></div>}
+  </li>
   );
 }
 
