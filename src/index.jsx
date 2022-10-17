@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './components/overview/overview.jsx';
-import Qa from './components/qa/qa.jsx';
+import QuestionList from './components/questions/QuestionList.jsx';
 import Ratings from './components/ratings/ratings.jsx';
 import RelatedApp from './components/related/RelatedApp.jsx';
 
@@ -14,10 +14,10 @@ const App = () => {
       <h1>Hello World Again!</h1>
     </div>
     <div>
-      <Overview productId={productId} avgStars={avgStars}/>
-      <RelatedApp productId={productId} setProductId={setProductId}/>
-      <Qa productId={productId}/>
-      <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars}/>
+      <Overview productId={productId} avgStars={avgStars} />
+      <RelatedApp productId={productId} setProductId={setProductId} />
+      <QuestionList productId={productId} />
+      <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
     </div>
   </div>);
 }

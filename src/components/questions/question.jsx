@@ -1,31 +1,41 @@
 import React, { useState, useEffect } from 'react';
 
-const Question = ({ question_id, question_body, question_date, question_helpfulness, reported, asker_name, answers }) => {
+const Question = (props) => {
+  const { question_id, question_body, question_date, question_helpfulness, reported, asker_name, answers } = props.question;
 
-  return (
+  // on helpful click function
+
+  // on report click function
+
+  // on submit new answer function
+
+  return (<div>
+    <br></br>
     <div>
       <div>{question_id}</div>
-      <div>{question_body}</div>
-      <div>{question_date}</div>
-      <div>{question_helpfulness}</div>
-      <div>{reported}</div>
-      <div>{asker_name}</div>
-
-      <div>{Array.from(answers).map((answer) => {
-        return (<div key={answer.id}>
-          <div>{answer.body}</div>
-          <div>{answer.date}</div>
-          <div>{answer.answerer_name}</div>
-
-          <div>{answer.photos.map((photo) => {
-            return (<img src={photo.url} key={photo.id} />)
-          })}</div>
-
-        </div>)
-
-      })}</div>
-
+      <div>Question: {question_body}</div>
+      <div>Date Asked: {question_date}</div>
+      <div>Was this helpful? {question_helpfulness}</div>
+      <div>{reported || 'Not Reported'}</div>
+      <div>User: {asker_name}</div>
     </div>
+
+    <div>{Object.values(answers).map((answer) => {
+      return (<div key={answer.id}>
+        <div>Answer: {answer.body}</div>
+        <div>Date Answered: {answer.date}</div>
+        <div>User: {answer.answerer_name}</div>
+        <div>Was this helpful?: {answer.helpfulness}</div>
+
+        <div>{answer.photos.map((photo) => {
+          return (<img src={photo.split(':')[1]} key={photo.id} />)
+        })}</div>
+        <br></br>
+      </div>)
+
+    })}</div>
+
+  </div>
   );
 }
 
