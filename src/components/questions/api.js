@@ -1,41 +1,126 @@
 import axios from 'axios';
 
 const QuestionsAPI = {
-  getQuestionsById: ('/qa/questions') => {
 
-  },
+  // QUESTIONS
+  getQuestionsById: (id) => {
 
-  getAnswersById: ('/qa/questions/:question_id/answers') => {
+    const headers = {
+      Authorization: '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'
+    };
+
+    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642`, { headers: headers }).then((res) => {
+      return res.data.results;
+    });
 
   },
 
   updateHelpfulQuestion: () => {
+    const url = '/qa/questions/:question_id/helpful';
+
+    const config = {
+      headers: {
+        Authorization: value1,
+      }
+    };
+
+    const data = {
+      name: "",
+      email: ""
+    }
 
   },
 
   reportQuestion: () => {
+    const url = '/qa/questions/:question_id/report';
 
+    const config = {
+      headers: {
+        Authorization: value1,
+      }
+    };
+
+    const data = {
+      name: "",
+      email: ""
+    }
   },
 
   createQuestion: () => {
+    const url = '/qa/questions';
+
+    const config = {
+      headers: {
+        Authorization: value1,
+      }
+    };
+
+  },
+
+  // ANSWERS
+
+  getAnswersById: () => {
+    const url = '/qa/questions/:question_id/answers';
+
+    const config = {
+      headers: {
+        Authorization: value1,
+      },
+      params: {
+        question_id: ''
+      }
+    };
 
   },
 
   createAnswer: () => {
+    const url = '/qa/questions/:question_id/answers';
 
+    const config = {
+      headers: {
+        Authorization: value1,
+      }
+    };
+
+    const data = {
+      name: "",
+      email: ""
+    }
   },
 
   reportAnswer: () => {
+    const url = '/qa/answers/:answer_id/report';
 
+    const config = {
+      headers: {
+        Authorization: value1,
+      }
+    };
+
+    const data = {
+      name: "",
+      email: ""
+    }
   },
 
-  updateHelpfulAnswer: ('/qa/answers/:answer_id/report') => {
+  updateHelpfulAnswer: () => {
+    const url = '/qa/answers/:answer_id/helpful';
 
+    const config = {
+      headers: {
+        Authorization: value1,
+      }
+    };
+
+    const data = {
+      name: "",
+      email: ""
+    }
   },
 
 };
 
-export Default QuestionsAPI;
+export default QuestionsAPI;
 
 
 
