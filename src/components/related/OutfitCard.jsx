@@ -8,7 +8,6 @@ const OutfitCard = (props) => {
     width: '200px',
     borderStyle: 'solid',
     borderColor: 'black',
-    opacity: '0'
   }
 
   // const componentStyleCat = {
@@ -17,7 +16,7 @@ const OutfitCard = (props) => {
   //   width: '50px',
   //   padding: '20px',
   //   borderStyle: 'solid',
-  //   borderColor: 'black'
+  //   borderColor: 'black'+
   // }
 
   return (

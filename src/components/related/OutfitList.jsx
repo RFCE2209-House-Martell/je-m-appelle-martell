@@ -8,7 +8,7 @@ const OutfitList = (props) => {
   return (
     <div className='content'>
         <AddOutfitCard />
-        <AddOutfitCard />
+        <OutfitCard />
     </div>
   )
 }
