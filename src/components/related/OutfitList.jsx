@@ -5,9 +5,16 @@ import AddOutfitCard from './AddOutfitCard.jsx'
 const OutfitList = (props) => {
 
 
-  return(
+  return (
     <div>
-
+      <button>previos</button>
+      <span>
+        <AddOutfitCard />
+      </span>
+      <span>
+        <OutfitCard />
+      </span>
+      <button>Next</button>
     </div>
   )
 }
