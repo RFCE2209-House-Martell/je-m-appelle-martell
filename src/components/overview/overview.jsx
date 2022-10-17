@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Overview = (props) => {
   const [data, setData] = useState({});
+  const [styleId, setStyleId] = useState(null);
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.productId}/styles`, {
@@ -13,14 +14,15 @@ const Overview = (props) => {
       }
     }).then((data) => {
       setData(data.data);
+      setStyleId(data.data.results[0].style_id);
     });
   }, []);
 
   return (
     <div>
       Overview
-      <ImageGallery productId={props.productId}/>
-      <StyleSelector productId={props.productId} data={data}/>
+      <ImageGallery productId={props.productId} data={data} styleId={styleId}/>
+      <StyleSelector productId={props.productId} data={data} setStyleId={setStyleId}/>
     </div>
   );
 }
