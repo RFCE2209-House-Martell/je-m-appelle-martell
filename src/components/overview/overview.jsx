@@ -11,7 +11,7 @@ const Overview = (props) => {
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.productId}/styles`, {
       headers: {
-        'Authorization': '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'
+        'Authorization': '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'
       }
     }).then((data) => {
       setData(data.data);
