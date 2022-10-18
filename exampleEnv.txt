@@ -1,0 +1,4 @@
+PORT=3000
+PRODUCTION=false
+BASE_URL=https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/
+API_KEY=ghp_olZXgaH55UQAuyhsXnePfppKAQeU6qE2dpXbi
