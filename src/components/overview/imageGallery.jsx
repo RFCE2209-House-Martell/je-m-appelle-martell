@@ -11,7 +11,7 @@ const ImageGallery = (props) => {
   const [selected, setSelected] = useState(0);
   const [zoom, setZoom] = useState(false);
 
-  if (props.data.results !== undefined) {
+  if (JSON.stringify(props.data) !== '{}') {
     var photoList = props.data.results.find(obj => obj.style_id === props.styleId);
     if (photoList !== undefined && currentStyle !== props.styleId) {
       photoList = photoList.photos;
