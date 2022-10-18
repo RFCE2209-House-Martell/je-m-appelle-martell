@@ -3,7 +3,7 @@ import AddReview from './addReview.jsx';
 import RatingsSection from './ratingsSection.jsx';
 import ReviewsSection from './reviewsSection.jsx';
 
-const Ratings = () => {
+const Ratings = (props) => {
 
   const sampleReviewData = {
     "product": "2",
@@ -73,7 +73,7 @@ const Ratings = () => {
 
   return (
     <div>
-      <RatingsSection sampleMetaData={sampleMetaData}/>
+      <RatingsSection sampleMetaData={sampleMetaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars}/>
       <ReviewsSection sampleReviewData={sampleReviewData}/>
     </div>
   );
