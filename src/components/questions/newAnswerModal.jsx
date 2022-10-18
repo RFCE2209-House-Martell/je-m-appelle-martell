@@ -4,11 +4,27 @@ import Modal from '../sharedFolder/modal.jsx';
 const NewAnswerModal = (props) => {
   const [show, setShow] = useState(false);
 
+  const modalStyles = {
+    position: 'fixed',
+    left: '0',
+    right: '0',
+    top: '0',
+    bottom: '0',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  };
+
+
   return (
     <div>
       <button onClick={() => setShow(true)}>Add Answer</button>
-      <Modal show={show} onClose={() => setShow(false)}>
-        "Whatever you want to render in the modal"
+      <Modal styles={modalStyles} show={show} onClose={() => setShow(false)}>
+        <input type="text" placeholder="enter your username" />
+        <input type="text" placeholder="enter your answer" />
+        <button onClick={() => setShow(false)}>cancel</button>
+        <button onClick={() => console.log('answer submitted')}>submit</button>
       </Modal>
     </div>
   );

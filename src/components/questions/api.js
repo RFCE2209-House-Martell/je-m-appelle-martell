@@ -1,11 +1,13 @@
 import axios from 'axios';
 
+const token = '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';
+
 const QuestionsAPI = {
 
   // QUESTIONS
   getQuestionsById: (id) => {
     const headers = {
-      Authorization: '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'
+      Authorization: token
     };
 
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642`, { headers: headers }).then((res) => {
@@ -61,7 +63,7 @@ const QuestionsAPI = {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/640766/answers`;
 
     const headers = {
-      Authorization: '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'
+      Authorization: token
     };
 
     // const config = {

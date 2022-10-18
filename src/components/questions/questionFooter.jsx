@@ -4,14 +4,15 @@ import NewQuestionModal from './newQuestionModal.jsx';
 const QuestionsFooter = (props) => {
   const [show, setShow] = useState(false);
 
+  // propogate upwards to show more answers
+  // propogate upwards to load more questions
+
+  // question modal makes api request
   return (
     <div>
-      <h6>Load More Answers</h6>
+      <button>Load More Answers</button>
       <button>LOAD MORE ANSWERED QUESTIONS</button>
-      <button onClick={() => setShow(true)}>ADD A QUESTION +</button>
-      <NewQuestionModal show={show} onClose={() => setShow(false)}>
-        ADD NEW QUESTION
-      </NewQuestionModal>
+      <NewQuestionModal />
     </div>
   );
 }
