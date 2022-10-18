@@ -1,5 +1,4 @@
 import React from 'react';
-// import style from './styling.css'
 
 const OutfitCard = (props) => {
 
