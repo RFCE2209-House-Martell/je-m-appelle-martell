@@ -6,9 +6,9 @@ import axios from 'axios';
 import './styling/overviewStyles.css';
 
 const Overview = (props) => {
-  const [styleData, setStyleData] = useState({});
-  const [prodData, setProdData] = useState({});
+  const [data, setData] = useState({});
   const [styleId, setStyleId] = useState(null);
+  const [socialPhoto, setSocialPhoto] = useState('');
 
   useEffect(() => {
     axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.productId}/styles`, {
@@ -16,25 +16,17 @@ const Overview = (props) => {
         'Authorization': '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'
       }
     }).then((data) => {
-      setStyleData(data.data);
+      setData(data.data);
       setStyleId(data.data.results[0].style_id);
     });
-
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.productId}`, {
-      headers: {
-        'Authorization': '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'
-      }
-    }).then((data) => {
-      setProdData(data.data);
-    })
   }, []);
 
   return (
     <div className="widget">
-      <ImageGallery data={styleData} styleId={styleId}/>
+      <ImageGallery data={data} styleId={styleId} setSocialPhoto={setSocialPhoto}/>
       <div>
-        <ProductDetails data={prodData} styleId={styleId}/>
-        <StyleSelector data={styleData} setStyleId={setStyleId}/>
+        <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
+        <StyleSelector data={data} setStyleId={setStyleId}/>
       </div>
     </div>
   );

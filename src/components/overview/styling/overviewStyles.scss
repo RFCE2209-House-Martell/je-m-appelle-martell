@@ -6,32 +6,34 @@
 //   background-color: yellow;
 // }
 
-.mainImg {
-  width: 600px;
-  display: flex;
-}
-
 .thumbnailContainer {
-  height:150px;
-  width:600px;
+  height: 160px;
+  width: 600px;
   white-space: nowrap;
   overflow-y:hidden;
 }
 
 .thumbnail {
-  height:150px;
+  height: 150px;
   display: inline-block;
-  overflow:hidden;
+  overflow: hidden;
+  margin: 3px;
+  vertical-align: top;
 }
 
 .selected {
-  filter: brightness(30%);
+  opacity: 30%;
 }
 
 .carousel {
   width: 600px;
   display: flex;
   align-items: center;
+}
+
+.mainImg {
+  width: 600px;
+  display: flex;
 }
 
 .arrowL {
@@ -99,4 +101,26 @@
 .closeZoom:hover {
   cursor: default;
   opacity: 100%;
+}
+
+.productDetails {
+  background-color: yellow;
+}
+
+s {
+  color: red;
+}
+
+.styleSelect {
+  display: flex;
+  width: 200px;
+  flex-wrap: wrap;
+}
+
+.style {
+  margin: 3px;
+  background-color: black; // not sure what thumbnails/colors should go here
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
