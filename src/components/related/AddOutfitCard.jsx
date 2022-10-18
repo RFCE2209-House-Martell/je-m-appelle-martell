@@ -4,18 +4,16 @@ import React from 'react';
 const AddOutfitCard = (props) => {
 
   const componentStyle = {
-    height: '300px',
-    width: '200px',
-    borderStyle: 'solid',
-    borderColor: 'black'
+    border: '2px solid black',
+    alignSelf: '300px',
+    height: '140px',
+    width: '150px'
   }
 
-
-
   return (
-    <span style={componentStyle}>
-      <button>+</button>
-    </span>
+    <div style={componentStyle}>
+      <div> <button style={{display: 'flex', justifyContent: 'center'}}>+</button> </div>
+    </div>
   )
 }
 
