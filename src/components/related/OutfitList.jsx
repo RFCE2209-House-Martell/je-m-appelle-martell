@@ -30,8 +30,8 @@ const OutfitList = (props) => {
 
       {renderedOutfits[0] !== 0 ? null : <AddOutfitCard /> }
 
-      {renderedOutfits.map(product => {
-        return <OutfitCard product={product} />
+      {renderedOutfits.map((product, key) => {
+        return <OutfitCard product={product} key={key} />
       })}
 
       {renderedOutfits[2] === outfitProducts.length ? null : <button onClick={nextCard} style={{height: '24px'}}>next</button>}
