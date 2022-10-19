@@ -3,26 +3,21 @@ import React from 'react';
 const RelatedCard = (props) => {
 
   const componentStyle = {
-    height: '300px',
-    width: '200px',
-    borderStyle: 'solid',
-    borderColor: 'black'
+    border: '2px solid black',
+    alignSelf: '300px',
+    width: '150px'
   }
 
   return (
-    <span style={componentStyle}>
-      {/* <div>
-        <img />
-        <div>
-          <button>star</button>
-          <h2>Category</h2>
-          <h2>description</h2>
-          <h2>price</h2>
-          <h2>rating</h2>
-        </div>
-      </div> */}
-        {props.product}
-    </span>
+    <div style={componentStyle}>
+      {props.product}
+      <div> <button>star</button> </div>
+      <div> <img /> </div>
+      <div>Category</div>
+      <div>description</div>
+      <div>price</div>
+      <div>rating</div>
+    </div>
   )
 }
 
