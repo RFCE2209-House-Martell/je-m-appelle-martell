@@ -19,7 +19,6 @@ const App = () => {
     <div>
       <Overview productId={productId} avgStars={avgStars} />
       <RelatedApp productId={productId} setProductId={setProductId} />
-      {/* <QuestionList productId={productId} /> */}
       <QuestionsAnswersContainer productId={productId} />
       <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
     </div>

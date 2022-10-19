@@ -10,6 +10,8 @@ const Ratings = (props) => {
   const [reviewData, setReviewData] = useState({});
   const [metaData, setMetaData] = useState({});
   const [reviewStar, setReviewStar] = useState(0);
+  const [sortedData, setSortedData] = useState('newest');
+
 
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
@@ -18,7 +20,8 @@ const Ratings = (props) => {
       },
       params: {
         product_id: props.productId,
-        count: 1000
+        count: 1000,
+        sort: sortedData
       }
     })
     .then(data => {
@@ -30,7 +33,7 @@ const Ratings = (props) => {
 
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
       headers: {
-        'Authorization': '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'
+        'Authorization': token
       },
       params: {
         product_id: props.productId
@@ -42,12 +45,12 @@ const Ratings = (props) => {
     .catch(err => {
       console.log(err);
     })
-  }, []);
+  }, [sortedData]);
 
   return (
     <div>
       <RatingsSection metaData={metaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars} reviewStar={reviewStar} setReviewStar={setReviewStar}/>
-      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar}/>
+      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData}/>
     </div>
   );
 }
