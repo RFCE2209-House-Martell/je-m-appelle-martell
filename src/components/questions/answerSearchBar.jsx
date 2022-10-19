@@ -4,7 +4,7 @@ const AnswerSearchBar = (props) => {
 
   return (
     <div>
-      <input type="searc" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS." />
+      <input type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS." onChange={(e) => props.onSearch(e)} value={props.Input} />
     </div>
   );
 }

@@ -5,20 +5,18 @@ import NewAnswerModal from './NewAnswerModal.jsx';
 const Question = (props) => {
   const { question_id, question_body, question_date, question_helpfulness, reported, asker_name, answers } = props.question;
 
+  const date = new Date(question_date).toDateString();
+
   return (
     <div>
       <br></br>
       <div>
-        <div>{question_id}</div>
-        <div>Question: {question_body}</div>
-        <div>Date Asked: {question_date}</div>
-        <div>Was this helpful? {question_helpfulness}</div>
-        <div>{reported || 'Not Reported'}</div>
-        <div>User: {asker_name}</div>
-        Helpful? <button>Yes</button>
+        <div><h3>Q: {question_body}</h3></div>
+        <div>by {asker_name},  {date}</div>
+        <div>Helpful?  <button>Yes</button> ({question_helpfulness})</div>
         <NewAnswerModal />
       </div>
-      <AnswerList questionId={question_id} />
+      <AnswerList questionId={question_id} count={props.count} page={props.page} />
     </div>
   );
 }

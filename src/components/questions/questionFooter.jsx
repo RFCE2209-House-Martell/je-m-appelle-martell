@@ -10,7 +10,7 @@ const QuestionsFooter = (props) => {
   // question modal makes api request
   return (
     <div>
-      <button>Load More Answers</button>
+      <button onClick={() => props.loadMoreAnswers()}>Load More Answers</button>
       <button>LOAD MORE ANSWERED QUESTIONS</button>
       <NewQuestionModal />
     </div>
