@@ -7,13 +7,13 @@ const AnswerList = (props) => {
 
   useEffect(() => {
     const loadAnswers = () => {
-      API.getAllAnswersById(props.questionId, props.page, props.count).then((res) => {
+      API.getAllAnswersById(props.questionId, props.answerPage, props.answerCount).then((res) => {
         setAnswers(res);
       }).catch((err) => 'Error in useEffect retreiving answers');
     };
 
     loadAnswers();
-  }, [props.page, props.count]);
+  }, [props.answerPage, props.answerCount]);
   return (
     <div>
       {answers.length > 0 ? answers.map((answer) => {
