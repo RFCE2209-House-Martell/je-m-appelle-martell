@@ -1,80 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import AddReview from './addReview.jsx';
 import RatingsSection from './ratingsSection.jsx';
 import ReviewsSection from './reviewsSection.jsx';
 
+const token = process.env.REACT_APP_API_KEY;
+
 const Ratings = (props) => {
+  const [reviewData, setReviewData] = useState({});
+  const [metaData, setMetaData] = useState({});
+  const [reviewStar, setReviewStar] = useState(0);
 
-  const sampleReviewData = {
-    "product": "2",
-    "page": 0,
-    "count": 5,
-    "results": [
-      {
-        "review_id": 5,
-        "rating": 3,
-        "summary": "I'm enjoying wearing these shades",
-        "recommend": false,
-        "response": null,
-        "body": "Comfortable and practical.",
-        "date": "2019-04-14T00:00:00.000Z",
-        "reviewer_name": "shortandsweeet",
-        "helpfulness": 5,
-        "photos": [{
-            "id": 1,
-            "url": "urlplaceholder/review_5_photo_number_1.jpg"
-          },
-          {
-            "id": 2,
-            "url": "urlplaceholder/review_5_photo_number_2.jpg"
-          },
-        ]
+  useEffect(() => {
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
+      headers: {
+        'Authorization': token
       },
-      {
-        "review_id": 3,
-        "rating": 4,
-        "summary": "I am liking these glasses",
-        "recommend": false,
-        "response": "Glad you're enjoying the product!",
-        "body": "They are very dark. But that's good because I'm in very sunny spots",
-        "date": "2019-06-23T00:00:00.000Z",
-        "reviewer_name": "bigbrotherbenjamin",
-        "helpfulness": 5,
-        "photos": [],
-      },
-    ]
-  };
+      params: {
+        product_id: props.productId,
+        count: 1000
+      }
+    })
+    .then(data => {
+      setReviewData(data.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
 
-  const sampleMetaData = {
-    "product_id": "2",
-    "ratings": {
-      2: 1,
-      3: 1,
-      4: 2,
-    },
-    "recommended": {
-      0: 5
-    },
-    "characteristics": {
-      "Size": {
-        "id": 14,
-        "value": "4.0000"
+    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
+      headers: {
+        'Authorization': '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'
       },
-      "Width": {
-        "id": 15,
-        "value": "3.5000"
-      },
-      "Comfort": {
-        "id": 16,
-        "value": "4.0000"
-      },
-    }
-  }
+      params: {
+        product_id: props.productId
+      }
+    })
+    .then(data => {
+      setMetaData(data.data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, []);
 
   return (
     <div>
-      <RatingsSection sampleMetaData={sampleMetaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars}/>
-      <ReviewsSection sampleReviewData={sampleReviewData}/>
+      <RatingsSection metaData={metaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars} reviewStar={reviewStar} setReviewStar={setReviewStar}/>
+      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar}/>
     </div>
   );
 }

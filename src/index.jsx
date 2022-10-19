@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './components/overview/overview.jsx';
-import QuestionList from './components/questions/QuestionList.jsx';
+import QuestionList from './components/questions/questionList.jsx';
 import Ratings from './components/ratings/ratings.jsx';
 import RelatedApp from './components/related/RelatedApp.jsx';
 
