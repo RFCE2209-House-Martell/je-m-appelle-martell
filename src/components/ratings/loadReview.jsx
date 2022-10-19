@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LoadReview = (props) => {
+  const [showFullAns, setShowFullAns] = useState(false);
+  const [partAns, setPartAns] = useState(props.review.body.substring(0, 250))
+
   return (
   <li>
     Stars:
@@ -14,7 +17,7 @@ const LoadReview = (props) => {
       Title: {props.review.summary}
     </div>
     <div>
-      Body: {props.review.body}
+      Body: {((props.review.body).length < 250) ? <div>{props.review.body}</div> : showFullAns ? <div>{props.review.body} <button onClick={e => setShowFullAns(!showFullAns)}>Show Less</button> </div> : <div>{partAns + '...'} <button onClick={e => setShowFullAns(!showFullAns)}>Show More</button> </div>}
     </div>
     <div>
       Helpful? Yes ({props.review.helpfulness}) | Report

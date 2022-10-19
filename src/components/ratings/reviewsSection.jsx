@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import LoadReview from './loadReview.jsx';
 
 const ReviewsSection = (props) => {
-  const data = props.reviewData.results;
-  const [moreResults, setMoreResults] = useState(false);
-
   if (Object.keys(props.reviewData).length < 1) {
     return (
       <div>
@@ -13,8 +10,13 @@ const ReviewsSection = (props) => {
     )
   }
 
+  const [data, setData] = useState(props.reviewData.results);
+  const [helpfulData, setHelpfulData] = useState([]);
+  const [newestData, setNewestData] = useState([]);
+  const [relevantData, setRelevantData] = useState([]);
+  const [moreResults, setMoreResults] = useState(false);
+
   const showTempValues = () => {
-    console.log('yes')
     let times = 0;
     return data.map((review, index) => {
       if (review.rating === props.reviewStar && times < 2) {
@@ -24,10 +26,40 @@ const ReviewsSection = (props) => {
     })
   }
 
+  const findHelpfulData = () => {
+    let tempData = props.reviewData.results;
+    tempData = tempData.sort((a, b) => {
+      a.helpfulness - b.helpfulness
+    })
+    console.log('Helpfull: ', tempData)
+    setHelpfulData(tempData);
+  }
+
+  const findNewestData = () => {
+    let tempData = props.reviewData.results;
+    console.log(new Date(tempData[0].date).getTime())
+    console.log(new Date(tempData[1].date).getTime())
+    tempData.sort((a, b) => {
+      ((new Date(a.date).getTime()) - (new Date(b.date).getTime()))
+    })
+
+    console.log('Newest: ', tempData)
+    setNewestData(tempData);
+  }
+
+  useEffect(() => {
+    findHelpfulData()
+    findNewestData()
+  }, [])
+
   return (
   <div>
-    Reviews count: {data.length}
-    <div class='reviewScroll'>
+    {data.length} reviews, sorted by <select name='sortReview'>
+      <option>Newest</option>
+      <option>Helpful</option>
+      <option>Relevant</option>
+    </select>
+    <div className='reviewScroll'>
     {(moreResults) ? (
       data.map((review, index) => {
         if (props.reviewStar === 0) {
