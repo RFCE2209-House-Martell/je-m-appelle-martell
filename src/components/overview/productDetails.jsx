@@ -5,12 +5,14 @@ const ProductDetails = (props) => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/products/${props.productId}`, {
+    axios.get(`${process.env.REACT_APP_BASE_URL}products/${props.productId}`, {
       headers: {
-        'Authorization': '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'
+        'Authorization': process.env.REACT_APP_API_KEY
       }
     }).then((data) => {
       setData(data.data);
+    }).catch((err) => {
+      console.log(err);
     });
   }, []);
 
