@@ -1,18 +1,17 @@
 import axios from 'axios';
 
+const token = process.env.REACT_APP_API_KEY;
+
 const QuestionsAPI = {
 
-  // QUESTIONS
   getQuestionsById: (id) => {
-
     const headers = {
-      Authorization: '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'
+      Authorization: token
     };
 
-    axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=66642`, { headers: headers }).then((res) => {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${id}`, { headers: headers }).then((res) => {
       return res.data.results;
     });
-
   },
 
   updateHelpfulQuestion: () => {
@@ -59,18 +58,16 @@ const QuestionsAPI = {
 
   // ANSWERS
 
-  getAnswersById: () => {
-    const url = '/qa/questions/:question_id/answers';
+  getAllAnswersById: (questionID, page = 1, count = 1) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/640766/answers?page=${page}&count=${count}`;
 
-    const config = {
-      headers: {
-        Authorization: value1,
-      },
-      params: {
-        question_id: ''
-      }
+    const headers = {
+      Authorization: token
     };
 
+    return axios.get(url, { headers: headers }).then((res) => {
+      return res.data.results;
+    }).catch((err) => console.log('axios error retreiving answers'));
   },
 
   createAnswer: () => {
@@ -122,7 +119,14 @@ const QuestionsAPI = {
 
 export default QuestionsAPI;
 
-
+    // const config = {
+    //   headers: {
+    //     Authorization: value1,
+    //   },
+    //   params: {
+    //     question_id: ''
+    //   }
+    // };
 
 // GET /qa/questions Retrieves a list of questions for a particular product.
 // This list does not include any reported questions.
@@ -187,10 +191,6 @@ export default QuestionsAPI;
 //       // ...
 //   ]
 // }
-
-
-
-
 
 
 // Answers List
