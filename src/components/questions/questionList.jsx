@@ -7,7 +7,7 @@ const QuestionList = (props) => {
   return (
     <div>
       {questions.length > 0 ? questions.map((question) => {
-        return <Question key={question.question_id} question={question} page={props.page} count={props.count} />
+        return <Question key={question.question_id} question={question} answerPage={props.answerPage} answerCount={props.answerCount} />
       }) : <h6>There are currently no questions for this product. Be the first? Ask a question!</h6>}
     </div>
   );
