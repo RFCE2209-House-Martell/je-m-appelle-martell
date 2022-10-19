@@ -28,9 +28,8 @@ const RelatedApp = (props) => {
 
   return (
     <div>
-      {console.log(allProducts)}
       <h1>Related Products</h1>
-      <RelatedList />
+      <RelatedList allProducts={allProducts} />
       <h1>Your Outfit</h1>
       <OutfitList />
     </div>
