@@ -13,6 +13,9 @@ const RelatedApp = (props) => {
     axios.get (`${process.env.REACT_APP_BASE_URL}products`, {
       headers: {
         'Authorization': process.env.REACT_APP_API_KEY
+      },
+      params: {
+        'count': 1011
       }
     })
     .then(data => {
