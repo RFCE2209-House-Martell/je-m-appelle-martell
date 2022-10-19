@@ -28,20 +28,31 @@ const ReviewsSection = (props) => {
 
   const findHelpfulData = () => {
     let tempData = props.reviewData.results;
-    tempData = tempData.sort((a, b) => {
-      a.helpfulness - b.helpfulness
-    })
+    for (let i = 0; i < tempData.length; i++){
+      for (let j = i+1; j < tempData.length; j++){
+        if (tempData[i].helpfulness < tempData[j].helpfulness) {
+          let temp = tempData[i];
+          tempData[i] = tempData[j];
+          tempData[j] = temp;
+        }
+      }
+    }
     console.log('Helpfull: ', tempData)
     setHelpfulData(tempData);
   }
 
   const findNewestData = () => {
     let tempData = props.reviewData.results;
-    console.log(new Date(tempData[0].date).getTime())
-    console.log(new Date(tempData[1].date).getTime())
-    tempData.sort((a, b) => {
-      ((new Date(a.date).getTime()) - (new Date(b.date).getTime()))
-    })
+
+    for (let i = 0; i < tempData.length; i++){
+      for (let j = i+1; j < tempData.length; j++){
+        if ((new Date(tempData[i].date).getTime()) < (new Date(tempData[j].date).getTime())) {
+          let temp = tempData[i];
+          tempData[i] = tempData[j];
+          tempData[j] = temp;
+        }
+      }
+    }
 
     console.log('Newest: ', tempData)
     setNewestData(tempData);

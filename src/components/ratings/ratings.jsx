@@ -4,6 +4,8 @@ import AddReview from './addReview.jsx';
 import RatingsSection from './ratingsSection.jsx';
 import ReviewsSection from './reviewsSection.jsx';
 
+const token = process.env.REACT_APP_API_KEY;
+
 const Ratings = (props) => {
   const [reviewData, setReviewData] = useState({});
   const [metaData, setMetaData] = useState({});
@@ -12,7 +14,7 @@ const Ratings = (props) => {
   useEffect(() => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
       headers: {
-        'Authorization': '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'
+        'Authorization': token
       },
       params: {
         product_id: props.productId,
