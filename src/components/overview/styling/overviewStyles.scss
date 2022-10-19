@@ -86,8 +86,12 @@
   max-height: 80vh;
 }
 
-.zoomImage:hover {
+.zoomImage-false:hover {
   cursor: zoom-in;
+}
+
+.zoomImage-true:hover {
+  cursor: zoom-out;
 }
 
 .closeZoom {
