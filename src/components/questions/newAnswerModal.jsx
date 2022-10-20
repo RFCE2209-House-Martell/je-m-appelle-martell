@@ -5,7 +5,7 @@ import API from './api.js';
 const NewAnswerModal = (props) => {
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({});
-console.log(props, 'ANSWER MODAL')
+
   const onHandleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -24,21 +24,42 @@ console.log(props, 'ANSWER MODAL')
     bottom: '0',
     backgroundColor: 'rgba(0,0,0,0.5)',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   };
-
 
   return (
     <div>
       <button onClick={() => setShow(true)}>Add Answer</button>
       <Modal styles={modalStyles} show={show} onClose={() => setShow(false)}>
-        <input type="text" name="username" placeholder="enter your username" onChange={(e) => onHandleInputChange(e)} />
-        <input type="email" name="email" placeholder="enter your email" onChange={(e) => onHandleInputChange(e)} />
-        <textarea name="body" placeholder="enter your answer" onChange={(e) => onHandleInputChange(e)} />
-        <textarea type="photos" name="photos" onChange={(e) => onHandleInputChange(e)} />
-        <button onClick={() => setShow(false)}>cancel</button>
-        <button onClick={() => onHandleNewAnswerSubmit()}>submit</button>
+        <div className="modal-content-container">
+          <h1>SUBMIT AN ANSWER</h1>
+          <div className="input-container">
+            <label>USERNAME</label>
+            <input type="text" name="username" placeholder="enter your username" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="input-container">
+            <label>EMAIL</label>
+            <input type="email" name="email" placeholder="enter your email" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="input-container">
+            <label>ANSWER</label>
+            <textarea name="body" placeholder="enter your answer" rows="8" cols="50" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="input-container">
+            <label>PHOTOS</label>
+            <textarea type="photos" name="photos" rows="8" cols="50" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="modal-footer">
+            <button onClick={() => setShow(false)}>cancel</button>
+            <button style={{ marginLeft: '16px' }} onClick={() => onHandleNewAnswerSubmit()}>submit</button>
+          </div>
+        </div>
       </Modal>
     </div>
   );

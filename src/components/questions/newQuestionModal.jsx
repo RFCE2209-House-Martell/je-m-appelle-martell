@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../sharedFolder/modal.jsx';
+import API from './api.js';
 
 const NewQuestionModal = (props) => {
   const [show, setShow] = useState(false);
@@ -10,8 +11,8 @@ const NewQuestionModal = (props) => {
   };
 
   const onHandleNewQuestionSubmit = () => {
-    API.reportQuestion(formData, props.question.question_id).then(() => {
-
+    API.createQuestion(formData, props.productId).then((res) => {
+      console.log(res);
     }).catch((err) => console.log('Error submitting new question in container component'));
   };
 
@@ -23,19 +24,37 @@ const NewQuestionModal = (props) => {
     bottom: '0',
     backgroundColor: 'rgba(0,0,0,0.5)',
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   };
 
   return (
     <div>
-      <button onClick={() => setShow(true)}>ADD A QUESTION +</button>
+      <button className="add-question-button" onClick={() => setShow(true)}>ADD A QUESTION +</button>
       <Modal styles={modalStyles} show={show} onClose={() => setShow(false)}>
-        <input type="text" name="name" placeholder="enter your username" />
-        <input type="email" name="email" placeholder="enter your email" />
-        <input type="text" name="body" placeholder="enter your question" />
-        <button onClick={() => setShow(false)}>cancel</button>
-        <button onClick={() => console.log('question submitted')}>submit</button>
+        <div className="modal-content-container">
+          <h1>ASK A QUESTION</h1>
+          <div className="input-container">
+            <label>NAME</label>
+            <input type="text" name="name" placeholder="enter your username" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="input-container">
+            <label>EMAIL</label>
+            <input type="email" name="email" placeholder="enter your email" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="input-container">
+            <label>QUESTION</label>
+            <input type="text" name="body" placeholder="enter your question" onChange={(e) => onHandleInputChange(e)} />
+          </div>
+
+          <div className="modal-footer">
+            <button onClick={() => setShow(false)}>cancel</button>
+            <button style={{ marginLeft: '16px' }} onClick={() => onHandleNewQuestionSubmit()}>submit</button>
+          </div>
+        </div>
       </Modal>
     </div>
   );

@@ -3,10 +3,13 @@ import NewQuestionModal from './newQuestionModal.jsx';
 
 const QuestionsFooter = (props) => {
   return (
-    <div>
-      <button onClick={() => props.loadMoreAnswers()}>Load More Answers</button>
-      <button onClick={() => props.loadMoreQuestions()} >LOAD MORE ANSWERED QUESTIONS</button>
-      <NewQuestionModal />
+    <div className="footer-container">
+      <button className="load-answers-button" onClick={() => props.loadMoreAnswers()}>Load More Answers</button>
+
+      <div className="footer-button-container">
+        <button className="footer-button-container-button" onClick={() => props.loadMoreQuestions()} >MORE ANSWERED QUESTIONS</button>
+        <NewQuestionModal productId={props.productId} />
+      </div>
     </div>
   );
 }
