@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import LoadReview from './loadReview.jsx';
+import StarComponent from './starComponent.jsx'
 
 const ReviewsSection = (props) => {
+
   if (Object.keys(props.reviewData).length < 1) {
     return (
       <div>
@@ -37,7 +39,7 @@ const ReviewsSection = (props) => {
 
 
   return (
-  <div>
+  <fieldset>
     {props.reviewData.results.length} reviews, sorted by <select name='sortReview' onChange={e => onSetData(e)}>
       <option>Newest</option>
       <option>Helpful</option>
@@ -61,9 +63,12 @@ const ReviewsSection = (props) => {
     }
     </div>
     <div>
-      <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
     </div>
-  </div>);
+    <div>
+      <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
+      <button onClick={e => props.setShowModal(!props.showModal)}>Add Review</button>
+    </div>
+  </fieldset>);
 }
 
 export default ReviewsSection;

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import AddReview from './addReview.jsx';
 import RatingsSection from './ratingsSection.jsx';
 import ReviewsSection from './reviewsSection.jsx';
+import AddReview from './addReview.jsx';
+import './ratingsStyles.css'
 
 const token = process.env.REACT_APP_API_KEY;
 
@@ -11,6 +12,7 @@ const Ratings = (props) => {
   const [metaData, setMetaData] = useState({});
   const [reviewStar, setReviewStar] = useState(0);
   const [sortedData, setSortedData] = useState('newest');
+  const [showModal, setShowModal] = useState(false);
 
 
   useEffect(() => {
@@ -50,7 +52,8 @@ const Ratings = (props) => {
   return (
     <div>
       <RatingsSection metaData={metaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars} reviewStar={reviewStar} setReviewStar={setReviewStar}/>
-      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData}/>
+      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData} showModal={showModal} setShowModal={setShowModal}/>
+      <AddReview showModal={showModal} setShowModal={setShowModal} characteristics={metaData.characteristics}/>
     </div>
   );
 }
