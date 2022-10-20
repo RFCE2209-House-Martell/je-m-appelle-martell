@@ -30,7 +30,7 @@ const Overview = (props) => {
       <div className="productDetails">
         <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
         <StyleSelector data={data} setStyleId={setStyleId}/>
-        <AddtoCart/>
+        <AddtoCart data={data} styleId={styleId}/>
       </div>
     </div>
   );

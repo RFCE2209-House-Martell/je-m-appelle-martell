@@ -16,7 +16,7 @@ const ExpandedView = (props) => {
         props.setZoom(false);
       }
     }}>
-      {props.selected === 0 ? null: <button className="zoomarrow" onClick={() => props.handleArrows('left')}>{'<'}</button>}
+      {props.selected === 0 ? <div className="placeholder">{'<'}</div> : <button className="zoomarrow" onClick={() => props.handleArrows('left')}>{'<'}</button>}
       <div className="zoomBorder">
         <img src={props.img} className={`zoomImage zoomImage-${zoomIn}`} onClick={(e) => {
           setZoomIn(!zoomIn);
@@ -24,7 +24,7 @@ const ExpandedView = (props) => {
         <div className="closeZoom" onClick={() => {props.setZoom(false)}}>𐄂</div>
         {zoomIn && overImg ? <div className="movingZoom" style={{left: mousePos.x + 10, top: mousePos.y + 10}}>testing!</div> : null}
       </div>
-      {props.selected === props.photos.length - 1 ? null : <button className="zoomarrow" onClick={() => props.handleArrows('right')}>{'>'}</button>}
+      {props.selected === props.photos.length - 1 ? <div className="placeholder">{'<'}</div> : <button className="zoomarrow" onClick={() => props.handleArrows('right')}>{'>'}</button>}
     </div>
   )
 };

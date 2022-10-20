@@ -44,7 +44,7 @@
   margin-left: -50px;
 }
 
-.arrow {
+.arrow, .zoomarrow {
   text-align: center;
   position: relative;
   padding: 5px 10px 5px 10px;
@@ -57,7 +57,7 @@
   transform: scale(1, 1.5);
 }
 
-.arrow:hover {
+.arrow:hover, .zoomarrow:hover {
   opacity: 80%;
 }
 
@@ -84,6 +84,7 @@
   border: 20px solid white;
   max-width: 80vw;
   max-height: 80vh;
+  align-self: center;
 }
 
 .zoomImage-false:hover {
@@ -92,6 +93,13 @@
 
 .zoomImage-true:hover {
   cursor: zoom-out;
+}
+
+.placeholder {
+  width: 50px;
+  opacity: 0%;
+  font-size: 50px;
+  transform: scale(1, 1.5);
 }
 
 .closeZoom {
@@ -147,23 +155,6 @@ s {
 
 .formItem {
   margin: 5px;
-}
-
-.zoomarrow {
-  text-align: center;
-  position: relative;
-  padding: 5px 10px 5px 10px;
-  width: 50px;
-  background-color: grey;
-  color: white;
-  opacity: 30%;
-  border-style: none;
-  font-size: 50px;
-  transform: scale(1, 1.5);
-}
-
-.zoomarrow:hover {
-  opacity: 80%;
 }
 
 .movingZoom {
