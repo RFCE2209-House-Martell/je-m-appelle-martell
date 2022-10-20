@@ -1,18 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import CharacteristicsCreator from './characteristicsCreator.jsx'
+import StarComponent from './starComponent.jsx'
 
 const RatingsSection = (props) => {
   // console.log(props.sampleMetaData.ratings)
-  const [starsObj, setStarsObj] = useState(props.sampleMetaData.ratings)
-  var totalRatings = 0;
-  var totalStars = 0;
+  if (Object.keys(props.metaData).length < 1) {
+    return (
+      <div>
+        No ratings yet
+      </div>
+    )
+  }
+
+  const [starsObj, setStarsObj] = useState(props.metaData.ratings)
+  const [totalRatings, setTotalRatings] = useState(0);
 
   const findAvgStars = () => {
+    var addRatings = 0;
+    var addStars = 0;
     for (var key in starsObj) {
-      totalRatings = (totalRatings + starsObj[key])
-      totalStars = (totalStars + (key * starsObj[key]))
+      addRatings = (addRatings + Number(starsObj[key]))
+      addStars = (addStars + (key * starsObj[key]))
     }
-    props.setAvgStars(totalStars / totalRatings);
+    var avg = (Math.round((addStars / addRatings) * 4) / 4).toFixed(2);
+    props.setAvgStars(avg);
+    setTotalRatings(addRatings)
+  }
+
+  const starReviewSet = (num) => {
+    props.setReviewStar(num)
   }
 
   useEffect(() => {
@@ -21,31 +37,46 @@ const RatingsSection = (props) => {
   }, [])
 
   return (
-    <div>
+    <fieldset>
       <section>
         Total Stars: {props.avgStars}
       </section>
       <section>
-        Stars
+        <StarComponent avgStars={props.avgStars} />
       </section>
       <section>
-        Recommended: {props.sampleMetaData.recommend}
+        Recommended: {props.metaData.recommend}
       </section>
       <section> Total stars:
-        <div>1: {starsObj['1'] || 0}</div>
-        <div>2: {starsObj['2'] || 0}</div>
-        <div>3: {starsObj['3'] || 0}</div>
-        <div>4: {starsObj['4'] || 0}</div>
-        <div>5: {starsObj['5'] || 0}</div>
+        <div>
+          <button onClick={e => starReviewSet(5)}>5 stars</button>
+          <progress id='fiveStarProgress' value={starsObj['5']} max={totalRatings}></progress>
+        </div>
+        <div>
+          <button onClick={e => starReviewSet(4)}>4 stars</button>
+          <progress id='fourStarProgress' value={starsObj['4']} max={totalRatings}></progress>
+        </div>
+        <div>
+          <button onClick={e => starReviewSet(3)}>3 stars</button>
+          <progress id='threeStarProgress' value={starsObj['3']} max={totalRatings}></progress>
+        </div>
+        <div>
+          <button onClick={e => starReviewSet(2)}>2 stars</button>
+          <progress id='twoStarProgress' value={starsObj['2']} max={totalRatings}></progress>
+        </div>
+        <div>
+          <button onClick={e => starReviewSet(1)}>1 stars</button>
+          <progress id='oneStarProgress' value={starsObj['1']} max={totalRatings}></progress>
+        </div>
       </section>
       <section>
         characteristics:
-        {Object.keys(props.sampleMetaData.characteristics).map((charKey, index) => {
-          return(<CharacteristicsCreator charKey={charKey} obj={props.sampleMetaData.characteristics[charKey]} key={index}/>)
+        {Object.keys(props.metaData.characteristics).map((charKey, index) => {
+          return(<CharacteristicsCreator charKey={charKey} obj={props.metaData.characteristics[charKey]} key={index}/>)
         })}
 
       </section>
-    </div>
+    </fieldset>
     );
 }
 

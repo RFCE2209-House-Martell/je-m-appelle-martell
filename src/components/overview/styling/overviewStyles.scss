@@ -1,0 +1,168 @@
+.widget {
+  display: inline-flex;
+}
+
+// .imgContainer {
+// }
+
+.thumbnailContainer {
+  height: 160px;
+  width: 600px;
+  white-space: nowrap;
+  overflow-y:hidden;
+}
+
+.thumbnail {
+  height: 150px;
+  display: inline-block;
+  overflow: hidden;
+  margin: 3px;
+  vertical-align: top;
+}
+
+.selected {
+  opacity: 30%;
+  z-index: -1;
+}
+
+.carousel {
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.mainImg {
+  width: 600px;
+  display: flex;
+}
+
+.arrowL {
+  margin-right: -50px;
+}
+
+.arrowR {
+  margin-left: -50px;
+}
+
+.arrow, .zoomarrow {
+  text-align: center;
+  position: relative;
+  padding: 5px 10px 5px 10px;
+  width: 50px;
+  background-color: grey;
+  color: white;
+  opacity: 30%;
+  border-style: none;
+  font-size: 50px;
+  transform: scale(1, 1.5);
+}
+
+.arrow:hover, .zoomarrow:hover {
+  opacity: 80%;
+}
+
+.zoomView {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoomBorder {
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  background-color: yellow;
+}
+
+.zoomImage {
+  border: 20px solid white;
+  max-width: 80vw;
+  max-height: 80vh;
+  align-self: center;
+}
+
+.zoomImage-false:hover {
+  cursor: zoom-in;
+}
+
+.zoomImage-true:hover {
+  cursor: zoom-out;
+}
+
+.placeholder {
+  width: 50px;
+  opacity: 0%;
+  font-size: 50px;
+  transform: scale(1, 1.5);
+}
+
+.closeZoom {
+  position: absolute;
+  margin-top: 20px;
+  margin-right: 30px;
+  font-size: 30px;
+  color: white;
+  opacity: 60%;
+}
+
+.closeZoom:hover {
+  cursor: default;
+  opacity: 100%;
+}
+
+.productDetails {
+  margin-left: 30px;
+}
+
+s {
+  font-size: 15px;
+  margin-left: 10px;
+  color: #900505;
+}
+
+.share {
+  display: flex;
+}
+
+.shareIcons {
+  margin-left: 5px;
+}
+
+.styleSelect {
+  display: flex;
+  width: 200px;
+  flex-wrap: wrap;
+}
+
+.style {
+  margin: 3px;
+  background-color: black; // not sure what thumbnails/colors should go here
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.formItem {
+  margin: 5px;
+}
+
+.movingZoom {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  margin: 0;
+  border: 2px solid black;
+  cursor: zoom-out;
+  z-index: 3;
+}

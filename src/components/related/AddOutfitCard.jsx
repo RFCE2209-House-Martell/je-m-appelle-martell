@@ -1,4 +1,6 @@
 import React from 'react';
+import index from '../../index.jsx';
+import OutfitList from './OutfitList.jsx';
 // import style from './styling.css'
 
 const AddOutfitCard = (props) => {
@@ -10,9 +12,14 @@ const AddOutfitCard = (props) => {
     width: '150px'
   }
 
+  const handleClick = (e) => {
+    console.log('clicked')
+    props.addToOutfit(props.productId)
+  }
+
   return (
     <div style={componentStyle}>
-      <div> <button style={{display: 'flex', justifyContent: 'center'}}>+</button> </div>
+      <div> <button style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick}>+</button> </div>
     </div>
   )
 }
