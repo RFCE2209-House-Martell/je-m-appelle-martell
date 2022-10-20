@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ImageGallery from './imageGallery.jsx';
 import StyleSelector from './styleSelector.jsx';
-import ProductDetails from './ProductDetails.jsx';
+import ProductDetails from './productDetails.jsx';
+import AddtoCart from './addToCart.jsx';
 import axios from 'axios';
 import './styling/overviewStyles.css';
 
@@ -26,9 +27,10 @@ const Overview = (props) => {
   return (
     <div className="widget">
       <ImageGallery data={data} styleId={styleId} setSocialPhoto={setSocialPhoto}/>
-      <div>
+      <div className="productDetails">
         <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
         <StyleSelector data={data} setStyleId={setStyleId}/>
+        <AddtoCart data={data} styleId={styleId}/>
       </div>
     </div>
   );

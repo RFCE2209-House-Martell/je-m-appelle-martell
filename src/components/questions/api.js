@@ -4,45 +4,26 @@ const token = process.env.REACT_APP_API_KEY;
 
 const QuestionsAPI = {
 
-  getQuestionsById: (id) => {
+  getQuestionsById: (id, page = 1, count = 2) => {
     const headers = {
       Authorization: token
     };
 
     return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${id}`, { headers: headers }).then((res) => {
       return res.data.results;
-    });
+    }).catch((err) => console.log(err));
   },
 
-  updateHelpfulQuestion: () => {
-    const url = '/qa/questions/:question_id/helpful';
+  updateHelpfulQuestion: (id) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?question_id=${id}/helpful`;
 
-    const config = {
-      headers: {
-        Authorization: value1,
-      }
+    const headers = {
+      Authorization: token
     };
 
-    const data = {
-      name: "",
-      email: ""
-    }
-
-  },
-
-  reportQuestion: () => {
-    const url = '/qa/questions/:question_id/report';
-
-    const config = {
-      headers: {
-        Authorization: value1,
-      }
-    };
-
-    const data = {
-      name: "",
-      email: ""
-    }
+    return axios.post(url, { headers: headers }).then((res) => {
+      return res;
+    }).catch((err) => console.log(err));
   },
 
   createQuestion: () => {
@@ -50,10 +31,22 @@ const QuestionsAPI = {
 
     const config = {
       headers: {
-        Authorization: value1,
+        Authorization: token
       }
     };
 
+  },
+
+  reportQuestion: (id) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?question_id=${id}/report`;
+
+    const headers = {
+      Authorization: token,
+    };
+
+    return axios.post(url, { header: headers }).then((res) => {
+      return res;
+    }).catch((err) => console.log(err));
   },
 
   // ANSWERS
@@ -70,49 +63,49 @@ const QuestionsAPI = {
     }).catch((err) => console.log('axios error retreiving answers'));
   },
 
-  createAnswer: () => {
-    const url = '/qa/questions/:question_id/answers';
+  createAnswer: (id, data) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${id}/answers`;
 
-    const config = {
-      headers: {
-        Authorization: value1,
-      }
+    const body = {
+      body: data.body,
+      name: data.name,
+      email: data.email,
+      photos: data.photos
     };
 
-    const data = {
-      name: "",
-      email: ""
-    }
+    console.log(data, 'DATA');
+
+    const headers = {
+      Authorization: token
+    };
+
+    return axios.post(url, { headers: headers }, body).then((res) => {
+      return res;
+    }).catch((err) => console.log('axios error retreiving answers'));
   },
 
-  reportAnswer: () => {
-    const url = '/qa/answers/:answer_id/report';
+  reportAnswer: (id) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers?answer_id=${id}/report`;
 
-    const config = {
-      headers: {
-        Authorization: value1,
-      }
+    const headers = {
+      Authorization: token
     };
 
-    const data = {
-      name: "",
-      email: ""
-    }
+    return axios.post(url, { header: headers }).then((res) => {
+      return res;
+    }).catch((err) => console.log(err));
   },
 
-  updateHelpfulAnswer: () => {
-    const url = '/qa/answers/:answer_id/helpful';
+  updateHelpfulAnswer: (id) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers?answer_id=${id}/helpful`;
 
-    const config = {
-      headers: {
-        Authorization: value1,
-      }
+    const headers = {
+      Authorization: token
     };
 
-    const data = {
-      name: "",
-      email: ""
-    }
+    return axios.post(url, { headers: headers }).then((res) => {
+      return res;
+    }).catch((err) => console.log(err));
   },
 
 };

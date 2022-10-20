@@ -7,8 +7,12 @@ import API from './api.js';
 const QuestionsAnswersContainer = (props) => {
   const [questions, setQuestions] = useState([]);
   const [Answers, setAnswers] = useState([]);
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(1);
+  const [answerPage, setAnswerPage] = useState(1);
+  const [answerCount, setAnswerCount] = useState(1);
+
+  const [questionPage, setQuestionPage] = useState(1);
+  const [questionCount, setQuestionCount] = useState(1);
+
   const [searchInput, setSearchInput] = useState('');
   const productId = props.productId;
 
@@ -17,7 +21,11 @@ const QuestionsAnswersContainer = (props) => {
   };
 
   const onLoadMoreAnswers = () => {
-    setCount(count + 2);
+    setAnswerCount(answerCount + 2);
+  };
+
+  const onLoadMoreQuestions = () => {
+    setQuestionCount(questionCount + 2);
   };
 
   const onHandleHelpfulSubmit = (e) => {
@@ -29,7 +37,7 @@ const QuestionsAnswersContainer = (props) => {
   useEffect(() => {
     const loadQuestions = () => {
       if (searchInput === '') {
-        API.getQuestionsById(productId).then((res) => {
+        API.getQuestionsById(productId, questionCount, questionPage).then((res) => {
           setQuestions(res);
         });
       } else {
@@ -38,15 +46,15 @@ const QuestionsAnswersContainer = (props) => {
       }
     }
     loadQuestions();
-  }, [searchInput]);
+  }, [searchInput, questionCount, questionPage]);
 
   return (
     <div>
       <h3 style={{ padding: '32px' }}>Questions and Answers</h3>
       <div style={{ border: '1px solid grey', padding: '32px', margin: '32px' }}>
         <AnswerSearchBar productId={productId} Input={searchInput} onSearch={onHandleSearch} />
-        <QuestionList productId={productId} questions={questions} page={page} count={count} />
-        <QuestionsFooter productId={productId} loadMoreAnswers={onLoadMoreAnswers} />
+        <QuestionList productId={productId} questions={questions} answerPage={answerPage} answerCount={answerCount} />
+        <QuestionsFooter productId={productId} loadMoreAnswers={onLoadMoreAnswers} loadMoreQuestions={onLoadMoreQuestions} />
       </div>
     </div>
   );

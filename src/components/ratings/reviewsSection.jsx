@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import LoadReview from './loadReview.jsx';
+import StarComponent from '../sharedFolder/starComponent.jsx'
 
 const ReviewsSection = (props) => {
+
   if (Object.keys(props.reviewData).length < 1) {
     return (
       <div>
@@ -10,15 +12,11 @@ const ReviewsSection = (props) => {
     )
   }
 
-  const [data, setData] = useState(props.reviewData.results);
-  const [helpfulData, setHelpfulData] = useState([]);
-  const [newestData, setNewestData] = useState([]);
-  const [relevantData, setRelevantData] = useState([]);
   const [moreResults, setMoreResults] = useState(false);
 
   const showTempValues = () => {
     let times = 0;
-    return data.map((review, index) => {
+    return props.reviewData.results.map((review, index) => {
       if (review.rating === props.reviewStar && times < 2) {
         times++;
         return(<LoadReview review={review} key={index}/>)
@@ -26,53 +24,30 @@ const ReviewsSection = (props) => {
     })
   }
 
-  const findHelpfulData = () => {
-    let tempData = props.reviewData.results;
-    for (let i = 0; i < tempData.length; i++){
-      for (let j = i+1; j < tempData.length; j++){
-        if (tempData[i].helpfulness < tempData[j].helpfulness) {
-          let temp = tempData[i];
-          tempData[i] = tempData[j];
-          tempData[j] = temp;
-        }
-      }
+  const onSetData = (e) => {
+    let option = e.target.value;
+    if (option === 'Helpful') {
+      props.setSortedData('helpful');
+    } else if (option === 'Newest') {
+      props.setSortedData('newest');
+    } else if (option === 'Relevant') {
+      props.setSortedData('relevant');
     }
-    console.log('Helpfull: ', tempData)
-    setHelpfulData(tempData);
   }
 
-  const findNewestData = () => {
-    let tempData = props.reviewData.results;
 
-    for (let i = 0; i < tempData.length; i++){
-      for (let j = i+1; j < tempData.length; j++){
-        if ((new Date(tempData[i].date).getTime()) < (new Date(tempData[j].date).getTime())) {
-          let temp = tempData[i];
-          tempData[i] = tempData[j];
-          tempData[j] = temp;
-        }
-      }
-    }
 
-    console.log('Newest: ', tempData)
-    setNewestData(tempData);
-  }
-
-  useEffect(() => {
-    findHelpfulData()
-    findNewestData()
-  }, [])
 
   return (
-  <div>
-    {data.length} reviews, sorted by <select name='sortReview'>
+  <fieldset>
+    {props.reviewData.results.length} reviews, sorted by <select name='sortReview' onChange={e => onSetData(e)}>
       <option>Newest</option>
       <option>Helpful</option>
       <option>Relevant</option>
     </select>
     <div className='reviewScroll'>
     {(moreResults) ? (
-      data.map((review, index) => {
+      props.reviewData.results.map((review, index) => {
         if (props.reviewStar === 0) {
           return(<LoadReview review={review} key={index}/>)
         } else {
@@ -82,15 +57,18 @@ const ReviewsSection = (props) => {
         }
       })
     ) : (props.reviewStar === 0) ? (<div>
-      <LoadReview review={data[0]}/>
-      <LoadReview review={data[1]}/>
+      <LoadReview review={props.reviewData.results[0]}/>
+      <LoadReview review={props.reviewData.results[1]}/>
       </div>) : showTempValues()
     }
     </div>
     <div>
-      <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
     </div>
-  </div>);
+    <div>
+      <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
+      <button onClick={e => props.setShowModal(!props.showModal)}>Add Review</button>
+    </div>
+  </fieldset>);
 }
 
 export default ReviewsSection;

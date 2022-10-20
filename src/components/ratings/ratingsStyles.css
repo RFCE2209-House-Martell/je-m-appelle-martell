@@ -1,0 +1,29 @@
+#star-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.star-on {
+  color: #000;
+}
+.star-off {
+  color: #ccc;
+}
+
+.single-star-outline {
+  height: 31px;
+  width: 31px;
+}
+
+.single-star-fill {
+  position: relative;
+  display: inline-block;
+  height: 31px;
+  background-color: #333333;
+}
+
+.single-star-container {
+  height: 36px;
+  width: 31px;
+  display: inline-block;
+}
