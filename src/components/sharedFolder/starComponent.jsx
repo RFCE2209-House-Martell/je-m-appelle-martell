@@ -1,4 +1,5 @@
 import React from 'react';
+import star from './star.png'
 
 
 const StarComponent = (props) => {
@@ -38,8 +39,8 @@ const StarComponent = (props) => {
       {stars.map((star, index) => {
         return (
           <div className='single-star-container' key={index}>
-            <div className='single-star-fill' style={{'width': `${parseInt(star*16)}px`}}>
-              <img className='single-star-outline' src='https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png'></img>
+            <div className='single-star-fill' style={{'width': `${parseInt(star*31)}px`}}>
+              <img className='single-star-outline' src={require('./star.png').default}></img>
             </div>
           </div>
         )

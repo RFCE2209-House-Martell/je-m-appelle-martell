@@ -11,23 +11,19 @@
 }
 
 .single-star-outline {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  height: 20px;
+  height: 31px;
   width: 31px;
-  color: #ccc
 }
 
 .single-star-fill {
   position: relative;
   display: inline-block;
-  height: 20px;
-  background-color: #000;
+  height: 31px;
+  background-color: #333333;
 }
 
 .single-star-container {
-  height: 20px;
+  height: 36px;
   width: 31px;
   display: inline-block;
 }

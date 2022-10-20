@@ -1,5 +1,7 @@
 const path = require("path");
 const Dotenv = require("dotenv-webpack");
+var webpack = require('webpack');
+
 
 module.exports = {
   mode: "development",
@@ -23,7 +25,15 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ]
   },
   // [devtool] this is an additional source map that will let the browser know what files are running our code.
@@ -38,5 +48,7 @@ module.exports = {
     compress: true,
     // [port] what port on our local machine to run the dev server
     port: 3000,
-  }
+  },
+
+
 }
