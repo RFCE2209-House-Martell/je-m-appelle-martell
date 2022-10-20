@@ -8,10 +8,23 @@ const OutfitCard = (props) => {
     width: '150px'
   }
 
+  const handleClick = (e) => {
+    console.log('asdfaevsc', props.product)
+    let filteredOutfits = props.outfitProducts.filter(theProduct => {
+      console.log('prop', props.outfitProducts)
+      console.log('notprop:', theProduct.id)
+      theProduct.id !== props.outfitProducts.id
+    })
+    props.setOutfitProducts(filteredOutfits)
+  }
+
+  const handleCardClick = (e) => {
+    props.setProductId(props.product.id)
+  }
+
   return (
-    <div style={componentStyle}>
-      {props.product}
-      <div> <button>x</button> </div>
+    <div style={componentStyle}  >
+      <div> <button onClick={handleClick} >x</button> </div>
       <div> <img /> </div>
       <div>Category</div>
       <div>description</div>

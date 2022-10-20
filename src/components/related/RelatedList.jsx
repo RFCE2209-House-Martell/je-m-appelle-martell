@@ -26,7 +26,7 @@ const RelatedList = (props) => {
       {renderedProducts[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}}>previous</button>}
 
       {renderedProducts.map((productIndex, key) => {
-        return <RelatedCard productIndex={productIndex} key={key}/>
+        return <RelatedCard productIndex={productIndex} key={key} setProductId={props.setProductId} productId={props.productId} />
       })}
 
       {renderedProducts[2] === relatedProducts.length ? null : <button onClick={nextCard} style={{height: '24px'}} >next</button>}

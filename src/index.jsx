@@ -11,6 +11,7 @@ import QuestionsAnswersContainer from './components/questions/questionsAnswersCo
 const App = () => {
   const [productId, setProductId] = useState(66645);
   const [avgStars, setAvgStars] = useState(0);
+  const [outfitProducts, setOutfitProducts] = useState([]);
 
   return (<div>
     <div>
@@ -18,7 +19,8 @@ const App = () => {
     </div>
     <div>
       <Overview productId={productId} avgStars={avgStars} />
-      <RelatedApp productId={productId} setProductId={setProductId} />
+      <RelatedApp productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts}/>
+      {/* <QuestionList productId={productId} /> */}
       <QuestionsAnswersContainer productId={productId} />
       <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
     </div>
