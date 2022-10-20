@@ -116,6 +116,16 @@
   opacity: 100%;
 }
 
+.movingZoom {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  margin: 0;
+  border: 2px solid black;
+  cursor: zoom-out;
+  z-index: 3;
+}
+
 .productDetails {
   margin-left: 30px;
 }
@@ -150,19 +160,10 @@ s {
 
 .form {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 100px 150px;
+  column-gap: 10px;
 }
 
 .formItem {
   margin: 5px;
-}
-
-.movingZoom {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  margin: 0;
-  border: 2px solid black;
-  cursor: zoom-out;
-  z-index: 3;
 }
