@@ -156,12 +156,12 @@ s {
 
 .movingZoom {
   position: absolute;
-  width: 140px;
-  height: 65px;
+  width: 300px;
+  height: 300px;
   margin: 0;
-  border: 1px solid blue;
-  background-color: yellow;
+  border: 2px solid black;
   cursor: zoom-out;
+  z-index: 3;
 }
 
 /*# sourceMappingURL=overviewStyles.css.map */
