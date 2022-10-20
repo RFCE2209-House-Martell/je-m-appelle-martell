@@ -37,12 +37,12 @@ const RatingsSection = (props) => {
   }, [])
 
   return (
-    <fieldset>
+    <div className='ratingsSection'>
       <section>
         Total Stars: {props.avgStars}
       </section>
       <section>
-        <StarComponent avgStars={props.avgStars} />
+        <StarComponent stars={props.avgStars} />
       </section>
       <section>
         Recommended: {props.metaData.recommend}
@@ -76,7 +76,7 @@ const RatingsSection = (props) => {
         })}
 
       </section>
-    </fieldset>
+    </div>
     );
 }
 

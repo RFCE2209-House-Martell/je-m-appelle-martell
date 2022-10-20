@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import StarComponent from '../sharedFolder/starComponent.jsx'
 
 const LoadReview = (props) => {
   const [showFullAns, setShowFullAns] = useState(false);
@@ -6,10 +7,9 @@ const LoadReview = (props) => {
 
   return (
   <li>
-    Stars:
-    {props.review.rating}
-    , Username: {props.review.reviewer_name}
-    , Date: {props.review.date}
+    <StarComponent stars={props.review.rating} />
+    , {props.review.reviewer_name}
+    , {new Date(props.review.date).toDateString()}
     {props.review.recommend && (<div>
       ✓ I recommend this product
     </div>)}

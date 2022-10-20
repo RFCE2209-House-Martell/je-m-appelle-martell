@@ -3,7 +3,7 @@ import star from './star.png'
 
 
 const StarComponent = (props) => {
-  let rating = props.avgStars;
+  let rating = props.stars;
   let stars = [];
   while (stars.length < 5) {
     if (rating > 1) {
@@ -18,11 +18,11 @@ const StarComponent = (props) => {
       if (closest === empty) {
         stars.push(0);
       } else if (closest === quarter) {
-        stars.push(0.28);
+        stars.push(0.25);
       } else if (closest === half) {
         stars.push(0.5);
       } else if (closest === threeQuarter) {
-        stars.push(0.72);
+        stars.push(0.75);
       } else if (closest === full) {
         stars.push(1);
       } else {
@@ -37,6 +37,7 @@ const StarComponent = (props) => {
   return (
     <div>
       {stars.map((star, index) => {
+        console.log(star, index)
         return (
           <div className='single-star-container' key={index}>
             <div className='single-star-fill' style={{'width': `${parseInt(star*31)}px`}}>

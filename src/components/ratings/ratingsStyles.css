@@ -1,3 +1,22 @@
+.ratingsSection {
+  float: left;
+  width: 20%;
+
+}
+
+.reviewsSection {
+  float: right;
+  width: 70%;
+}
+
+select {
+  margin-bottom: 1em;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
+}
+
+
 #star-button {
   background-color: transparent;
   border: none;
@@ -11,19 +30,19 @@
 }
 
 .single-star-outline {
-  height: 31px;
-  width: 31px;
+  height: 18px;
+  width: 16px;
 }
 
 .single-star-fill {
   position: relative;
   display: inline-block;
-  height: 31px;
-  background-color: #333333;
+  height: 16px;
+  background-color: #000;
 }
 
 .single-star-container {
-  height: 36px;
-  width: 31px;
+  height: 18px;
+  width: 16px;
   display: inline-block;
 }
