@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CharacteristicsCreator from './characteristicsCreator.jsx'
-import StarComponent from './starComponent.jsx'
+import StarComponent from '../sharedFolder/starComponent.jsx'
 
 const RatingsSection = (props) => {
   // console.log(props.sampleMetaData.ratings)

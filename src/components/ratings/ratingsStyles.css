@@ -3,27 +3,31 @@
   border: none;
   outline: none;
 }
-.on {
+.star-on {
   color: #000;
 }
-.off {
+.star-off {
   color: #ccc;
 }
 
 .single-star-outline {
-  height: 36px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  height: 20px;
   width: 31px;
+  color: #ccc
 }
 
 .single-star-fill {
   position: relative;
   display: inline-block;
-  height: 36px;
-  background-color: #333333;
+  height: 20px;
+  background-color: #000;
 }
 
 .single-star-container {
-  height: 36px;
+  height: 20px;
   width: 31px;
   display: inline-block;
 }

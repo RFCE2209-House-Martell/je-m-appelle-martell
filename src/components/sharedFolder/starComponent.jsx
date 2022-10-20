@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const StarComponent = (props) => {
   let rating = props.avgStars;
   let stars = [];
@@ -37,8 +38,8 @@ const StarComponent = (props) => {
       {stars.map((star, index) => {
         return (
           <div className='single-star-container' key={index}>
-            <div className='single-star-fill' style={{'width': `${parseInt(star*31)}px`}}>
-              <span className='singelStarOutline'>&#9733;</span>
+            <div className='single-star-fill' style={{'width': `${parseInt(star*16)}px`}}>
+              <img className='single-star-outline' src='https://upload.wikimedia.org/wikipedia/commons/f/fd/A_star.png'></img>
             </div>
           </div>
         )
