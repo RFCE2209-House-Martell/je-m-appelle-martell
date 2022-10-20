@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CharacteristicsCreator from './characteristicsCreator.jsx'
+import StarComponent from './starComponent.jsx'
 
 const RatingsSection = (props) => {
   // console.log(props.sampleMetaData.ratings)
@@ -36,12 +37,12 @@ const RatingsSection = (props) => {
   }, [])
 
   return (
-    <div>
+    <fieldset>
       <section>
         Total Stars: {props.avgStars}
       </section>
       <section>
-        Stars
+        <StarComponent avgStars={props.avgStars} />
       </section>
       <section>
         Recommended: {props.metaData.recommend}
@@ -75,7 +76,7 @@ const RatingsSection = (props) => {
         })}
 
       </section>
-    </div>
+    </fieldset>
     );
 }
 
