@@ -9,7 +9,7 @@ import RelatedApp from './components/related/RelatedApp.jsx';
 import QuestionsAnswersContainer from './components/questions/questionsAnswersContainer.jsx';
 
 const App = () => {
-  const [productId, setProductId] = useState(66645);
+  const [productId, setProductId] = useState(66658);
   const [avgStars, setAvgStars] = useState(0);
 
   return (<div>
