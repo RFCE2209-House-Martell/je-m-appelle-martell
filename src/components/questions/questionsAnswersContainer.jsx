@@ -4,6 +4,8 @@ import QuestionList from './questionList.jsx';
 import QuestionsFooter from './questionFooter.jsx';
 import API from './api.js';
 
+import './styles/questionAnswerStyles.css';
+
 const QuestionsAnswersContainer = (props) => {
   const [questions, setQuestions] = useState([]);
   const [Answers, setAnswers] = useState([]);
@@ -49,9 +51,9 @@ const QuestionsAnswersContainer = (props) => {
   }, [searchInput, questionCount, questionPage]);
 
   return (
-    <div>
-      <h3 style={{ padding: '32px' }}>Questions and Answers</h3>
-      <div style={{ border: '1px solid grey', padding: '32px', margin: '32px' }}>
+    <div className="qa-main-container">
+      <h1 className="feature-heading">QUESTIONS AND ANSWERS</h1>
+      <div>
         <AnswerSearchBar productId={productId} Input={searchInput} onSearch={onHandleSearch} />
         <QuestionList productId={productId} questions={questions} answerPage={answerPage} answerCount={answerCount} />
         <QuestionsFooter productId={productId} loadMoreAnswers={onLoadMoreAnswers} loadMoreQuestions={onLoadMoreQuestions} />

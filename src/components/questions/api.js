@@ -9,7 +9,7 @@ const QuestionsAPI = {
       Authorization: token
     };
 
-    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${id}`, { headers: headers }).then((res) => {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${id}`, { headers: headers }, { count: count, page: page }).then((res) => {
       return res.data.results;
     }).catch((err) => console.log(err));
   },
@@ -26,25 +26,34 @@ const QuestionsAPI = {
     }).catch((err) => console.log(err));
   },
 
-  createQuestion: () => {
-    const url = '/qa/questions';
+  createQuestion: (data, id) => {
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions`;
 
-    const config = {
-      headers: {
-        Authorization: token
-      }
+    const headers = {
+      Authorization: token
     };
+
+    const body = {
+      name: data.name,
+      email: data.email,
+      body: data.body,
+      product_id: id
+    };
+
+    return axios.post(url, body, { header: headers }).then((res) => {
+      return res;
+    }).catch((err) => console.log('Error creating new question ' + err));
 
   },
 
   reportQuestion: (id) => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?question_id=${id}/report`;
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${id}/report`;
 
     const headers = {
       Authorization: token,
     };
 
-    return axios.post(url, { header: headers }).then((res) => {
+    return axios.put(url, { header: headers }).then((res) => {
       return res;
     }).catch((err) => console.log(err));
   },
@@ -68,32 +77,31 @@ const QuestionsAPI = {
 
     const body = {
       body: data.body,
-      name: data.name,
+      name: data.username,
       email: data.email,
-      photos: data.photos
+      // photos: [data.photos]
     };
-
-    console.log(data, 'DATA');
 
     const headers = {
       Authorization: token
     };
 
-    return axios.post(url, { headers: headers }, body).then((res) => {
+    return axios.post(url, body, { headers: headers }).then((res) => {
       return res;
-    }).catch((err) => console.log('axios error retreiving answers'));
+    }).catch((err) => console.log('axios error creating new answer'));
   },
 
   reportAnswer: (id) => {
-    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers?answer_id=${id}/report`;
+    console.log(id, "IDDD")
+    const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/answers/${id}/report`;
 
     const headers = {
       Authorization: token
     };
 
-    return axios.post(url, { header: headers }).then((res) => {
+    return axios.put(url, { header: headers }).then((res) => {
       return res;
-    }).catch((err) => console.log(err));
+    }).catch((err) => console.log('Error reporting answer ' + err));
   },
 
   updateHelpfulAnswer: (id) => {

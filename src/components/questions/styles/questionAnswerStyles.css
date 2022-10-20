@@ -1,0 +1,180 @@
+.qa-main-container {
+  width: auto;
+  padding: 32px;
+}
+
+.feature-heading {
+  color: rgb(70, 69, 69);
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 32px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: none;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-icon-container {
+  padding: 32px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  width: 50px;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.answer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.question-body {
+  font-weight: 900;
+  font-size: 24px;
+  color: rgb(73, 73, 73);
+}
+
+.answer-body {
+  font-weight: 900;
+  font-size: 24px;
+  color: rgb(73, 73, 73);
+}
+
+.answer-text {
+  color: rgb(144, 143, 143);
+  font-size: 18px;
+}
+
+.answer-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 30%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  color: gray;
+  flex-wrap: wrap;
+}
+
+.answer-container button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+  color: gray;
+}
+
+.question-container button {
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.question-container button:hover {
+  color: blue;
+}
+
+.answer-container button:hover {
+  color: blue;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.footer-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.footer-button-container-button {
+  border: 1px solid black;
+  padding: 36px;
+  background: none;
+}
+
+.footer-button-container-button:hover {
+  color: blue;
+  background-color: rgb(248, 248, 248);
+  transition: 250ms ease-in-out;
+}
+
+.load-answers-button {
+  background: none;
+  border: none;
+  padding: 24px;
+  font-size: 16px;
+}
+
+.load-answers-button:hover {
+  color: blue;
+}
+
+.add-question-button {
+  margin-left: 24px;
+  border: 1px solid black;
+  padding: 36px;
+  background: none;
+}
+
+/* MODAL STYLES */
+
+.modal-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: white;
+  padding: 32px;
+  border: 2px solid rgb(0, 0, 0);
+  height: 500px;
+  width: 350px;
+}
+
+.modal-content-container input {
+  padding: 12px;
+  width: 80%;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal-footer button {
+  border: 1px solid black;
+  padding: 16px;
+  background: none;
+  min-width: 100px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
