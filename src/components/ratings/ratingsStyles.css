@@ -1,3 +1,57 @@
+.ratingsSection {
+  float: left;
+  width: 20%;
+
+}
+.char-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+.char-list {
+  display: flex;
+  justify-content: space-between;
+}
+.char-list option {
+  position: relative;
+  background: white;
+  top: 18px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.reviewsSection {
+  float: right;
+  width: 70%;
+}
+
+select {
+  margin-bottom: 1em;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
+}
+
+.reviews-list {
+  list-style: none;
+  border: 0;
+  border-bottom: 1px solid;
+  border-radius: 0;
+  padding: 1vw;
+}
+
+.stars-and-date {
+  display: flex;
+  justify-content: space-between;
+}
+.username-and-date {
+  float: right;
+}
+
+
 #star-button {
   background-color: transparent;
   border: none;
@@ -11,19 +65,25 @@
 }
 
 .single-star-outline {
-  height: 31px;
-  width: 31px;
+  height: 18px;
+  width: 16px;
 }
 
 .single-star-fill {
   position: relative;
   display: inline-block;
-  height: 31px;
-  background-color: #333333;
+  height: 18px;
+  background-color: #000;
 }
 
 .single-star-container {
-  height: 36px;
-  width: 31px;
+  height: 18px;
+  width: 16px;
   display: inline-block;
+}
+
+.modal-body {
+  background-color: white;
+  padding: .5vw;
+  border-style: solid;
 }

@@ -39,7 +39,7 @@ const ReviewsSection = (props) => {
 
 
   return (
-  <fieldset>
+  <div className='reviewsSection'>
     {props.reviewData.results.length} reviews, sorted by <select name='sortReview' onChange={e => onSetData(e)}>
       <option>Newest</option>
       <option>Helpful</option>
@@ -68,7 +68,7 @@ const ReviewsSection = (props) => {
       <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
       <button onClick={e => props.setShowModal(!props.showModal)}>Add Review</button>
     </div>
-  </fieldset>);
+  </div>);
 }
 
 export default ReviewsSection;

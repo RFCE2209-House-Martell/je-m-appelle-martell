@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
+import StarComponent from '../sharedFolder/starComponent.jsx'
 
 const LoadReview = (props) => {
   const [showFullAns, setShowFullAns] = useState(false);
   const [partAns, setPartAns] = useState(props.review.body.substring(0, 250))
 
   return (
-  <li>
-    Stars:
-    {props.review.rating}
-    , Username: {props.review.reviewer_name}
-    , Date: {props.review.date}
-    {props.review.recommend && (<div>
-      ✓ I recommend this product
-    </div>)}
+  <li className='reviews-list'>
+    <div className='stars-and-date'>
+      <div>
+        <StarComponent stars={props.review.rating} />
+      </div>
+      <div className='username-and-date' >
+        {props.review.reviewer_name}, {new Date(props.review.date).toDateString()}
+      </div>
+    </div>
     <div>
       Title: {props.review.summary}
     </div>
     <div>
       Body: {((props.review.body).length < 250) ? <div>{props.review.body}</div> : showFullAns ? <div>{props.review.body} <button onClick={e => setShowFullAns(!showFullAns)}>Show Less</button> </div> : <div>{partAns + '...'} <button onClick={e => setShowFullAns(!showFullAns)}>Show More</button> </div>}
     </div>
+    {props.review.recommend && (<div>
+      ✓ I recommend this product
+    </div>)}
     <div>
       Helpful? Yes ({props.review.helpfulness}) | Report
     </div>
