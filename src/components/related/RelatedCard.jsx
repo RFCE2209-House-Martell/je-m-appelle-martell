@@ -27,18 +27,17 @@ const RelatedCard = (props) => {
     props.setProductId(props.relatedProduct.id)
   }
 
-console.log('props.relatedProduct', props.relatedProduct)
   if (props.relatedProduct) {
     return (
       <div style={componentStyle}>
         <div> <button>star</button> </div>
         <div onClick={handleCardClick} >
-          <div> <img /> </div>
-          <name>{props.relatedProduct.name}</name>
-          <div>Category</div>
-          <div>description</div>
-          <div>price</div>
-          <div>rating</div>
+          <div> <img  /> </div>
+          <name>Name: {props.relatedProduct.name}</name>
+          <div>Category: {props.relatedProduct.category}</div>
+          <div>description: {props.relatedProduct.description}</div>
+          <div>price: {props.relatedProduct.price} </div>
+          <div>rating: {props.relatedProduct.rating} </div>
         </div>
       </div>
     )

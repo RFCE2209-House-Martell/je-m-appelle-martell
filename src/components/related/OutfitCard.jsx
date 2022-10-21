@@ -9,23 +9,27 @@ const OutfitCard = (props) => {
   }
 
   const handleClick = (e) => {
-    let filteredOutfits = props.outfitProducts.filter(theProduct => {
-
-      theProduct.id !== props.outfitProducts.id
+    const filteredOutfits = props.outfitProducts.filter(theProduct => {
+      console.log('props', props)
+      console.log('STUFF', theProduct.id, props.outfitProducts.id)
+      return theProduct.id !== props.product.id
     })
+    console.log(filteredOutfits)
     props.setOutfitProducts(filteredOutfits)
   }
 
   return (
     <div style={componentStyle}  >
       <div> <button onClick={handleClick} >x</button> </div>
-      <div> <img /> </div>
-      <div>Category</div>
-      <div>description</div>
-      <div>price</div>
-      <div>rating</div>
+      <div> <img  /> </div>
+      <name>Name: {props.product.name}</name>
+      <div>Category: {props.product.category}</div>
+      <div>description: {props.product.description}</div>
+      <div>price: {props.product.price} </div>
+      <div>rating: {props.product.rating} </div>
     </div>
   )
+
 }
 
 export default OutfitCard;

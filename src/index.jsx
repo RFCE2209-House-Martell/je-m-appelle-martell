@@ -10,13 +10,12 @@ import QuestionsAnswersContainer from './components/questions/questionsAnswersCo
 
 const App = () => {
   const [productId, setProductId] = useState(66645);
-  console.log('productId', productId)
   const [avgStars, setAvgStars] = useState(0);
   const [outfitProducts, setOutfitProducts] = useState([]);
 
   return (<div>
     <div>
-      <img className="logo" src={require("../public/assets/images/martell-logo.png").default} alt="martell-logo" />
+      {/* <img className="logo" src={require("../public/assets/images/martell-logo.png").default} alt="martell-logo" /> */}
     </div>
     <div>
       <Overview productId={productId} avgStars={avgStars} />
