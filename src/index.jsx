@@ -14,8 +14,7 @@ const App = () => {
   const [outfitProducts, setOutfitProducts] = useState([]);
 
   return (<div>
-    <div>
-    </div>
+    <div></div>
     <div>
       <Overview productId={productId} avgStars={avgStars} />
       <RelatedApp productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
