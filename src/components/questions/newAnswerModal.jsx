@@ -34,7 +34,7 @@ const NewAnswerModal = (props) => {
       <button onClick={() => setShow(true)}>Add Answer</button>
       <Modal styles={modalStyles} show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container">
-          <h1>SUBMIT AN ANSWER</h1>
+          <h1 data-testid="submit header">SUBMIT AN ANSWER</h1>
           <div className="input-container">
             <label>USERNAME</label>
             <input type="text" name="username" placeholder="enter your username" onChange={(e) => onHandleInputChange(e)} />
