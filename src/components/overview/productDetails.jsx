@@ -16,7 +16,7 @@ const ProductDetails = (props) => {
     }).catch((err) => {
       console.log(err);
     });
-  }, []);
+  }, [props.productId]);
 
   if (JSON.stringify(data) !== '{}') {
     var category = data.category.toUpperCase();
