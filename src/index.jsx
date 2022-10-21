@@ -9,16 +9,19 @@ import RelatedApp from './components/related/RelatedApp.jsx';
 import QuestionsAnswersContainer from './components/questions/questionsAnswersContainer.jsx';
 
 const App = () => {
-  const [productId, setProductId] = useState(66658);
+  const [productId, setProductId] = useState(66645);
+  console.log('productId', productId)
   const [avgStars, setAvgStars] = useState(0);
+  const [outfitProducts, setOutfitProducts] = useState([]);
 
   return (<div>
     <div>
-      <h1>Hello World Again!</h1>
+      <img className="logo" src={require("../public/assets/images/martell-logo.png").default} alt="martell-logo" />
     </div>
     <div>
       <Overview productId={productId} avgStars={avgStars} />
-      <RelatedApp productId={productId} setProductId={setProductId} />
+      <RelatedApp productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
+      {/* <QuestionList productId={productId} /> */}
       <QuestionsAnswersContainer productId={productId} />
       <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
     </div>

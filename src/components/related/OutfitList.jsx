@@ -5,25 +5,21 @@ import AddOutfitCard from './AddOutfitCard.jsx';
 
 const OutfitList = (props) => {
 
-  const [outfitProducts, setOutfitProducts] = useState([])
-
   const [renderedOutfits, setRenderedOutfits] = useState([0, 1, 2])
 
   //function to add to this state from addProduct card click and adds the overview item (located in main index)
 
-  const addToOutfit = (productId) => {
-    console.log(productId)
+  const addToOutfit = (aProductId) => {
     const product = props.allProducts.find(({id}) => {
-      return id === productId
+      return id === aProductId
     })
-    console.log(product)
 
-    const alreadyExists = outfitProducts.find(({id}) => {
-      return id === product.id
+    const alreadyExists = props.outfitProducts.find(({id}) => {
+      return id === aProductId.id
     })
 
     if (!alreadyExists) {
-      setOutfitProducts((prevState) => {
+      props.setOutfitProducts((prevState) => {
         return [...prevState, product]
       })
     }
@@ -43,7 +39,6 @@ const OutfitList = (props) => {
     setRenderedOutfits(newRenderedOutfits)
   }
 
-  console.log('OUTFITPRODUCTS', outfitProducts)
   return (
     <div style={{display: 'flex', columnGap: '8px'}}>
       {renderedOutfits[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}} >previous</button>}
@@ -52,14 +47,20 @@ const OutfitList = (props) => {
         if (displayIndex === 0) {
           return <AddOutfitCard addToOutfit={addToOutfit} productId={props.productId} />
         }
-        if (outfitProducts.length && outfitProducts[displayIndex - 1]) {
-          return <OutfitCard product={outfitProducts[displayIndex - 1].item} key={index} />
+        if (props.outfitProducts.length && props.outfitProducts[displayIndex - 1]) {
+          return <OutfitCard
+          product={props.outfitProducts[displayIndex - 1].item}
+          key={index}
+          outfitProducts={props.outfitProducts}
+          setOutfitProducts={props.setOutfitProducts}
+          setProductId={props.setProductId}
+          productId={props.productId} />
         }
         return null;
       })
       }
 
-      {renderedOutfits[2] === outfitProducts.length || renderedOutfits[1] === outfitProducts.length || outfitProducts.length === 0 ? null : <button onClick={nextCard} style={{height: '24px'}}>next</button>}
+      {renderedOutfits[2] === props.outfitProducts.length || renderedOutfits[1] === props.outfitProducts.length || props.outfitProducts.length === 0 ? null : <button onClick={nextCard} style={{height: '24px'}}>next</button>}
     </div>
   )
 }

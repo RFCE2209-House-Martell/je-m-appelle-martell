@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LoadReview from './loadReview.jsx';
-import StarComponent from './starComponent.jsx'
+import StarComponent from '../sharedFolder/starComponent.jsx'
 
 const ReviewsSection = (props) => {
 

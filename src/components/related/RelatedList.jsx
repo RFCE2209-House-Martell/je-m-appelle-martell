@@ -1,11 +1,55 @@
 import React from 'react';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import RelatedCard from './RelatedCard.jsx';
+import axios from 'axios';
 
 const RelatedList = (props) => {
 
-  const [relatedProducts, setRelatedProducts] = useState([1, 2, 3, 4, 5,6, 7, 8]);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const [renderedProducts, setRenderedProducts] = useState([0, 1, 2]);
+
+  useEffect(() => {
+    axios.get (`${process.env.REACT_APP_BASE_URL}products/${props.productId}/related`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_KEY
+      },
+    })
+    .then(data => {
+      let tempArr = []
+      let realData = data.data
+      realData.map((id) => {
+        for (let i = 0; i < props.allProducts.length; i++) {
+          if (id === props.allProducts[i].id) {
+            tempArr.push(props.allProducts[i])
+          }
+        }
+        // const match = props.allProducts.find(id => {
+        //   id === {{id}}
+        // })
+        // tempArr.push(match)
+      })
+      setRelatedProducts(tempArr)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [props.allProducts])
+
+  const updateRelated = (arr) => {
+    let tempArr = []
+    arr.map((id) => {
+      for (let i = 0; i < props.allProducts.length; i++) {
+        if (id === props.allProducts[i].id) {
+          tempArr.push(props.allProducts[i])
+        }
+      }
+      // const match = props.allProducts.find(id => {
+      //   id === {{id}}
+      // })
+      // tempArr.push(match)
+    })
+    setRelatedProducts(tempArr)
+  }
 
   const previousCard = (e) => {
     const newRenderedProducts = renderedProducts.map(product => {
@@ -24,9 +68,8 @@ const RelatedList = (props) => {
   return (
     <div style={{display: 'flex', columnGap: '8px'}}>
       {renderedProducts[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}}>previous</button>}
-
       {renderedProducts.map((productIndex, key) => {
-        return <RelatedCard productIndex={productIndex} key={key}/>
+        return <RelatedCard productIndex={productIndex} key={key} setProductId={props.setProductId} productId={props.productId} setRelatedProducts={setRelatedProducts} relatedProduct={relatedProducts[productIndex]} updateRelated={updateRelated}/>
       })}
 
       {renderedProducts[2] === relatedProducts.length ? null : <button onClick={nextCard} style={{height: '24px'}} >next</button>}
