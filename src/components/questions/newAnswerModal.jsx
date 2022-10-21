@@ -47,12 +47,12 @@ const NewAnswerModal = (props) => {
 
           <div className="input-container">
             <label>ANSWER</label>
-            <textarea name="body" placeholder="enter your answer" rows="8" cols="50" onChange={(e) => onHandleInputChange(e)} />
+            <textarea name="body" placeholder="enter your answer" rows="6" cols="40" onChange={(e) => onHandleInputChange(e)} />
           </div>
 
           <div className="input-container">
             <label>PHOTOS</label>
-            <textarea type="photos" name="photos" rows="8" cols="50" onChange={(e) => onHandleInputChange(e)} />
+            <textarea type="photos" name="photos" rows="4" cols="30" onChange={(e) => onHandleInputChange(e)} />
           </div>
 
           <div className="modal-footer">
