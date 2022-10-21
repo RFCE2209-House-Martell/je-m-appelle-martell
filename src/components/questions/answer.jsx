@@ -6,15 +6,18 @@ const Answer = (props) => {
   const date = new Date(answer.date).toDateString();
 
   const onHandleReportSubmit = () => {
-    console.log(answer.answer_id)
     API.reportAnswer(answer.answer_id).then((res) => {
-      console.log(res);
+      return res;
     }).catch((err) => console.log(err));
   };
 
   const onHandleHelpfulSubmit = () => {
     return API.updateHelpfulAnswer(answer.answer_id);
   };
+
+  useEffect(() => {
+    console.log(answer.helpfulness);
+  }, [answer.helpfulness]);
 
   return (
     <div className="answer-container" key={answer._id}>
