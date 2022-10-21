@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
+import StarComponent from '../sharedFolder/starComponent.jsx';
 
 const ProductDetails = (props) => {
   const [data, setData] = useState({});
+  const [ratings, setRatings] = useState({});
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}products/${props.productId}`, {
@@ -16,7 +18,27 @@ const ProductDetails = (props) => {
     }).catch((err) => {
       console.log(err);
     });
+
+    axios.get(`${process.env.REACT_APP_BASE_URL}reviews/meta/?product_id=${props.productId}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_KEY
+      }
+    }).then((data) => {
+      setRatings(data.data.ratings);
+    }).catch((err) => {
+      console.log(err);
+    });
   }, [props.productId]);
+
+  var avgStars = () => {
+    let sum = 0;
+    let count = 0;
+    for (let num in ratings) {
+      count += Number(ratings[num]);
+      sum += (num * ratings[num]);
+    }
+    return sum/count;
+  }
 
   if (JSON.stringify(data) !== '{}') {
     var category = data.category.toUpperCase();
@@ -35,10 +57,10 @@ const ProductDetails = (props) => {
   var texts = ['Check out this cool product! 😎', 'This would be the greatest birthday present 😉🎁', 'OMG 😱 Isn\'t this the coolest thing ever?', 'Look what I found today!! 🤩', 'Just bought this 🤑'];
 
   return (
-    <div>
+    <div className="details">
       <div>{category}</div>
       <h1>{title}</h1>
-      <div>* * * * * (reviews will go here)</div>
+      <StarComponent stars={avgStars()}/>
       {salesPrice === null ? <h2>{`$${price}`}</h2> : <h2>{`$${salesPrice}\t`}<s>{`$${price}`}</s></h2>}
       <p>{description}</p>
       <p className="share">Share</p>

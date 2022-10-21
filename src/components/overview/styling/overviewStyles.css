@@ -3,7 +3,7 @@
 }
 
 .thumbnailContainer {
-  height: 160px;
+  height: 166px;
   width: 600px;
   white-space: nowrap;
   overflow-y: hidden;
@@ -15,10 +15,11 @@
   overflow: hidden;
   margin: 3px;
   vertical-align: top;
+  border: 3px solid transparent;
 }
 
 .selected {
-  opacity: 30%;
+  border: 3px solid #900505;
   z-index: -1;
 }
 
@@ -144,7 +145,7 @@ s {
 
 .styleSelect {
   display: flex;
-  width: 200px;
+  width: 210px;
   flex-wrap: wrap;
 }
 
@@ -154,6 +155,11 @@ s {
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  border: 3px solid transparent;
+}
+
+.selectedStyle {
+  border: 3px solid #900505;
 }
 
 .form {
@@ -164,6 +170,24 @@ s {
 
 .formItem {
   margin: 5px;
+}
+
+.single-star-outline {
+  height: 18px;
+  width: 16px;
+}
+
+.single-star-fill {
+  position: relative;
+  display: inline-block;
+  height: 18px;
+  background-color: #000;
+}
+
+.single-star-container {
+  height: 18px;
+  width: 16px;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=overviewStyles.css.map */
