@@ -43,7 +43,7 @@ const QuestionsAnswersContainer = (props) => {
           setQuestions(res);
         });
       } else {
-        const filteredQuestions = questions.filter((question) => question.question_body.includes(searchInput));
+        const filteredQuestions = questions.filter((question) => question.question_body.toLowerCase().includes(searchInput.toLowerCase()));
         setQuestions(filteredQuestions);
       }
     }
