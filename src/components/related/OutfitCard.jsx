@@ -9,17 +9,11 @@ const OutfitCard = (props) => {
   }
 
   const handleClick = (e) => {
-    console.log('asdfaevsc', props.product)
     let filteredOutfits = props.outfitProducts.filter(theProduct => {
-      console.log('prop', props.outfitProducts)
-      console.log('notprop:', theProduct.id)
+
       theProduct.id !== props.outfitProducts.id
     })
     props.setOutfitProducts(filteredOutfits)
-  }
-
-  const handleCardClick = (e) => {
-    props.setProductId(props.product.id)
   }
 
   return (

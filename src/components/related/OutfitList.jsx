@@ -10,13 +10,12 @@ const OutfitList = (props) => {
   //function to add to this state from addProduct card click and adds the overview item (located in main index)
 
   const addToOutfit = (aProductId) => {
-    console.log(aProductId)
     const product = props.allProducts.find(({id}) => {
       return id === aProductId
     })
 
     const alreadyExists = props.outfitProducts.find(({id}) => {
-      return id === aProduct.id
+      return id === aProductId.id
     })
 
     if (!alreadyExists) {
@@ -43,9 +42,6 @@ const OutfitList = (props) => {
   return (
     <div style={{display: 'flex', columnGap: '8px'}}>
       {renderedOutfits[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}} >previous</button>}
-
-      {console.log('props.outfitProducts', props.outfitProducts)}
-      {console.log('props.productId', props.productId)}
 
       {renderedOutfits.map((displayIndex, index) => {
         if (displayIndex === 0) {

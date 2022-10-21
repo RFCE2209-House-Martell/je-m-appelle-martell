@@ -13,7 +13,6 @@ const AddOutfitCard = (props) => {
   }
 
   const handleClick = (e) => {
-    console.log('clicked')
     props.addToOutfit(props.productId)
   }
 
