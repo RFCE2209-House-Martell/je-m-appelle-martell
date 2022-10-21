@@ -40,7 +40,7 @@ const StarComponent = (props) => {
         console.log(star, index)
         return (
           <div className='single-star-container' key={index}>
-            <div className='single-star-fill' style={{'width': `${parseInt(star*31)}px`}}>
+            <div className='single-star-fill' style={{'width': `${parseInt(star*16)}px`}}>
               <img className='single-star-outline' src={require('./star.png').default}></img>
             </div>
           </div>

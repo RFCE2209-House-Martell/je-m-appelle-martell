@@ -24,7 +24,7 @@ const AddReview = (props) => {
 
   return (
     <Modal styles={modalStyles} show={props.showModal} onClose={() => props.setShowModal(false)}>
-    <div>
+    <div className='modal-body'>
       <div>
         Write a review
       </div>
