@@ -27,7 +27,7 @@ const RelatedCard = (props) => {
     props.setProductId(props.relatedProduct.id)
   }
 
-console.log('props.relatedProduct', props.relatedProduct)
+// console.log('props.relatedProduct', props.relatedProduct)
   if (props.relatedProduct) {
     return (
       <div style={componentStyle}>

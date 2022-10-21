@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 var StyleSelector = (props) => {
   const [styles, setStyles] = useState([]);
   const [selected, setSelected] = useState('');
 
-  if (JSON.stringify(props.data) !== '{}' && styles.length === 0) {
-    setStyles(props.data.results);
-    setSelected(props.data.results[0].name);
-  }
+  useEffect(() => {
+    console.log(props.data);
+    if (JSON.stringify(props.data) !== '{}') {
+      setStyles(props.data.results);
+      setSelected(props.data.results[0].name);
+    }
+  }, [props.data])
 
   var clickHandler = (e, id, name) => {
     props.setStyleId(id);
