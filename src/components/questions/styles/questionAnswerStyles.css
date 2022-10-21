@@ -155,10 +155,10 @@
   justify-content: space-evenly;
   align-items: flex-start;
   background-color: white;
-  padding: 32px;
+  padding: 24px;
   border: 2px solid rgb(0, 0, 0);
-  height: 500px;
-  width: 350px;
+  min-height: 600px;
+  min-width: 400px;
 }
 
 .modal-content-container input {
