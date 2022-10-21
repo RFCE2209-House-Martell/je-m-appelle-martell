@@ -19,7 +19,6 @@ const Overview = (props) => {
     }).then((data) => {
       setData(data.data);
       setStyleId(data.data.results[0].style_id);
-      console.log(data.data);
     }).catch((err) => {
       console.log(err);
     });
