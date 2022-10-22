@@ -22,14 +22,15 @@ const Overview = (props) => {
     }).catch((err) => {
       console.log(err);
     });
-  }, []);
+  }, [props.productId]);
+
 
   return (
     <div className="widget">
       <ImageGallery data={data} styleId={styleId} setSocialPhoto={setSocialPhoto}/>
       <div className="productDetails">
         <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
-        <StyleSelector data={data} setStyleId={setStyleId}/>
+        <StyleSelector productId={props.productId} data={data} setStyleId={setStyleId}/>
         <AddtoCart data={data} styleId={styleId}/>
       </div>
     </div>
