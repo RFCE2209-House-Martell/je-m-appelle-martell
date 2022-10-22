@@ -15,7 +15,8 @@ const OutfitList = (props) => {
     })
 
     const alreadyExists = props.outfitProducts.find(({id}) => {
-      return id === aProductId.id
+      console.log(product)
+      return id === product.id
     })
 
     if (!alreadyExists) {
@@ -45,12 +46,12 @@ const OutfitList = (props) => {
 
       {renderedOutfits.map((displayIndex, index) => {
         if (displayIndex === 0) {
-          return <AddOutfitCard addToOutfit={addToOutfit} productId={props.productId} />
+          return <AddOutfitCard addToOutfit={addToOutfit} productId={props.productId} outfitProducts={props.outfitProducts}/>
         }
         if (props.outfitProducts.length && props.outfitProducts[displayIndex - 1]) {
           return <OutfitCard
-          product={props.outfitProducts[displayIndex - 1].item}
-          key={index}
+          product={props.outfitProducts[displayIndex - 1]}
+          key={props.outfitProducts[displayIndex - 1].id}
           outfitProducts={props.outfitProducts}
           setOutfitProducts={props.setOutfitProducts}
           setProductId={props.setProductId}

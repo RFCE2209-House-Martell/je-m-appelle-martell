@@ -9,8 +9,8 @@ import RelatedApp from './components/related/RelatedApp.jsx';
 import QuestionsAnswersContainer from './components/questions/questionsAnswersContainer.jsx';
 
 const App = () => {
-  const [productId, setProductId] = useState(66658);
-  console.log('productId', productId)
+  const [productId, setProductId] = useState(66645);
+
   const [avgStars, setAvgStars] = useState(0);
   const [outfitProducts, setOutfitProducts] = useState([]);
 
