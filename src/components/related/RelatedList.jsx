@@ -15,8 +15,10 @@ const RelatedList = (props) => {
       },
     })
     .then(data => {
+      console.log(data.data)
       let tempArr = []
       let realData = data.data
+      console.log(realData)
       realData.map((id) => {
         for (let i = 0; i < props.allProducts.length; i++) {
           if (id === props.allProducts[i].id) {

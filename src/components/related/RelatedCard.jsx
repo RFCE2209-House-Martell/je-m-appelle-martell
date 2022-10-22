@@ -16,6 +16,7 @@ const RelatedCard = (props) => {
       },
     })
     .then(data => {
+      console.log('crazy', data)
       props.updateRelated(data.data)
     })
     .catch(err => {
