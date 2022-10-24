@@ -14,11 +14,10 @@ const Ratings = (props) => {
   const [sortedData, setSortedData] = useState('newest');
   const [showModal, setShowModal] = useState(false);
 
-
-  useEffect(() => {
+  const getReviews = () => {
     axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews', {
       headers: {
-        'Authorization': token
+        Authorization: token
       },
       params: {
         product_id: props.productId,
@@ -26,8 +25,8 @@ const Ratings = (props) => {
         sort: sortedData
       }
     })
-    .then(data => {
-      setReviewData(data.data);
+    .then(res => {
+      setReviewData(res.data);
     })
     .catch(err => {
       console.log(err);
@@ -41,18 +40,23 @@ const Ratings = (props) => {
         product_id: props.productId
       }
     })
-    .then(data => {
-      setMetaData(data.data);
+    .then(res => {
+      setMetaData(res.data);
     })
     .catch(err => {
       console.log(err);
     })
+  }
+
+
+  useEffect(() => {
+    getReviews();
   }, [sortedData]);
 
   return (
     <div>
       <RatingsSection metaData={metaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars} reviewStar={reviewStar} setReviewStar={setReviewStar}/>
-      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData} showModal={showModal} setShowModal={setShowModal}/>
+      <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData} showModal={showModal} setShowModal={setShowModal} getReviews={getReviews}/>
       <AddReview showModal={showModal} setShowModal={setShowModal} characteristics={metaData.characteristics}/>
     </div>
   );

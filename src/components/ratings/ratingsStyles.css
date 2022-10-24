@@ -7,12 +7,23 @@
   font-size: 70px;
 }
 
+.char-list {
+  list-style: none;
+}
+
+.char-container {
+  position: relative;
+  width: 100%;
+  margin: 10px;
+}
+
 .char-slider {
   appearance: none;
-  width: 100%;
-  background-color: grey;
+  width: 20%;
+  background-color: transparent;
   height: 15px;
   margin: none;
+  position: absolute;
 }
 
 .char-slider::-webkit-slider-thumb {
@@ -20,22 +31,36 @@
   margin: none;
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
 
-  border-top: 20px solid #000;
+  border-top: 13px solid #000;
 }
 
-.char-list {
+.characters {
   display: flex;
-  justify-content: space-between;
+  z-index: -1;
+  height: 12px;
+  width: 100%;
+  margin: none;
 }
-.char-list option {
-  position: relative;
-  background: white;
-  top: 18px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+
+.character-one {
+  background-color: lightgrey;
+  flex: 1;
+  margin: 2px;
+}
+
+.character-two {
+  background-color: lightgrey;
+  flex: 1;
+  margin: 2px;
+}
+
+.character-three {
+  background-color: lightgrey;
+  flex: 1;
+  margin: 2px;
 }
 
 .reviewsSection {
@@ -50,6 +75,7 @@
 
 select {
   margin-bottom: 1em;
+  cursor: pointer;
   border: 0;
   border-bottom: 2px solid;
   border-radius: 0;
@@ -67,10 +93,10 @@ select {
   display: flex;
   justify-content: space-between;
 }
+
 .username-and-date {
   float: right;
 }
-
 
 #star-button {
   background-color: transparent;
@@ -110,6 +136,7 @@ select {
 
 .add-review-button {
   background: none;
+  cursor: pointer;
   margin-left: 24px;
   margin-top: 40px;
   padding: 24px;
@@ -118,6 +145,26 @@ select {
 
 .more-results-button {
   background: none;
+  cursor: pointer;
   padding: 24px;
   margin-top: 40px;
-  font-size: 16px;}
+  font-size: 16px;
+}
+
+.helpful-yes {
+  margin-bottom: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
+}
+
+.report-button {
+  margin-bottom: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
+}
