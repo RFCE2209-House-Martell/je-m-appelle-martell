@@ -3,23 +3,25 @@ import StarComponent from '../sharedFolder/starComponent.jsx'
 
 const LoadReview = (props) => {
   const [showFullAns, setShowFullAns] = useState(false);
-  const [partAns, setPartAns] = useState(props.review.body.substring(0, 250))
+  const [partAns, setPartAns] = useState(props.review.body.substring(0, 250));
+
+  const options = { year: 'numeric', month: 'long', day: 'numeric' }
 
   return (
   <li className='reviews-list'>
     <div className='stars-and-date'>
       <div>
-        <StarComponent stars={props.review.rating} />
+        <StarComponent stars={props.review.rating}/>
       </div>
       <div className='username-and-date' >
-        {props.review.reviewer_name}, {new Date(props.review.date).toDateString()}
+        {props.review.reviewer_name}, {new Date(props.review.date).toLocaleDateString('en', options)}
       </div>
     </div>
-    <div>
-      Title: {props.review.summary}
+    <div className='review-title'>
+      {props.review.summary}
     </div>
-    <div>
-      Body: {((props.review.body).length < 250) ? <div>{props.review.body}</div> : showFullAns ? <div>{props.review.body} <button onClick={e => setShowFullAns(!showFullAns)}>Show Less</button> </div> : <div>{partAns + '...'} <button onClick={e => setShowFullAns(!showFullAns)}>Show More</button> </div>}
+    <div className='review-body'>
+      {((props.review.body).length < 250) ? <div>{props.review.body}</div> : showFullAns ? <div>{props.review.body} <button onClick={e => setShowFullAns(!showFullAns)}>Show Less</button> </div> : <div>{partAns + '...'} <button onClick={e => setShowFullAns(!showFullAns)}>Show More</button> </div>}
     </div>
     {props.review.recommend && (<div>
       ✓ I recommend this product

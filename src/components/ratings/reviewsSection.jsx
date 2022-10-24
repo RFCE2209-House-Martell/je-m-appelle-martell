@@ -45,7 +45,7 @@ const ReviewsSection = (props) => {
       <option>Helpful</option>
       <option>Relevant</option>
     </select>
-    <div className='reviewScroll'>
+    <div className='reviews-scroll'>
     {(moreResults) ? (
       props.reviewData.results.map((review, index) => {
         if (props.reviewStar === 0) {
@@ -63,10 +63,8 @@ const ReviewsSection = (props) => {
     }
     </div>
     <div>
-    </div>
-    <div>
-      <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
-      <button onClick={e => props.setShowModal(!props.showModal)}>Add Review</button>
+      <button onClick={e => setMoreResults(!moreResults)} className='more-results-button'>More Results</button>
+      <button onClick={e => props.setShowModal(!props.showModal)} className='add-review-button'>Add Review +</button>
     </div>
   </div>);
 }

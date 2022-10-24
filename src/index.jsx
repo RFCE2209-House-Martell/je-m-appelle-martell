@@ -16,9 +16,6 @@ const App = () => {
 
   return (<div>
     <div>
-      <img className="logo" src={require("../public/assets/images/martell-logo.png").default} alt="martell-logo" />
-    </div>
-    <div>
       <Overview productId={productId} avgStars={avgStars} />
       <RelatedApp productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
       {/* <QuestionList productId={productId} /> */}
