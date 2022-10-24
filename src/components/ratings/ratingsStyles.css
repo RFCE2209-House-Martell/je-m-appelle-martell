@@ -1,14 +1,29 @@
 .ratingsSection {
   float: left;
   width: 20%;
-
 }
+
+.total-stars {
+  font-size: 70px;
+}
+
 .char-slider {
-  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
-  cursor: pointer;
-  border: 1px solid #000;
-  overflow: hidden;
+  background-color: grey;
+  height: 15px;
+  margin: none;
+}
+
+.char-slider::-webkit-slider-thumb {
+  appearance: none;
+  margin: none;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  border-top: 20px solid #000;
 }
 
 .char-list {
@@ -26,6 +41,11 @@
 .reviewsSection {
   float: right;
   width: 70%;
+}
+
+.reviews-scroll {
+  height: 400px;
+  overflow-y: auto;
 }
 
 select {
@@ -87,3 +107,17 @@ select {
   padding: .5vw;
   border-style: solid;
 }
+
+.add-review-button {
+  background: none;
+  margin-left: 24px;
+  margin-top: 40px;
+  padding: 24px;
+  font-size: 16px;
+}
+
+.more-results-button {
+  background: none;
+  padding: 24px;
+  margin-top: 40px;
+  font-size: 16px;}
