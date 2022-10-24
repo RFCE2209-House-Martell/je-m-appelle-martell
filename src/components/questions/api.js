@@ -4,12 +4,12 @@ const token = process.env.REACT_APP_API_KEY;
 
 const QuestionsAPI = {
 
-  getQuestionsById: (id, page = 1, count = 2) => {
+  getQuestionsById: (id, page, count) => {
     const headers = {
       Authorization: token
     };
 
-    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${id}`, { headers: headers }, { count: count, page: page }).then((res) => {
+    return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions?product_id=${id}&count=${count + 1}`, { headers: headers }).then((res) => {
       return res.data.results;
     }).catch((err) => console.log(err));
   },

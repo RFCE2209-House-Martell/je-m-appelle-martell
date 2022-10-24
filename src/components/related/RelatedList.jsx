@@ -15,25 +15,26 @@ const RelatedList = (props) => {
       },
     })
     .then(data => {
+      console.log(data.data)
       let tempArr = []
       let realData = data.data
+      console.log(realData)
       realData.map((id) => {
         for (let i = 0; i < props.allProducts.length; i++) {
           if (id === props.allProducts[i].id) {
             tempArr.push(props.allProducts[i])
+          } else {
+            null
           }
         }
-        // const match = props.allProducts.find(id => {
-        //   id === {{id}}
-        // })
-        // tempArr.push(match)
       })
       setRelatedProducts(tempArr)
+      setRenderedProducts([0, 1, 2])
     })
     .catch(err => {
       console.log(err)
     })
-  }, [props.allProducts])
+  }, [props.allProducts, props.productId])
 
   const updateRelated = (arr) => {
     let tempArr = []
@@ -43,10 +44,6 @@ const RelatedList = (props) => {
           tempArr.push(props.allProducts[i])
         }
       }
-      // const match = props.allProducts.find(id => {
-      //   id === {{id}}
-      // })
-      // tempArr.push(match)
     })
     setRelatedProducts(tempArr)
   }
