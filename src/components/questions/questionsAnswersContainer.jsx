@@ -13,7 +13,7 @@ const QuestionsAnswersContainer = (props) => {
   const [answerCount, setAnswerCount] = useState(1);
 
   const [questionPage, setQuestionPage] = useState(1);
-  const [questionCount, setQuestionCount] = useState(1);
+  const [questionCount, setQuestionCount] = useState(2);
 
   const [searchInput, setSearchInput] = useState('');
   const productId = props.productId;
@@ -27,20 +27,30 @@ const QuestionsAnswersContainer = (props) => {
   };
 
   const onLoadMoreQuestions = () => {
-    setQuestionCount(questionCount + 2);
+    setQuestionCount(questionCount + 1);
   };
 
-  const onHandleHelpfulSubmit = (e) => {
-    API.updateHelpfulQuestion(e.target.id, type).then((res) => {
-      return;
+  const onHandleReportSubmit = (id, type) => {
+    if (type === 'questions') {
+      return API.reportQuestion(id);
+    } else if (type === 'answer') {
+      return API.reportQuestion(id);
+    }
+  };
+
+  const onHandleHelpfulSubmit = (id) => {
+    return API.updateHelpfulQuestion(id).then(() => {
+      return API.getQuestionsById(productId, questionPage, questionCount).then((res) => {
+        setQuestions(res.reverse());
+      });
     }).catch((err) => console.log('Error updating question helpfulness in container component.'));
   };
 
   useEffect(() => {
     const loadQuestions = () => {
       if (searchInput === '') {
-        API.getQuestionsById(productId, questionCount, questionPage).then((res) => {
-          setQuestions(res);
+        API.getQuestionsById(66646, questionPage, questionCount).then((res) => {
+          setQuestions(res.reverse());
         });
       } else {
         const filteredQuestions = questions.filter((question) => question.question_body.toLowerCase().includes(searchInput.toLowerCase()));
@@ -55,7 +65,9 @@ const QuestionsAnswersContainer = (props) => {
       <h1 className="feature-heading">QUESTIONS AND ANSWERS</h1>
       <div>
         <AnswerSearchBar productId={productId} Input={searchInput} onSearch={onHandleSearch} />
-        <QuestionList productId={productId} questions={questions} answerPage={answerPage} answerCount={answerCount} />
+        <div className="qa-section-container">
+          <QuestionList productId={productId} questions={questions} answerPage={answerPage} answerCount={answerCount} helpfulSubmit={onHandleHelpfulSubmit} />
+        </div>
         <QuestionsFooter productId={productId} loadMoreAnswers={onLoadMoreAnswers} loadMoreQuestions={onLoadMoreQuestions} />
       </div>
     </div>

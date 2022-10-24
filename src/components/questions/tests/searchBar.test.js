@@ -14,8 +14,6 @@ describe('Render NewAnswerModal Component', function () {
     const input = screen.getByTestId('search-input');
 
     expect(input).toHaveTextContent("");
-
-
   });
 
 });

@@ -12,7 +12,7 @@ const NewQuestionModal = (props) => {
 
   const onHandleNewQuestionSubmit = () => {
     API.createQuestion(formData, props.productId).then((res) => {
-      console.log(res);
+      setShow(false);
     }).catch((err) => console.log('Error submitting new question in container component'));
   };
 
