@@ -12,7 +12,7 @@ const NewAnswerModal = (props) => {
 
   const onHandleNewAnswerSubmit = () => {
     API.createAnswer(props.questionId, formData).then((res) => {
-      console.log(res);
+      setShow(false);
     }).catch((err) => console.log('Error submitting answer in container component'));
   };
 

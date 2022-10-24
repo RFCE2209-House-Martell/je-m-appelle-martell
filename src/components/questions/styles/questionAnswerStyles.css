@@ -8,6 +8,13 @@
   padding: 32px;
 }
 
+.qa-section-container {
+  overflow-y: hidden;
+  overflow: scroll;
+  max-height: 500px;
+  cursor: pointer;
+}
+
 .feature-heading {
   color: rgb(70, 69, 69);
 }
