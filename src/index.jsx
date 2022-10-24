@@ -10,7 +10,6 @@ import QuestionsAnswersContainer from './components/questions/questionsAnswersCo
 
 const App = () => {
   const [productId, setProductId] = useState(66645);
-
   const [avgStars, setAvgStars] = useState(0);
   const [outfitProducts, setOutfitProducts] = useState([]);
 

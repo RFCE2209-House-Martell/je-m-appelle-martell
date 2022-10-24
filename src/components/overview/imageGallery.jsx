@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import _ from 'underscore';
 import ExpandedView from './expandedView.jsx';
 

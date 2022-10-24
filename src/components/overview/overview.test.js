@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import Overview from './overview.jsx';
 import React from 'react';
 
-test('Sanity Check', () => {
+test('should render', () => {
   render(<Overview/>);
 
   // mainview (expandedView shouldn't exit)
