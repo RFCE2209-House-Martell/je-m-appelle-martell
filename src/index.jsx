@@ -130,8 +130,7 @@ const App = () => {
         </div>
         <div className="app">
           <Overview productId={productId} avgStars={avgStars} />
-          <RelatedApp productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
-          {/* <QuestionList productId={productId} /> */}
+          <RelatedApp changeRelatedProductFeatures={changeRelatedProductFeatures} setShowCompare={setShowCompare} productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
           <QuestionsAnswersContainer productId={productId} />
           <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
         </div>
