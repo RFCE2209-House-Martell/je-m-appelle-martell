@@ -38,42 +38,41 @@ const RatingsSection = (props) => {
   return (
     <div className='ratingsSection'>
       <div className='ratings-stars'>
-        <section className='total-stars'>
+        <div className='total-stars'>
           {Math.round(props.avgStars * 10) /10}
-        </section>
-        <section>
+        </div>
+        <div className='stars-component'>
           <StarComponent stars={props.avgStars} />
-        </section>
+        </div>
       </div>
-      <section>
+      <section className='rec-stars'>
         {Math.floor((Number(props.metaData.recommended.true) / Object.values(props.metaData.recommended).reduce((accumulator, value) => {
           return accumulator + Number(value);
         }, 0)) * 100) + '%'} of reviews recommend this product
       </section>
-      <section> Total stars:
+      <section>
         <div>
-          <button onClick={e => starReviewSet(5)}>5 stars</button>
-          <progress id='fiveStarProgress' value={starsObj['5'] || 0} max={totalRatings}></progress>
+          <button className='progress-buttons' onClick={e => starReviewSet(5)}>5 stars</button>
+          <progress className='progress-bars' id='fiveStarProgress' value={starsObj['5'] || 0} max={totalRatings}></progress>
         </div>
         <div>
-          <button onClick={e => starReviewSet(4)}>4 stars</button>
-          <progress id='fourStarProgress' value={starsObj['4'] || 0} max={totalRatings}></progress>
+          <button className='progress-buttons' onClick={e => starReviewSet(4)}>4 stars</button>
+          <progress className='progress-bars' id='fourStarProgress' value={starsObj['4'] || 0} max={totalRatings}></progress>
         </div>
         <div>
-          <button onClick={e => starReviewSet(3)}>3 stars</button>
-          <progress id='threeStarProgress' value={starsObj['3'] || 0} max={totalRatings}></progress>
+          <button className='progress-buttons' onClick={e => starReviewSet(3)}>3 stars</button>
+          <progress className='progress-bars' id='threeStarProgress' value={starsObj['3'] || 0} max={totalRatings}></progress>
         </div>
         <div>
-          <button onClick={e => starReviewSet(2)}>2 stars</button>
-          <progress id='twoStarProgress' value={starsObj['2'] || 0} max={totalRatings}></progress>
+          <button className='progress-buttons' onClick={e => starReviewSet(2)}>2 stars</button>
+          <progress className='progress-bars' id='twoStarProgress' value={starsObj['2'] || 0} max={totalRatings}></progress>
         </div>
         <div>
-          <button onClick={e => starReviewSet(1)}>1 stars</button>
-          <progress id='oneStarProgress' value={starsObj['1'] || 0} max={totalRatings}></progress>
+          <button className='progress-buttons' onClick={e => starReviewSet(1)}>1 stars</button>
+          <progress className='progress-bars' id='oneStarProgress' value={starsObj['1'] || 0} max={totalRatings}></progress>
         </div>
       </section>
       <section>
-        characteristics:
         {Object.keys(props.metaData.characteristics).map((charKey, index) => {
           return(<CharacteristicsCreator charKey={charKey} obj={props.metaData.characteristics[charKey]} key={index}/>)
         })}
