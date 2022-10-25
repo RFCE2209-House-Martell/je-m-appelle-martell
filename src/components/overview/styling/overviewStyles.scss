@@ -1,24 +1,50 @@
 .widget {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
 }
-
-// .imgContainer {
-// }
 
 .thumbnailContainer {
   height: 166px;
   width: 600px;
   white-space: nowrap;
-  overflow-y:hidden;
+  overflow-y: scroll;
 }
 
 .thumbnail {
   height: 150px;
   display: inline-block;
-  overflow: hidden;
   margin: 3px;
   vertical-align: top;
   border: 3px solid transparent;
+}
+
+.panArrows {
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  padding: 5px 10px 5px 10px;
+  width: 50px;
+  height: 150px;
+  background-color: transparent;
+  color: white;
+  background-color: black;
+  opacity: 80%;
+  border-style: none;
+  font-size: 50px;
+  transform: scale(0.67, 1);
+  top: 14px;
+}
+
+.panArrowsL {
+  margin-left: -2px;
+}
+
+.panArrowsR {
+
+}
+
+.panArrows:hover {
+  opacity: 100%;
 }
 
 .selected {
@@ -42,7 +68,7 @@
 }
 
 .arrowR {
-  margin-left: -50px;
+  margin-left: -65px;
 }
 
 .arrow, .zoomarrow {
@@ -50,16 +76,16 @@
   position: relative;
   padding: 5px 10px 5px 10px;
   width: 50px;
-  background-color: grey;
+  background-color: transparent;
   color: white;
-  opacity: 30%;
+  opacity: 80%;
   border-style: none;
   font-size: 50px;
   transform: scale(1, 1.5);
 }
 
 .arrow:hover, .zoomarrow:hover {
-  opacity: 80%;
+  opacity: 100%;
 }
 
 .zoomView {
@@ -78,7 +104,6 @@
   display: flex;
   align-items: right;
   justify-content: right;
-  background-color: yellow;
 }
 
 .zoomImage {
@@ -132,6 +157,15 @@
   width: 500px;
 }
 
+.category {
+  margin-top: 10px;
+  color: grey;
+}
+
+.productName {
+  margin-top: 5px;
+}
+
 s {
   font-size: 15px;
   margin-left: 10px;
@@ -139,11 +173,17 @@ s {
 }
 
 .share {
+  margin-top: 15px;
+  margin-bottom: 5px;
   display: flex;
 }
 
 .shareIcons {
-  margin-left: 5px;
+  margin-right: 7px;
+}
+
+.styleSelector {
+  margin-top: 30px;
 }
 
 .styleSelect {
@@ -161,14 +201,22 @@ s {
   border: 3px solid transparent;
 }
 
+.color {
+  color: grey;
+  margin-top: -8px;
+  margin-bottom: 5px;
+}
+
 .selectedStyle {
   border: 3px solid #900505;
 }
 
 .form {
+  margin-top: 30px;
   display: grid;
-  grid-template-columns: 100px 150px;
+  grid-template-columns: 120px 150px;
   column-gap: 10px;
+  row-gap: 10px;
 }
 
 .formItem {
@@ -185,6 +233,7 @@ s {
   display: inline-block;
   height: 18px;
   background-color: #000;
+  z-index: -1;
 }
 
 .single-star-container {

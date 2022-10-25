@@ -39,7 +39,7 @@ const ExpandedView = (props) => {
           backgroundPosition: `${xPercent}% ${yPercent}%`
         }}></div> : null}
       </div>
-      {props.selected === props.photos.length - 1 ? <div className="placeholder">{'<'}</div> : <button className="zoomarrow" onClick={() => props.handleArrows('right')}>{'>'}</button>}
+      {props.selected === props.photos.length - 1 || props.photos.length === 0 ? <div className="placeholder">{'<'}</div> : <button className="zoomarrow" onClick={() => props.handleArrows('right')}>{'>'}</button>}
     </div>
   )
 };
