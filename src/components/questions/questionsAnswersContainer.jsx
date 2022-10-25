@@ -57,7 +57,7 @@ const QuestionsAnswersContainer = (props) => {
       }
     }
     loadQuestions();
-  }, [searchInput, questionCount, questionPage]);
+  }, [searchInput, questionCount, questionPage, productId]);
 
   return (
     <div className="qa-main-container">

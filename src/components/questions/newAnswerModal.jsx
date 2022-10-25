@@ -13,10 +13,7 @@ const NewAnswerModal = (props) => {
 
   const handleImageUpload = (e) => {
     return s3API.getSecureS3URL(e.target.files[0]).then((res) => {
-      console.log(res, 'RES');
-      setFormData({ ...formData, [e.target.name]: res });
-      console.log(formData, 'FORM DATA');
-      return 'done';
+      setFormData({ ...formData, [e.target.name]: [res] });
     }).catch((err) => console.log('Error ' + err));
   };
 
@@ -25,6 +22,10 @@ const NewAnswerModal = (props) => {
       setShow(false);
     }).catch((err) => console.log('Error submitting answer in container component'));
   };
+
+  useEffect(() => {
+    console.log(formData, 'FORM DATA IN USE EFFECT');
+  }, [formData.photos]);
 
   const modalStyles = {
     position: 'fixed',
@@ -62,7 +63,7 @@ const NewAnswerModal = (props) => {
 
           <div className="input-container">
             <label>PHOTOS</label>
-            <input type="file" name="photos" multiple="true" accept="image/*" onChange={(e) => handleImageUpload(e)} />
+            <input type="file" name="photos" multiple accept="image/*" onChange={(e) => handleImageUpload(e)} />
           </div>
 
           <div className="modal-footer">
@@ -76,9 +77,3 @@ const NewAnswerModal = (props) => {
 }
 
 export default NewAnswerModal;
-
-// question_id 	integer 	Required ID of the question to post the answer for
-// body 	text 	Text of question being asked
-// name 	text 	Username for question asker
-// email 	text 	Email address for question asker
-// photos 	[text] 	An array of urls corresponding to images to display

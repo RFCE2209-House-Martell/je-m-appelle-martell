@@ -71,7 +71,7 @@ const QuestionsAPI = {
       body: data.body,
       name: data.username,
       email: data.email,
-      // photos: [data.photos]
+      photos: data.photos
     };
 
     const headers = {
