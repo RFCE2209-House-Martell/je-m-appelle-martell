@@ -41,7 +41,7 @@ const App = () => {
         </div>
       </div>
       <div className="app">
-        <Overview productId={productId} avgStars={avgStars} />
+        <Overview productId={productId} />
         <RelatedApp productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
         {/* <QuestionList productId={productId} /> */}
         <QuestionsAnswersContainer productId={productId} />
