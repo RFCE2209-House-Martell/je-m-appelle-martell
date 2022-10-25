@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Modal from '../sharedFolder/modal.jsx';
 
 const RelatedCard = (props) => {
 
@@ -10,31 +11,39 @@ const RelatedCard = (props) => {
   }
 
   useEffect(() => {
-    if (props.relatedProduct) {axios.get (`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/related`, {
-      headers: {
-        'Authorization': process.env.REACT_APP_API_KEY
-      },
-    })
-    .then(data => {
-      console.log('crazy', data)
-      props.updateRelated(data.data)
-    })
-    .catch(err => {
-      console.log(err)
-    })}
+    if (props.relatedProduct) {
+      axios.get(`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/related`, {
+        headers: {
+          'Authorization': process.env.REACT_APP_API_KEY
+        },
+      })
+      .then(data => {
+        props.updateRelated(data.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
   }, [props.productId])
 
   const handleCardClick = (e) => {
     props.setProductId(props.relatedProduct.id)
   }
 
+  const handleModalClick = (e) => {
+    console.log('clicked')
+    props.setShowCompare(true)
+    props.changeRelatedProductFeatures(props.relatedProduct.id)
+  }
 
   if (props.relatedProduct) {
     return (
       <div style={componentStyle}>
-        <div> <button>star</button> </div>
+        <div >
+          <button onClick={handleModalClick}>star</button>
+        </div>
         <div onClick={handleCardClick} >
-          <div> <img  /> </div>
+          <div> <img /> </div>
           <name>Name: {props.relatedProduct.name}</name>
           <div>Category: {props.relatedProduct.category}</div>
           <div>description: {props.relatedProduct.description}</div>

@@ -15,10 +15,8 @@ const RelatedList = (props) => {
       },
     })
     .then(data => {
-      console.log(data.data)
       let tempArr = []
       let realData = data.data
-      console.log(realData)
       realData.map((id) => {
         for (let i = 0; i < props.allProducts.length; i++) {
           if (id === props.allProducts[i].id) {
@@ -66,7 +64,7 @@ const RelatedList = (props) => {
     <div style={{display: 'flex', columnGap: '8px'}}>
       {renderedProducts[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}}>previous</button>}
       {renderedProducts.map((productIndex, key) => {
-        return <RelatedCard productIndex={productIndex} key={key} setProductId={props.setProductId} productId={props.productId} setRelatedProducts={setRelatedProducts} relatedProduct={relatedProducts[productIndex]} updateRelated={updateRelated}/>
+        return <RelatedCard changeRelatedProductFeatures={props.changeRelatedProductFeatures} setShowCompare={props.setShowCompare} productIndex={productIndex} key={key} setProductId={props.setProductId} productId={props.productId} setRelatedProducts={setRelatedProducts} relatedProduct={relatedProducts[productIndex]} updateRelated={updateRelated}/>
       })}
 
       {renderedProducts[2] === relatedProducts.length ? null : <button onClick={nextCard} style={{height: '24px'}} >next</button>}

@@ -15,7 +15,6 @@ const OutfitList = (props) => {
     })
 
     const alreadyExists = props.outfitProducts.find(({id}) => {
-      console.log(product)
       return id === product.id
     })
 
