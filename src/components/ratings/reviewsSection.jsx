@@ -45,28 +45,26 @@ const ReviewsSection = (props) => {
       <option>Helpful</option>
       <option>Relevant</option>
     </select>
-    <div className='reviewScroll'>
+    <div className='reviews-scroll'>
     {(moreResults) ? (
       props.reviewData.results.map((review, index) => {
         if (props.reviewStar === 0) {
-          return(<LoadReview review={review} key={index}/>)
+          return(<LoadReview review={review} key={index} getReviews={props.getReviews}/>)
         } else {
           if (review.rating === props.reviewStar) {
-            return(<LoadReview review={review} key={index}/>)
+            return(<LoadReview review={review} key={index} getReviews={props.getReviews}/>)
           }
         }
       })
     ) : (props.reviewStar === 0) ? (<div>
-      <LoadReview review={props.reviewData.results[0]}/>
-      <LoadReview review={props.reviewData.results[1]}/>
+      <LoadReview review={props.reviewData.results[0]} getReviews={props.getReviews}/>
+      <LoadReview review={props.reviewData.results[1]} getReviews={props.getReviews}/>
       </div>) : showTempValues()
     }
     </div>
     <div>
-    </div>
-    <div>
-      <button onClick={e => setMoreResults(!moreResults)}>More Results</button>
-      <button onClick={e => props.setShowModal(!props.showModal)}>Add Review</button>
+      <button onClick={e => setMoreResults(!moreResults)} className='more-results-button'>More Results</button>
+      <button onClick={e => props.setShowModal(!props.showModal)} className='add-review-button'>Add Review +</button>
     </div>
   </div>);
 }

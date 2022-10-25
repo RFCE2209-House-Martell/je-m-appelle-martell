@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../sharedFolder/modal.jsx';
 import API from './api.js';
+import s3API from '../../s3/api.js';
 
 const NewAnswerModal = (props) => {
   const [show, setShow] = useState(false);
@@ -8,6 +9,15 @@ const NewAnswerModal = (props) => {
 
   const onHandleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleImageUpload = (e) => {
+    return s3API.getSecureS3URL(e.target.files[0]).then((res) => {
+      console.log(res, 'RES');
+      setFormData({ ...formData, [e.target.name]: res });
+      console.log(formData, 'FORM DATA');
+      return 'done';
+    }).catch((err) => console.log('Error ' + err));
   };
 
   const onHandleNewAnswerSubmit = () => {
@@ -52,7 +62,7 @@ const NewAnswerModal = (props) => {
 
           <div className="input-container">
             <label>PHOTOS</label>
-            <textarea type="photos" name="photos" rows="4" cols="30" onChange={(e) => onHandleInputChange(e)} />
+            <input type="file" name="photos" multiple="true" accept="image/*" onChange={(e) => handleImageUpload(e)} />
           </div>
 
           <div className="modal-footer">
@@ -66,7 +76,6 @@ const NewAnswerModal = (props) => {
 }
 
 export default NewAnswerModal;
-
 
 // question_id 	integer 	Required ID of the question to post the answer for
 // body 	text 	Text of question being asked

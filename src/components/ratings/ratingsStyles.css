@@ -1,26 +1,117 @@
 .ratingsSection {
   float: left;
   width: 20%;
-
 }
-.char-slider {
-  -webkit-appearance: none;
-  width: 100%;
+
+.ratingStars {
+  display: flex;
+}
+
+.total-stars {
+  font-size: 70px;
+  flex: auto;
+}
+
+.stars-component {
+  float: right;
+}
+
+.progress-bars {
+  width: 70%;
+}
+
+.progress-buttons {
+  margin-bottom: 1em;
   cursor: pointer;
-  border: 1px solid #000;
-  overflow: hidden;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
 }
 
 .char-list {
-  display: flex;
-  justify-content: space-between;
+  list-style: none;
 }
-.char-list option {
+
+.char-container {
   position: relative;
-  background: white;
-  top: 18px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  width: 100%;
+  margin: 10px;
+}
+
+.char-slider {
+  appearance: none;
+  width: 20%;
+  background-color: transparent;
+  height: 15px;
+  margin: none;
+  position: absolute;
+}
+
+.char-slider::-webkit-slider-thumb {
+  appearance: none;
+  margin: none;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-top: 13px solid #000;
+}
+
+.characters {
+  display: flex;
+  z-index: -1;
+  height: 12px;
+  width: 100%;
+  margin: none;
+}
+
+.character-one {
+  background-color: lightgrey;
+  flex: 1;
+  margin: 2px;
+}
+
+.character-two {
+  background-color: lightgrey;
+  flex: 1;
+  margin: 2px;
+}
+
+.character-three {
+  background-color: lightgrey;
+  flex: 1;
+  margin: 2px;
+}
+
+.char-level {
+  display: flex;
+}
+
+.char-small {
+  flex: 1;
+  text-align: left;
+}
+
+.char-perfect-fit {
+  flex: 1;
+  text-align: center;
+}
+
+.char-large {
+  flex: 1;
+  text-align: right;
+}
+
+.char-poor {
+  flex: 1;
+  text-align: left;
+}
+
+.char-perfect-qual {
+  flex: 1;
+  text-align: right;
 }
 
 .reviewsSection {
@@ -28,8 +119,14 @@
   width: 70%;
 }
 
+.reviews-scroll {
+  height: 400px;
+  overflow-y: auto;
+}
+
 select {
   margin-bottom: 1em;
+  cursor: pointer;
   border: 0;
   border-bottom: 2px solid;
   border-radius: 0;
@@ -47,10 +144,10 @@ select {
   display: flex;
   justify-content: space-between;
 }
+
 .username-and-date {
   float: right;
 }
-
 
 #star-button {
   background-color: transparent;
@@ -86,4 +183,39 @@ select {
   background-color: white;
   padding: .5vw;
   border-style: solid;
+}
+
+.add-review-button {
+  background: none;
+  cursor: pointer;
+  margin-left: 24px;
+  margin-top: 40px;
+  padding: 24px;
+  font-size: 16px;
+}
+
+.more-results-button {
+  background: none;
+  cursor: pointer;
+  padding: 24px;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.helpful-yes {
+  margin-bottom: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
+}
+
+.report-button {
+  margin-bottom: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
 }

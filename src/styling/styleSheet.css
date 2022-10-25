@@ -1,0 +1,54 @@
+body, button, input {
+  font-family: Verdana;
+}
+
+button {
+  background-color: white;
+  border-radius: 3px;
+  border-width: 2px;
+}
+
+button:hover {
+  background-color: #f5ebd8;
+}
+
+.header {
+  background-color: #900505;
+  display: grid;
+  grid-template-columns: 90vw 10vw;
+  align-items: center;
+  height: 70px;
+  margin: -10px;
+}
+
+.logo {
+  max-height: 50px;
+  margin-left: 2vw;
+}
+
+.cartCount {
+  position: absolute;
+  font-size: 10px;
+  margin-left: 13px;
+  margin-top: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.cart {
+  color: white;
+  align-self: center;
+  margin-top: 8px;
+  justify-self: end;
+  margin-right: 2vw;
+}
+
+.cart:hover {
+  color: #e49b34;
+}
+
+.app {
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=styleSheet.css.map */
