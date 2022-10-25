@@ -29,7 +29,7 @@ const RelatedApp = (props) => {
   return (
     <div>
       <h1>Related Products</h1>
-      <RelatedList allProducts={allProducts}
+      <RelatedList setShowCompare={props.setShowCompare} allProducts={allProducts} changeRelatedProductFeatures={props.changeRelatedProductFeatures}
       setProductId={props.setProductId}
       productId={props.productId} />
       <h1>Your Outfit</h1>

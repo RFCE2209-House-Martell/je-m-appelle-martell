@@ -10,11 +10,8 @@ const OutfitCard = (props) => {
 
   const handleClick = (e) => {
     const filteredOutfits = props.outfitProducts.filter(theProduct => {
-      console.log('props', props)
-      console.log('STUFF', theProduct.id, props.outfitProducts.id)
       return theProduct.id !== props.product.id
     })
-    console.log(filteredOutfits)
     props.setOutfitProducts(filteredOutfits)
   }
 
