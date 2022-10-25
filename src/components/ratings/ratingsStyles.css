@@ -3,8 +3,30 @@
   width: 20%;
 }
 
+.ratingStars {
+  display: flex;
+}
+
 .total-stars {
   font-size: 70px;
+  flex: auto;
+}
+
+.stars-component {
+  float: right;
+}
+
+.progress-bars {
+  width: 70%;
+}
+
+.progress-buttons {
+  margin-bottom: 1em;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid;
+  border-radius: 0;
 }
 
 .char-list {
@@ -61,6 +83,35 @@
   background-color: lightgrey;
   flex: 1;
   margin: 2px;
+}
+
+.char-level {
+  display: flex;
+}
+
+.char-small {
+  flex: 1;
+  text-align: left;
+}
+
+.char-perfect-fit {
+  flex: 1;
+  text-align: center;
+}
+
+.char-large {
+  flex: 1;
+  text-align: right;
+}
+
+.char-poor {
+  flex: 1;
+  text-align: left;
+}
+
+.char-perfect-qual {
+  flex: 1;
+  text-align: right;
 }
 
 .reviewsSection {

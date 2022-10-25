@@ -13,6 +13,24 @@ const CharacteristicsCreator = (props) => {
         <div className='character-two'></div>
         <div className='character-three'></div>
       </div>
+      {props.charKey === 'Size' || 'Fit' || 'Length' || 'Width' ? <div className='char-level'>
+        <div className='char-small'>
+          Too small
+        </div>
+        <div className='char-perfect-fit'>
+          Perfect
+        </div>
+        <div className='char-large'>
+          Too large
+        </div>
+      </div> : <div className='char-level'>
+        <div className='char-poor'>
+          Poor
+        </div>
+        <div className='char-perfect-qual'>
+          Perfect
+        </div>
+      </div>}
     </li>
   )
 }

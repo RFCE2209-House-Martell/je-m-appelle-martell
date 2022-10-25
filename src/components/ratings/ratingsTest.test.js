@@ -21,3 +21,31 @@ test('Should render', () => {
   expect(ratingsSection).toBeInTheDocument;
   expect(reviewsSection).toBeInTheDocument;
 })
+
+test('Should render Ratings', () => {
+  render(<Ratings/>);
+  const ratingsStars = screen.querySelector('.ratings-stars');
+  const totalStars = screen.querySelector('.total-stars');
+  const starsComponent = screen.querySelector('.stars-component');
+  const recStars = screen.querySelector('.rec-stars');
+  const progressButtons = screen.querySelector('.progress-buttons');
+  const progressBars = screen.querySelector('.progress-bars');
+  const fiveStarProgress = screen.querySelector('#fiveStarProgress');
+  const fourStarProgress = screen.querySelector('#fourStarProgress');
+  const threeStarProgress = screen.querySelector('#threeStarProgress');
+  const twoStarProgress = screen.querySelector('#twoStarProgress');
+  const oneStarProgress = screen.querySelector('#oneStarProgress');
+
+  expect(ratingsStars).toBeInTheDocument;
+  expect(totalStars).toBeInTheDocument;
+  expect(starsComponent).toBeInTheDocument;
+  expect(recStars).toBeInTheDocument;
+  expect(reviewsList).toBeInTheDocument;
+  expect(progressButtons).toBeInTheDocument;
+  expect(progressBars).toBeInTheDocument;
+  expect(fiveStarProgress).toBeInTheDocument;
+  expect(fourStarProgress).toBeInTheDocument;
+  expect(threeStarProgress).toBeInTheDocument;
+  expect(twoStarProgress).toBeInTheDocument;
+  expect(oneStarProgress).toBeInTheDocument;
+})
