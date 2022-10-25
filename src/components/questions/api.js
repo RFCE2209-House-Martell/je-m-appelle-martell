@@ -67,11 +67,13 @@ const QuestionsAPI = {
   createAnswer: (id, data) => {
     const url = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/qa/questions/${id}/answers`;
 
+    console.log(data.photos);
+
     const body = {
       body: data.body,
       name: data.username,
       email: data.email,
-      // photos: [data.photos]
+      photos: data.photos
     };
 
     const headers = {
