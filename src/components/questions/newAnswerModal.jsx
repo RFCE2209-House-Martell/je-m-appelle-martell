@@ -23,6 +23,10 @@ const NewAnswerModal = (props) => {
     }).catch((err) => console.log('Error submitting answer in container component'));
   };
 
+  useEffect(() => {
+    console.log(formData, 'FORM DATA IN USE EFFECT');
+  }, [formData.photos]);
+
   const modalStyles = {
     position: 'fixed',
     left: '0',
@@ -35,10 +39,6 @@ const NewAnswerModal = (props) => {
     alignItems: 'center',
     justifyContent: 'center',
   };
-
-  useEffect(() => {
-    console.log(formData, 'FORM DATA IN USE EFFECT');
-  }, [formData])
 
   return (
     <div>
@@ -77,9 +77,3 @@ const NewAnswerModal = (props) => {
 }
 
 export default NewAnswerModal;
-
-// question_id 	integer 	Required ID of the question to post the answer for
-// body 	text 	Text of question being asked
-// name 	text 	Username for question asker
-// email 	text 	Email address for question asker
-// photos 	[text] 	An array of urls corresponding to images to display

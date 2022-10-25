@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BsSearch } from 'react-icons/bs';
 
 const AnswerSearchBar = (props) => {
-
   return (
     <div className="search-container">
       <input data-testid="search-input" className="search-bar" type="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS." onChange={(e) => props.onSearch(e)} value={props.Input} />
@@ -11,6 +10,6 @@ const AnswerSearchBar = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default AnswerSearchBar;

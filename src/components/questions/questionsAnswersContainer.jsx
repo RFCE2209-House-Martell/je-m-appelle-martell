@@ -48,7 +48,7 @@ const QuestionsAnswersContainer = (props) => {
   useEffect(() => {
     const loadQuestions = () => {
       if (searchInput === '') {
-        API.getQuestionsById(66646, questionPage, questionCount).then((res) => {
+        API.getQuestionsById(productId, questionPage, questionCount).then((res) => {
           setQuestions(res.reverse());
         });
       } else {
@@ -57,7 +57,7 @@ const QuestionsAnswersContainer = (props) => {
       }
     }
     loadQuestions();
-  }, [searchInput, questionCount, questionPage]);
+  }, [searchInput, questionCount, questionPage, productId]);
 
   return (
     <div className="qa-main-container">

@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
 import AnswerSearchBar from '../answerSearchBar.jsx';
 
-
 describe('Render NewAnswerModal Component', function () {
   const user = userEvent.setup();
 
@@ -13,5 +12,10 @@ describe('Render NewAnswerModal Component', function () {
     const input = screen.getByTestId('search-input');
     expect(input).toHaveTextContent("");
   });
+
+  it('should', () => {
+
+  });
+
 
 });
