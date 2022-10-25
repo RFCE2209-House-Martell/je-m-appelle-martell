@@ -15,7 +15,6 @@ const App = () => {
   const [showCompare, setShowCompare] = useState(false);
   const [overviewProductName, setOverviewProductName] = useState('');
   const [relatedProductName, setRelatedProductName] = useState('');
-  const [comparisonTable, setComparisonTable] = useState([]);
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
 
@@ -50,9 +49,6 @@ const App = () => {
       console.log(err)
     })
   }
-// console.log('relatedProductFeatures', relatedProductFeatures)
-// console.log('overviewProductFeatures', overviewProductFeatures)
-//working appropriately
 
   const traits = {};
 
@@ -69,49 +65,6 @@ const App = () => {
     }
     traits[trait.feature].relatedProductFeatures = trait.value
   })
-
-  //console.log('traits', traits)
-  //traits is working appropriately
-
-  // const createTable = (relatedProductFeatures) => {
-  //   const tempAllFeatures = {};
-  //   for (let featureAndValue of relatedProductFeatures) {
-  //     if (!tempAllFeatures[featureAndValue] || !tempAllFeatures[featureAndValue].feature) {
-  //       console.log('youlostcuz')
-  //       tempAllFeatures[featureAndValue] = {};
-  //       console.log(relatedProductFeatures)
-  //       tempAllFeatures[featureAndValue].feature = ['NA', relatedProductFeatures[featureAndValue][]value]
-  //     }
-  //   }
-  //   console.log('CRAZY',tempAllFeatures)
-  //   compare(tempAllFeatures)
-  // }
-
-
-  // const stuff = (overviewProductFeatures, allFeatures) => {
-  //   let tempAllFeatures = allFeatures
-  //   for (let featureAndValue of overviewProductFeatures) {
-  //     console.log('STUFF', featureAndValue)
-  //     console.log('tempAllFeatures', tempAllFeatures)
-  //     if (tempAllFeatures && tempAllFeatures.featureValue && tempAllFeatures.featureValue.feature) {
-  //       tempAllFeatures.featureAndValue.feature[0] === overviewProductFeatures.featureAndValue.value
-  //     } else if (tempAllFeatures && tempAllFeatures.featureValue && !tempAllFeatures.featureValue.feature) {
-  //       tempAllFeatures.featureAndValue.feature = [overviewProductFeatures.featureAndValue.value, 'NA']
-  //     }
-  //   }
-  //   stuff2(tempAllFeatures)
-  // }
-
-  // const stuff2 = (allFeatures) => {
-  //   const table = []
-  //   console.log('AllFeature', allFeatures)
-  //   for (let row in allFeatures) {
-  //     table.push(allFeatures.row[0], row, allFeatures.row[1])
-  //   }
-  //   console.log('table', table)
-  //   setComparisonTable(table)
-  // }
-
 
   const compareModalStyle = {
       position: 'fixed',
