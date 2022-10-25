@@ -3,7 +3,6 @@ import AnswerSearchBar from './answerSearchBar.jsx';
 import QuestionList from './questionList.jsx';
 import QuestionsFooter from './questionFooter.jsx';
 import API from './api.js';
-
 import './styles/questionAnswerStyles.css';
 
 const QuestionsAnswersContainer = (props) => {
@@ -49,7 +48,7 @@ const QuestionsAnswersContainer = (props) => {
   useEffect(() => {
     const loadQuestions = () => {
       if (searchInput === '') {
-        API.getQuestionsById(66646, questionPage, questionCount).then((res) => {
+        API.getQuestionsById(productId, questionPage, questionCount).then((res) => {
           setQuestions(res.reverse());
         });
       } else {

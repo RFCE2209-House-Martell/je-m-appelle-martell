@@ -10,9 +10,7 @@ describe('Render NewAnswerModal Component', function () {
 
   it('should render an instance NewAnswerModal', () => {
     render(<AnswerSearchBar />);
-
     const input = screen.getByTestId('search-input');
-
     expect(input).toHaveTextContent("");
   });
 
