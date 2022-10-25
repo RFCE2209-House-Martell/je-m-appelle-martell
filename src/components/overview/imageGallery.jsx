@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'underscore';
 import ExpandedView from './expandedView.jsx';
+import './unavailable.jpeg';
 
 const ImageGallery = (props) => {
   const [photos, setPhotos] = useState([]);
@@ -9,6 +10,7 @@ const ImageGallery = (props) => {
   const [selected, setSelected] = useState(0);
   const [zoom, setZoom] = useState(false);
 
+  var noImg = require('./unavailable.jpeg').default;
   // check for changes to style
   useEffect(() => {
     if (JSON.stringify(props.data) !== '{}') {
@@ -20,8 +22,14 @@ const ImageGallery = (props) => {
         if (selected >= photoList.length) {
           tempSelected = photoList.length - 1;
         }
-        setMainImg(photoList[tempSelected].url);
-        setPhotos(photoList);
+        if (photoList[tempSelected].url !== null) {
+          setMainImg(photoList[tempSelected].url);
+          setPhotos(photoList);
+        } else {
+          setMainImg(noImg);
+          setPhotos([]);
+          setThumbnails([]);
+        }
         props.setSocialPhoto(photoList[0].url);
       }
     }
@@ -43,6 +51,14 @@ const ImageGallery = (props) => {
     }
   }
 
+  var panThumbnails = (direction) => {
+    if (direction ==='right') {
+
+    } else if (direction === 'left') {
+
+    }
+  }
+
   var zoomIn = () => {
     setZoom(true);
   }
@@ -59,7 +75,7 @@ const ImageGallery = (props) => {
       <div className="carousel">
         {selected === 0 ? null: <button className="arrow arrowL" onClick={() => handleArrows('left')}>{'<'}</button>}
         <img src={mainImg} className="mainImg" onClick={zoomIn}/>
-        {selected === photos.length - 1 ? null : <button className="arrow arrowR" onClick={() => handleArrows('right')}>{'>'}</button>}
+        {selected === photos.length - 1 || photos.length === 0 ? null : <button className="arrow arrowR" onClick={() => handleArrows('right')}>{'>'}</button>}
         {zoom ? <ExpandedView img={mainImg} setZoom={setZoom} selected={selected} photos={photos} handleArrows={handleArrows}/> : null}
       </div>
     </div>

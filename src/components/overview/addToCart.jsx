@@ -63,7 +63,7 @@ const AddtoCart = (props) => {
         {quantities.length === 0 && selected !== 0 ? <option>OUT OF STOCK</option> : <option>-</option>}
         {quantities.map((amt, key) => <option key={key}>{amt}</option>)}
       </select>
-      <button className="formItem submit" onClick={(e) => carted(e)}>Add to Cart</button>
+      <button className="formItem" onClick={(e) => carted(e)}>Add to Cart</button>
     </div>
   );
 };

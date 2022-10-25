@@ -44,7 +44,7 @@ const ProductDetails = (props) => {
     var category = data.category.toUpperCase();
     var title = data.name;
     var description = data.description;
-    var price = data.default_price;
+    var price = data.default_price || null;
     var salesPrice = null;
     if (props.data.results !== undefined) {
       var temp = props.data.results.find(obj => obj.style_id === props.styleId);
@@ -58,16 +58,16 @@ const ProductDetails = (props) => {
 
   return (
     <div className="details">
-      <div>{category}</div>
-      <h1>{title}</h1>
+      <div className="category">{category}</div>
+      <h1 className="productName">{title}</h1>
       <StarComponent stars={avgStars()}/>
-      {salesPrice === null ? <h2>{`$${price}`}</h2> : <h2>{`$${salesPrice}\t`}<s>{`$${price}`}</s></h2>}
+      {salesPrice === null ? <h2 className='price'>{`$${price}`}</h2> : <h2 className='price'>{`$${salesPrice}\t`}<s>{`$${price}`}</s></h2>}
       <p>{description}</p>
       <p className="share">Share</p>
-      <IconContext.Provider value={{color: "#900505", size: "1.5em"}} className="shareIcons">
-          <a href={`https://www.facebook.com/sharer/sharer.php?u=${props.socialPhoto}`} target="_blank"><FaFacebookSquare/></a>
-          <a href={`https://twitter.com/intent/tweet?url=${props.socialPhoto}&text=${texts[Math.floor(Math.random() * 5)]}`} target="_blank"><FaTwitterSquare/></a>
-          <a href={`https://www.pinterest.com/pin-builder/?url=https://www.google.com/&media=${props.socialPhoto}`} target="_blank"><FaPinterestSquare/></a>
+      <IconContext.Provider value={{color: "#900505", size: "2em"}}>
+          <a className="shareIcons" href={`https://www.facebook.com/sharer/sharer.php?u=${props.socialPhoto}`} target="_blank"><FaFacebookSquare/></a>
+          <a className="shareIcons" href={`https://twitter.com/intent/tweet?url=${props.socialPhoto}&text=${texts[Math.floor(Math.random() * 5)]}`} target="_blank"><FaTwitterSquare/></a>
+          <a className="shareIcons" href={`https://www.pinterest.com/pin-builder/?url=https://www.google.com/&media=${props.socialPhoto}`} target="_blank"><FaPinterestSquare/></a>
       </IconContext.Provider>
     </div>
   )
