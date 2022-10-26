@@ -61,7 +61,7 @@ const QuestionsAnswersContainer = (props) => {
 
   return (
     <div className="qa-main-container">
-      <h1 className="feature-heading">QUESTIONS AND ANSWERS</h1>
+      <h1 data-testid="feature-heading" className="feature-heading">QUESTIONS AND ANSWERS</h1>
       <div>
         <AnswerSearchBar productId={productId} Input={searchInput} onSearch={onHandleSearch} />
         <div className="qa-section-container">
