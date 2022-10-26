@@ -19,7 +19,7 @@ var StyleSelector = (props) => {
   return (
     <div className="styleSelector">
       <h2>Color</h2>
-      <div className='color'>{selected}</div>
+      <div role="currentColor" className='color'>{selected}</div>
       {styles === [] ? null: <div className="styleSelect">{styles.map((style) => {
         let marked = (style.name === selected);
         return (marked ? <div key={style.style_id} className="style selectedStyle" style={{backgroundImage: `url(${style.photos[0].thumbnail_url})`, backgroundPosition: 'center'}} onClick={(e) => {clickHandler(e, style.style_id, style.name)}}></div> : <div key={style.style_id} className="style" style={{backgroundImage: `url(${style.photos[0].thumbnail_url})`, backgroundPosition: 'center'}} onClick={(e) => {clickHandler(e, style.style_id, style.name)}}></div>);
