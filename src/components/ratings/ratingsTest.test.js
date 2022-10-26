@@ -9,43 +9,43 @@ test('Sanity Check', () => {
 })
 
 test('Should render', () => {
-//   render(<Ratings/>)
+  render(<Ratings/>)
 
-//   const modalBody = screen.querySelector('.modal-body');
-//   const reviewsList = screen.querySelector('.reviews-list');
-//   const ratingsSection = screen.querySelector('.ratingsSection');
-//   const  reviewsSection = screen.querySelector('.reviewsSection');
+  const modalBody = screen.querySelector('.modal-body');
+  const reviewsList = screen.querySelector('.reviews-list');
+  const ratingsSection = screen.querySelector('.ratingsSection');
+  const  reviewsSection = screen.querySelector('.reviewsSection');
 
-//   expect(modalBody).toBe(null);
-//   expect(reviewsList).toBeInTheDocument;
-//   expect(ratingsSection).toBeInTheDocument;
-//   expect(reviewsSection).toBeInTheDocument;
-// })
+  expect(modalBody).toBe(null);
+  expect(reviewsList).toBeInTheDocument;
+  expect(ratingsSection).toBeInTheDocument;
+  expect(reviewsSection).toBeInTheDocument;
+})
 
-// test('Should render Ratings', () => {
-//   render(<Ratings/>);
-//   const ratingsStars = screen.querySelector('.ratings-stars');
-//   const totalStars = screen.querySelector('.total-stars');
-//   const starsComponent = screen.querySelector('.stars-component');
-//   const recStars = screen.querySelector('.rec-stars');
-//   const progressButtons = screen.querySelector('.progress-buttons');
-//   const progressBars = screen.querySelector('.progress-bars');
-//   const fiveStarProgress = screen.querySelector('#fiveStarProgress');
-//   const fourStarProgress = screen.querySelector('#fourStarProgress');
-//   const threeStarProgress = screen.querySelector('#threeStarProgress');
-//   const twoStarProgress = screen.querySelector('#twoStarProgress');
-//   const oneStarProgress = screen.querySelector('#oneStarProgress');
+test('Should render Ratings', () => {
+  render(<Ratings/>);
+  const ratingsStars = screen.querySelector('.ratings-stars');
+  const totalStars = screen.querySelector('.total-stars');
+  const starsComponent = screen.querySelector('.stars-component');
+  const recStars = screen.querySelector('.rec-stars');
+  const progressButtons = screen.querySelector('.progress-buttons');
+  const progressBars = screen.querySelector('.progress-bars');
+  const fiveStarProgress = screen.querySelector('#fiveStarProgress');
+  const fourStarProgress = screen.querySelector('#fourStarProgress');
+  const threeStarProgress = screen.querySelector('#threeStarProgress');
+  const twoStarProgress = screen.querySelector('#twoStarProgress');
+  const oneStarProgress = screen.querySelector('#oneStarProgress');
 
-//   expect(ratingsStars).toBeInTheDocument;
-//   expect(totalStars).toBeInTheDocument;
-//   expect(starsComponent).toBeInTheDocument;
-//   expect(recStars).toBeInTheDocument;
-//   expect(reviewsList).toBeInTheDocument;
-//   expect(progressButtons).toBeInTheDocument;
-//   expect(progressBars).toBeInTheDocument;
-//   expect(fiveStarProgress).toBeInTheDocument;
-//   expect(fourStarProgress).toBeInTheDocument;
-//   expect(threeStarProgress).toBeInTheDocument;
-//   expect(twoStarProgress).toBeInTheDocument;
-//   expect(oneStarProgress).toBeInTheDocument;
+  expect(ratingsStars).toBeInTheDocument;
+  expect(totalStars).toBeInTheDocument;
+  expect(starsComponent).toBeInTheDocument;
+  expect(recStars).toBeInTheDocument;
+  expect(reviewsList).toBeInTheDocument;
+  expect(progressButtons).toBeInTheDocument;
+  expect(progressBars).toBeInTheDocument;
+  expect(fiveStarProgress).toBeInTheDocument;
+  expect(fourStarProgress).toBeInTheDocument;
+  expect(threeStarProgress).toBeInTheDocument;
+  expect(twoStarProgress).toBeInTheDocument;
+  expect(oneStarProgress).toBeInTheDocument;
 })

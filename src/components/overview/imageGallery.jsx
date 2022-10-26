@@ -68,13 +68,13 @@ const ImageGallery = (props) => {
       <div className="thumbnailContainer">
         {thumbnails.map((thumbnail, key) => {
           let marked = (key === selected);
-          return (marked ? <img alt="thumbnail image(s)" className="thumbnail selected" src={thumbnail} key={key} onClick={(e) => clickHandler(key)}/> : <img alt="thumbnail image(s)" className="thumbnail" src={thumbnail} key={key} onClick={(e) => clickHandler(key)}/>);
+          return (marked ? <img className="thumbnail selected" src={thumbnail} key={key} onClick={(e) => clickHandler(key)}/> : <img className="thumbnail" src={thumbnail} key={key} onClick={(e) => clickHandler(key)}/>);
         })}
       </div>
 
       <div className="carousel">
         {selected === 0 ? null: <button className="arrow arrowL" onClick={() => handleArrows('left')}>{'<'}</button>}
-        <img src={mainImg} alt="main image" className="mainImg" onClick={zoomIn}/>
+        <img src={mainImg} className="mainImg" onClick={zoomIn}/>
         {selected === photos.length - 1 || photos.length === 0 ? null : <button className="arrow arrowR" onClick={() => handleArrows('right')}>{'>'}</button>}
         {zoom ? <ExpandedView img={mainImg} setZoom={setZoom} selected={selected} photos={photos} handleArrows={handleArrows}/> : null}
       </div>
