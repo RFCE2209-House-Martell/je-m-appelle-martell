@@ -31,7 +31,7 @@ const Overview = (props) => {
       <div className="productDetails">
         <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
         <StyleSelector productId={props.productId} data={data} setStyleId={setStyleId}/>
-        <AddtoCart data={data} styleId={styleId} setCart={props.setCart}/>
+        <AddtoCart data={data} styleId={styleId}/>
       </div>
     </div>
   );

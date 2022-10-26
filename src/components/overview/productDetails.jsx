@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaFacebookSquare, FaTwitter, FaPinterest } from 'react-icons/fa';
+import { FaFacebookSquare, FaTwitterSquare, FaPinterestSquare } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import StarComponent from '../sharedFolder/starComponent.jsx';
 
@@ -66,8 +66,8 @@ const ProductDetails = (props) => {
       <p className="share">Share</p>
       <IconContext.Provider value={{color: "#900505", size: "2em"}}>
           <a className="shareIcons" href={`https://www.facebook.com/sharer/sharer.php?u=${props.socialPhoto}`} target="_blank"><FaFacebookSquare/></a>
-          <a className="shareIcons" href={`https://twitter.com/intent/tweet?url=${props.socialPhoto}&text=${texts[Math.floor(Math.random() * 5)]}`} target="_blank"><FaTwitter/></a>
-          <a className="shareIcons" href={`https://www.pinterest.com/pin-builder/?url=https://www.google.com/&media=${props.socialPhoto}`} target="_blank"><FaPinterest/></a>
+          <a className="shareIcons" href={`https://twitter.com/intent/tweet?url=${props.socialPhoto}&text=${texts[Math.floor(Math.random() * 5)]}`} target="_blank"><FaTwitterSquare/></a>
+          <a className="shareIcons" href={`https://www.pinterest.com/pin-builder/?url=https://www.google.com/&media=${props.socialPhoto}`} target="_blank"><FaPinterestSquare/></a>
       </IconContext.Provider>
     </div>
   )
