@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AnswerList from './answerList.jsx';
-import NewAnswerModal from './NewAnswerModal.jsx';
+import NewAnswerModal from './newAnswerModal.jsx';
 import API from './api.js';
 
 const Question = (props) => {
