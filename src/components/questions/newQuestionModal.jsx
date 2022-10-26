@@ -31,10 +31,10 @@ const NewQuestionModal = (props) => {
 
   return (
     <div>
-      <button data-testid="modal-button"  className="add-question-button" onClick={() => setShow(true)}>ADD A QUESTION +</button>
+      <button className="add-question-button" onClick={() => setShow(true)}>ADD A QUESTION +</button>
       <Modal styles={modalStyles} show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container">
-          <h1 data-testid="modal-heading">ASK A QUESTION</h1>
+          <h1>ASK A QUESTION</h1>
           <div className="input-container">
             <label>NAME</label>
             <input type="text" name="name" placeholder="enter your username" onChange={(e) => onHandleInputChange(e)} />
