@@ -31,10 +31,10 @@ const NewQuestionModal = (props) => {
 
   return (
     <div>
-      <button className="add-question-button" onClick={() => setShow(true)}>ADD A QUESTION +</button>
+      <button data-testid="modal-button"  className="add-question-button" onClick={() => setShow(true)}>ADD A QUESTION +</button>
       <Modal styles={modalStyles} show={show} onClose={() => setShow(false)}>
         <div className="modal-content-container">
-          <h1>ASK A QUESTION</h1>
+          <h1 data-testid="modal-heading">ASK A QUESTION</h1>
           <div className="input-container">
             <label>NAME</label>
             <input type="text" name="name" placeholder="enter your username" onChange={(e) => onHandleInputChange(e)} />
@@ -61,10 +61,3 @@ const NewQuestionModal = (props) => {
 }
 
 export default NewQuestionModal;
-
-//         "question_id": 37,
-//         "question_body": "Why is this product cheaper here than other sites?",
-//         "question_date": "2018-10-18T00:00:00.000Z",
-//         "asker_name": "williamsmith",
-//         "question_helpfulness": 4,
-//         "reported": false,

@@ -3,7 +3,6 @@ import Question from './question.jsx';
 
 const QuestionList = (props) => {
   const questions = props.questions;
-
   return (
     <div>
       {questions.length > 0 ? questions.map((question) => {
