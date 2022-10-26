@@ -15,10 +15,24 @@ button:hover {
 .header {
   background-color: #900505;
   display: grid;
-  grid-template-columns: 90vw 10vw;
+  grid-template-columns: 80vw 15vw 5vw;
   align-items: center;
+  width: 100.5vw;
   height: 70px;
   margin: -10px;
+}
+
+.lightSwitch {
+  margin-top: 5px;
+  justify-self: end;
+}
+
+.sun {
+  color: #ffe2b3;
+}
+
+.moon {
+  color: black;
 }
 
 .logo {
