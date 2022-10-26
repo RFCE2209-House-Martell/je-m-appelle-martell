@@ -62,7 +62,7 @@ const ReviewsSection = (props) => {
       </div>) : showTempValues()
     }
     </div>
-    <div>
+    <div className='reviews-buttons'>
       <button onClick={e => setMoreResults(!moreResults)} className='more-results-button'>More Results</button>
       <button onClick={e => props.setShowModal(!props.showModal)} className='add-review-button'>Add Review +</button>
     </div>

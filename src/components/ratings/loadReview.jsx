@@ -65,15 +65,15 @@ const LoadReview = (props) => {
     {props.review.recommend && (<div>
       ✓ I recommend this product
     </div>)}
-    <div>
+    <div className='helpful-and-report'>
       Helpful? <button className='helpful-yes' disabled={isYesDisabled} onClick={e => (setReviewHelpful(props.review.review_id))}>Yes</button> ({props.review.helpfulness}) | <button className='report-button' disabled={isReportDisabled} onClick={e => (setReviewReport(props.review.review_id))}>Report</button>
     </div>
-    {props.review.response && <div>
+    {props.review.response && <div className='review-response'>
       Response: {props.review.response}
     </div>}
     {(props.review.photos.length > 0) ? (
       props.review.photos.map((photo, index) => {
-        return <img key={index} src={`${photo.url}`} height='50' />
+        return <img key={index} src={`${photo.url}`} height='50' className='reviews-images'/>
       })
     ) : <div></div>}
   </li>
