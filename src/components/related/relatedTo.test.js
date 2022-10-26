@@ -11,6 +11,7 @@ jest.mock("./RelatedCard.jsx", ()=> ()=><div>Category</div>)
 
 test('should render three cards and next button on initial render', async () => {
   axios.get = jest.fn().mockImplementation((url) => {
+    console.log(url);
     return Promise.resolve({ data: [66642, 66643, 66645, 66646, 66649] });
   });
   const allProducts = []

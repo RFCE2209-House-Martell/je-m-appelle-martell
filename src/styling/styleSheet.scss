@@ -1,3 +1,8 @@
+$red: #900505;
+$orange: #e49b34;
+$yellow: #ffe2b3;
+$cream: #f5ebd8;
+
 body, button, input {
   font-family: Verdana;
 }
@@ -9,11 +14,11 @@ button {
 }
 
 button:hover {
-  background-color: #f5ebd8;
+  background-color: $cream;
 }
 
 .header {
-  background-color: #900505;
+  background-color: $red;
   display: grid;
   grid-template-columns: 90vw 10vw;
   align-items: center;
@@ -44,7 +49,7 @@ button:hover {
 }
 
 .cart:hover {
-  color: #e49b34;
+  color: $orange;
 }
 
 .app {

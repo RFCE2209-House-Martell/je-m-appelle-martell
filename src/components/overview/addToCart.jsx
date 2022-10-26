@@ -39,7 +39,13 @@ const AddtoCart = (props) => {
       axios.post(`${process.env.REACT_APP_BASE_URL}cart`,
         {'sku_id': selected, count},
         {headers: {'Authorization': process.env.REACT_APP_API_KEY}}
-      ).then((data)=> console.log(data.data));
+      ).then(() => {
+        axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
+          headers: {
+            'Authorization': process.env.REACT_APP_API_KEY
+          }
+        }).then((data) => props.setCart(data.data));
+      });
     }
   }
 
