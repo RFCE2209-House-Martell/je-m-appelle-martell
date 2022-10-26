@@ -31,7 +31,7 @@ const AnswerList = (props) => {
     loadAnswers();
   }, [props.answerPage, props.answerCount]);
   return (
-    <div data-testid="answer-list">
+    <div>
       {answers.length > 0 ? answers.map((answer) => {
         return <Answer answer={answer} key={answer.answer_id} helpfulSubmit={onHandleHelpfulSubmit} reportAnswer={handleAnswerReport} />
       }) : <h6>There are currently no answers for this question. Be the first? Add an answer!</h6>}
