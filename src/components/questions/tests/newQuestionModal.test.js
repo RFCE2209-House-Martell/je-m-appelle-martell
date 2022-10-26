@@ -10,6 +10,7 @@ describe('Render NewAnswerModal Component', function () {
   it('should render an instance NewQuestionModal', () => {
     render(<NewQuestionModal />);
     const button = screen.getByTestId('modal-button');
+
     userEvent.click(button).then(() => {
       const modalHeading = screen.getByTestId('modal-heading');
       expect(modalHeading).toHaveTextContent("ASK A QUESTION");

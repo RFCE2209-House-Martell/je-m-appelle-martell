@@ -10,7 +10,7 @@ const Answer = (props) => {
       <div className="answer-text"><strong className="answer-body">A: </strong> {answer.body}</div>
 
       <div className="answer-options">
-        <div>by {answer.answerer_name} - {date} | </div>
+        <div data-testid="tester-name">by {answer.answerer_name} - {date} | </div>
         <div>Helpful? <button onClick={() => props.helpfulSubmit(answer.answer_id)}>Yes</button> ({answer.helpfulness}) | </div>
         <button onClick={() => props.reportAnswer(answer.answer_id)}>Report</button>
       </div>
