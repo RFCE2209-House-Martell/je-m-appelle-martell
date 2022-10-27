@@ -15,7 +15,7 @@ button:hover {
 .header {
   background-color: #900505;
   display: grid;
-  grid-template-columns: 80vw 15vw 5vw;
+  grid-template-columns: 85vw 15vw;
   align-items: center;
   width: 100.5vw;
   height: 70px;
@@ -23,16 +23,11 @@ button:hover {
 }
 
 .lightSwitch {
-  margin-top: 5px;
+  position: absolute;
+  right: 90px;
+  top: 22px;
   justify-self: end;
-}
-
-.sun {
-  color: #ffe2b3;
-}
-
-.moon {
-  color: black;
+  color: white;
 }
 
 .logo {
@@ -43,18 +38,19 @@ button:hover {
 .cartCount {
   position: absolute;
   font-size: 10px;
-  margin-left: 13px;
+  right: 7.5px;
   margin-top: 10px;
   width: 20px;
   text-align: center;
 }
 
 .cart {
+  position: absolute;
   color: white;
   align-self: center;
-  margin-top: 8px;
   justify-self: end;
-  margin-right: 2vw;
+  right: 30px;
+  top: 15px;
 }
 
 .cart:hover {
