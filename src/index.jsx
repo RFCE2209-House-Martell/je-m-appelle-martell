@@ -11,8 +11,6 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
-import Logger from './components/logger/logger.jsx';
-import loggerAPI from './components/logger/api.js';
 
 const App = () => {
   const [productId, setProductId] = useState(66642);
