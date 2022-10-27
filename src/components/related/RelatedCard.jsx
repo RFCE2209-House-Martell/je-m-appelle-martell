@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from '../sharedFolder/modal.jsx';
+import noImg from './unavailable.jpeg';
+// var noImg = require('../overview/unavailable.jpeg').default;
 
 const RelatedCard = (props) => {
 
-  var noImg = require('../overview/unavailable.jpeg').default;
-
   const [productImage, setProductImage] = useState([])
-
 
   const componentStyle = {
     border: '2px solid black',
@@ -17,24 +16,6 @@ const RelatedCard = (props) => {
 
   useEffect(() => {
     if (props.relatedProduct) {
-      axios.get(`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/related`, {
-        headers: {
-          'Authorization': process.env.REACT_APP_API_KEY
-        },
-      })
-      .then(data => {
-        console.log('DATA', data)
-        props.updateRelated(data.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
-  }, [props.productId])
-
-  useEffect(() => {
-    if (props.relatedProduct) {
-      console.log(props.relatedProduct)
       axios.get (`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/styles`, {
         headers: {
           'Authorization': process.env.REACT_APP_API_KEY
@@ -54,7 +35,6 @@ const RelatedCard = (props) => {
   }
 
   const handleModalClick = (e) => {
-    console.log('clicked')
     props.setShowCompare(true)
     props.changeRelatedProductFeatures(props.relatedProduct.id)
   }
@@ -66,8 +46,8 @@ const RelatedCard = (props) => {
           <button onClick={handleModalClick}>star</button>
         </div>
         <div onClick={handleCardClick} >
-          <div> {productImage === null ? <img src={noImg} style={{width='150px'}} /> : <img style={{width: '150px'}}src={productImage} />} </div>
-          <name>Name: {props.relatedProduct.name}</name>
+          <div> {productImage === null ? <img src={noImg} style={{width:'150px'}} /> : <img style={{width:'150px'}} src={productImage} />} </div>
+          <div>Name: {props.relatedProduct.name}</div>
           <div>Category: {props.relatedProduct.category}</div>
           <div>description: {props.relatedProduct.description}</div>
           <div>price: {props.relatedProduct.default_price} </div>

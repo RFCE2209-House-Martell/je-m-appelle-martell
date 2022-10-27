@@ -8,7 +8,6 @@ import QuestionsAnswersContainer from './components/questions/questionsAnswersCo
 import Ratings from './components/ratings/ratings.jsx';
 import './components/sharedFolder/martell-logo.png';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { HiOutlineSun, HiMoon } from "react-icons/hi";
 import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
@@ -23,9 +22,6 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
-  const [lightMode, setLightMode] = useState(true); // light mode is true when light mode, and false when dark mode
-  // feel free to pass into your components to change any colors you want to change
-  // see lines 103-114 of this file to see how I changed the colors of things
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
@@ -100,19 +96,6 @@ const App = () => {
     console.log(cart);
   };
 
-  var flipSwitch = () => {
-    if (lightMode) {
-      document.body.style.backgroundColor = "	#282828";
-      document.body.style.color = "white";
-      document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "invert(90%)");
-    } else {
-      document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
-      document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "none");
-    }
-    setLightMode(!lightMode);
-  };
-
   return (
     <>
       <div>
@@ -138,16 +121,11 @@ const App = () => {
         </Modal>
         <div className="header">
           <img className="logo" src={require('./components/sharedFolder/martell-logo.png').default} alt="martell-logo" />
-          <div onClick={showCart}>
-            <IconContext.Provider value={{size: '25px'}}>
-              { lightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch"/> }
+          <div className="cart" onClick={showCart}>
+            <div className="cartCount">{cart.length}</div>
+            <IconContext.Provider value={{size: '40px'}}>
+              <AiOutlineShoppingCart className="cartIcon"/>
             </IconContext.Provider>
-            <div className="cart">
-              <div className="cartCount">{cart.length}</div>
-              <IconContext.Provider value={{size: '40px'}}>
-                <AiOutlineShoppingCart className="cartIcon"/>
-              </IconContext.Provider>
-            </div>
           </div>
         </div>
         <div className="app">

@@ -8,25 +8,6 @@ const OutfitList = (props) => {
   const [renderedOutfits, setRenderedOutfits] = useState([0, 1, 2])
   const [productImage, setProductImage] = useState([])
 
-  //function to add to this state from addProduct card click and adds the overview item (located in main index)
-
-  // useEffect(() => {
-  //   if (props.relatedProduct) {
-  //     console.log(props.relatedProduct)
-  //     axios.get (`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/styles`, {
-  //       headers: {
-  //         'Authorization': process.env.REACT_APP_API_KEY
-  //       },
-  //     })
-  //     .then(data => {
-  //       setProductImage(data.data.results[0].photos[0].thumbnail_url)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  //   }
-  // }, [props.allProducts, props.productId, props.relatedProduct])
-
   const addToOutfit = (aProductId) => {
     const product = props.allProducts.find(({id}) => {
       return id === aProductId
@@ -63,16 +44,20 @@ const OutfitList = (props) => {
 
       {renderedOutfits.map((displayIndex, index) => {
         if (displayIndex === 0) {
-          return <AddOutfitCard addToOutfit={addToOutfit} productId={props.productId} outfitProducts={props.outfitProducts}/>
+          return <AddOutfitCard addToOutfit={addToOutfit} productId={props.productId} outfitProducts={props.outfitProducts} key={index}
+          updateRelated={props.updateRelated}
+          setProductId={props.setProductId}/>
         }
         if (props.outfitProducts.length && props.outfitProducts[displayIndex - 1]) {
           return <OutfitCard
+          relatedProducts={props.relatedProducts}
           product={props.outfitProducts[displayIndex - 1]}
           key={props.outfitProducts[displayIndex - 1].id}
           outfitProducts={props.outfitProducts}
           setOutfitProducts={props.setOutfitProducts}
           setProductId={props.setProductId}
-          productId={props.productId} />
+          productId={props.productId}
+          />
         }
         return null;
       })

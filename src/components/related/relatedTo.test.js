@@ -60,7 +60,6 @@ describe.only('relatedTo and Outfit Lists', () => {
     render(<OutfitCard product={product} productId={productId} outfitProducts={outfitProducts} />)
 
     const card = screen.getByText('Name: jz')
-    console.log('card', card)
     const button = screen.getByText('x')
     const category = screen.getByText('Category: stuff')
     const description = screen.getByText('description: more stuff')
