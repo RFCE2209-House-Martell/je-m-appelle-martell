@@ -40,7 +40,6 @@ const App = () => {
       },
     })
     .then(data => {
-      console.log('DATA', data)
       setRelatedProductName(data.data.name)
       setRelatedProductFeatures(data.data.features)
       getOverviewFeatures(productId)

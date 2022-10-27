@@ -23,7 +23,6 @@ const RelatedList = (props) => {
       let realData = data.data
       realData.forEach((id) => {
         for (let i = 0; i < props.allProducts.length; i++) {
-          console.log('balh', props.outfitProducts, id)
           if (id === props.allProducts[i].id) {
             if (!props.outfitProducts.find(product => product.id === id)) {
             tempArr.push(props.allProducts[i])
