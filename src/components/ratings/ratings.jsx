@@ -3,7 +3,7 @@ import axios from 'axios';
 import RatingsSection from './ratingsSection.jsx';
 import ReviewsSection from './reviewsSection.jsx';
 import AddReview from './addReview.jsx';
-import './ratingsStyles.css'
+import './ratingsStyles.css';
 
 const token = process.env.REACT_APP_API_KEY;
 
@@ -54,10 +54,10 @@ const Ratings = (props) => {
   }, [sortedData]);
 
   return (
-    <div id='ratings-and-reviews-widget'>
+    <div className='widget' id='ratings-and-reviews-widget'>
       <RatingsSection metaData={metaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars} reviewStar={reviewStar} setReviewStar={setReviewStar}/>
       <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData} showModal={showModal} setShowModal={setShowModal} getReviews={getReviews}/>
-      <AddReview showModal={showModal} setShowModal={setShowModal} characteristics={metaData.characteristics} productId={props.productId}/>
+      <AddReview showModal={showModal} setShowModal={setShowModal} characteristics={metaData.characteristics} productId={props.productId} getReviews={getReviews}/>
     </div>
   );
 }

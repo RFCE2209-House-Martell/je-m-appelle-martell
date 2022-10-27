@@ -1,3 +1,8 @@
+.widget {
+  display: flex;
+  justify-content: center;
+}
+
 .ratingsSection {
   float: left;
   width: 20%;
@@ -9,15 +14,28 @@
 
 .total-stars {
   font-size: 70px;
-  flex: auto;
+  display:inline-block;
+  flex: 1;
 }
 
 .stars-component {
-  float: right;
+  display:inline-block;
+  flex: 1;
+  margin: 1vw;
 }
 
 .progress-bars {
+  appearance: none;
   width: 70%;
+  height: 12px;
+}
+
+.progress-bars::-webkit-progress-bar {
+  background-color: lightgrey;
+}
+
+.progress-bars::-webkit-progress-value {
+  background: #900505;
 }
 
 .progress-buttons {
@@ -28,6 +46,7 @@
   border-bottom: 2px solid;
   border-radius: 0;
 }
+
 
 .char-list {
   list-style: none;
@@ -56,7 +75,7 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
 
-  border-top: 13px solid #000;
+  border-top: 13px solid #900505;
 }
 
 .characters {
@@ -116,7 +135,8 @@
 
 .reviewsSection {
   float: right;
-  width: 70%;
+  width: 50%;
+  margin: 1vw;
 }
 
 .reviews-scroll {
@@ -130,6 +150,7 @@ select {
   border: 0;
   border-bottom: 2px solid;
   border-radius: 0;
+  background-color: transparent;
 }
 
 .reviews-list {

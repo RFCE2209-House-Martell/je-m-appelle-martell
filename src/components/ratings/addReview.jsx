@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Modal from '../sharedFolder/modal.jsx';
 import StarRating from './starRating.jsx'
 import s3API from '../../s3/api.js';
+
+const token = process.env.REACT_APP_API_KEY;
 
 const AddReview = (props) => {
   if (props.showModal === false) {
@@ -31,6 +34,10 @@ const AddReview = (props) => {
   }
 
   const charHandler = (e) => {
+    setRevForm({...revForm, characteristics: {...revForm.characteristics, [e.target.name]: Number(e.target.value)}})
+  }
+
+  const picturesHandler = (e) => {
     setRevForm({...revForm, characteristics: {...revForm.characteristics, [e.target.name]: e.target.value}})
   }
 
@@ -64,7 +71,30 @@ const AddReview = (props) => {
   }
 
   const handleSubmit = () => {
-
+    console.log(revForm)
+    props.setShowModal(false);
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
+    {
+      product_id: revForm.product_id,
+      rating: revForm.rating,
+      summary: revForm.summary,
+      body: revForm.body,
+      recommend: (revForm.recommend === 'true' ? true : false),
+      name: revForm.name,
+      email: revForm.email,
+      photos: revForm.photos,
+      characteristics: revForm.characteristics
+    }, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then(res => {
+      props.getReviews()
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
 
@@ -109,9 +139,9 @@ const AddReview = (props) => {
       <div>
         Username: <input type='text' name='name' id='revUsername' onChange={e => newInput(e)} required></input>
       </div>
-        <button type='submit' onClick={e => (props.setShowModal(false))}>Submit</button>
+        <button type='submit' onClick={e => (handleSubmit())}>Submit</button>
         <button onClick={e => props.setShowModal(false)}>Cancel</button>
-    </form>
+    </div>
     </Modal>
 
     );
