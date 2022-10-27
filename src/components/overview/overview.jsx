@@ -26,7 +26,7 @@ const Overview = (props) => {
 
 
   return (
-    <div className="widget">
+    <div className="widget" id="overview-widget">
       <ImageGallery data={data} styleId={styleId} setSocialPhoto={setSocialPhoto}/>
       <div className="productDetails">
         <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
