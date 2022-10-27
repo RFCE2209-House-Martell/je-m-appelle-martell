@@ -8,7 +8,6 @@ import QuestionsAnswersContainer from './components/questions/questionsAnswersCo
 import Ratings from './components/ratings/ratings.jsx';
 import './components/sharedFolder/martell-logo.png';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
-import { HiOutlineSun, HiMoon } from "react-icons/hi";
 import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
@@ -25,9 +24,6 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
-  const [lightMode, setLightMode] = useState(true); // light mode is true when light mode, and false when dark mode
-  // feel free to pass into your components to change any colors you want to change
-  // see lines 103-114 of this file to see how I changed the colors of things
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
@@ -102,6 +98,7 @@ const App = () => {
     console.log(cart);
   };
 
+
   var flipSwitch = () => {
     if (lightMode) {
       document.body.style.backgroundColor = "	#282828";
@@ -122,6 +119,7 @@ const App = () => {
       }).catch((err) => console.log('Err in logger' + err));
     };
   }
+
 
   return (
     <>

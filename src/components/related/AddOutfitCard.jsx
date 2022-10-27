@@ -14,6 +14,7 @@ const AddOutfitCard = (props) => {
 
   const handleClick = (e) => {
     props.addToOutfit(props.productId)
+    props.updateRelated(props.productId)
   }
 
   return (

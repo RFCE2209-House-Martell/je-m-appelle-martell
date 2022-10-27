@@ -26,6 +26,11 @@ const OutfitCard = (props) => {
       console.log(err)
     })
   }, [props.product])
+console.log('stuff', props.product)
+  const handleCardClick = (e) => {
+
+    props.setProductId(props.product.id)
+  }
 
   const handleClick = (e) => {
     const filteredOutfits = props.outfitProducts.filter(theProduct => {
@@ -33,12 +38,11 @@ const OutfitCard = (props) => {
     })
     props.setOutfitProducts(filteredOutfits)
   }
-  console.log('PRODCUT', productImage)
   return (
-    <div style={componentStyle}  >
+    <div style={componentStyle} onClick={handleCardClick} >
       <div> <button onClick={handleClick} >x</button> </div>
       <div> <img src={productImage} style={{width: '150px'}}/> </div>
-      <name>Name: {props.product.name}</name>
+      <div>Name: {props.product.name}</div>
       <div>Category: {props.product.category}</div>
       <div>description: {props.product.description}</div>
       <div>price: {props.product.price} </div>
