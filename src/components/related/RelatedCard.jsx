@@ -48,6 +48,7 @@ const RelatedCard = (props) => {
         <div onClick={handleCardClick} >
           <div> {productImage === null ? <img src={noImg} style={{width:'150px'}} /> : <img style={{width:'150px'}} src={productImage} />} </div>
           <div>Name: {props.relatedProduct.name}</div>
+
           <div>Category: {props.relatedProduct.category}</div>
           <div>description: {props.relatedProduct.description}</div>
           <div>price: {props.relatedProduct.default_price} </div>
