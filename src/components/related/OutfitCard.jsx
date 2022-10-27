@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { AiOutlineStar } from "react-icons/ai";
+import { CiCircleRemove } from "react-icons/ci";
+import Styles from './Styles.css'
 
 const OutfitCard = (props) => {
 
@@ -10,7 +13,8 @@ const OutfitCard = (props) => {
   const componentStyle = {
     border: '2px solid black',
     alignSelf: '300px',
-    width: '150px'
+    width: '300px',
+    backgroundColor: '#f5ebd8',
   }
 
   useEffect(() => {
@@ -39,14 +43,20 @@ console.log('stuff', props.product)
     props.setOutfitProducts(filteredOutfits)
   }
   return (
-    <div style={componentStyle} onClick={handleCardClick} >
-      <div> <button onClick={handleClick} >x</button> </div>
-      <div> <img src={productImage} style={{width: '150px'}}/> </div>
-      <div>Name: {props.product.name}</div>
-      <div>Category: {props.product.category}</div>
-      <div>description: {props.product.description}</div>
-      <div>price: {props.product.price} </div>
-      <div>rating: {props.product.rating} </div>
+    <div style={componentStyle} >
+      <div >
+        <div style={{backgroundColor: '#f5ebd8'}}>
+          <button className='cards' onClick={handleClick} ><CiCircleRemove size='25'/></button>
+        </div>
+        <div onClick={handleCardClick} className='cards'>
+          <div> {productImage === null ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} /> : <img src={productImage} style={{height: '200px', margin: 'auto', display: 'block'}} />} </div>
+          <div><b>Name: </b> {props.product.name}</div>
+          <div><b>Category: </b>{props.product.category}</div>
+          <div><b>description: </b>{props.product.description}</div>
+          <div><b>price: </b>{props.product.price} </div>
+          <div><b>rating: </b>{props.product.rating} </div>
+        </div>
+      </div>
     </div>
   )
 

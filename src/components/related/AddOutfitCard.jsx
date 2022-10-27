@@ -1,15 +1,16 @@
 import React from 'react';
 import index from '../../index.jsx';
 import OutfitList from './OutfitList.jsx';
-// import style from './styling.css'
+import { BsBookmarkPlus } from "react-icons/bs";
+import Styles from './Styles.css';
 
 const AddOutfitCard = (props) => {
 
   const componentStyle = {
     border: '2px solid black',
     alignSelf: '300px',
-    height: '140px',
-    width: '150px'
+    width: '300px',
+    backgroundColor: '#f5ebd8',
   }
 
   const handleClick = (e) => {
@@ -19,7 +20,7 @@ const AddOutfitCard = (props) => {
 
   return (
     <div style={componentStyle}>
-      <div> <button style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick}>+</button> </div>
+      <div> <button className='cards' style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick} style={{height: '475px', width: '300px'}} ><BsBookmarkPlus size='75'/></button> </div>
     </div>
   )
 }

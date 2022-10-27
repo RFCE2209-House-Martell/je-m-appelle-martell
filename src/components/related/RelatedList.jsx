@@ -55,8 +55,8 @@ const RelatedList = (props) => {
   }
 
   return (
-    <div style={{display: 'flex', columnGap: '8px'}}>
-      {renderedProducts[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}}>previous</button>}
+    <div style={{display: 'flex', columnGap: '50px', justifyContent: 'center'}}>
+      {renderedProducts[0] === 0 ? null : <button onClick={previousCard}style={{height: '475px', color: '#e49b34' }} className='arrow'>{'<'}</button>}
       {renderedProducts.map((productIndex, key) => {
         return <RelatedCard
         changeRelatedProductFeatures={props.changeRelatedProductFeatures} setShowCompare={props.setShowCompare}
@@ -70,7 +70,7 @@ const RelatedList = (props) => {
         allProducts={props.allProducts} />
       })}
 
-      {renderedProducts[2] === relatedProducts.length ? null : <button onClick={nextCard} style={{height: '24px'}} >next</button>}
+      {renderedProducts[2] === relatedProducts.length ? null : <button onClick={nextCard} style={{height: '475px', color: '#e49b34' }} className='arrow' >{'>'}</button>}
     </div>
   )
 }

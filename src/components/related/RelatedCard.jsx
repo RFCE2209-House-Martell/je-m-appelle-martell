@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from '../sharedFolder/modal.jsx';
 import noImg from './unavailable.jpeg';
+import Styles from './Styles.css';
+import { AiOutlineStar } from "react-icons/ai";
 // var noImg = require('../overview/unavailable.jpeg').default;
 
 const RelatedCard = (props) => {
@@ -11,7 +13,8 @@ const RelatedCard = (props) => {
   const componentStyle = {
     border: '2px solid black',
     alignSelf: '300px',
-    width: '150px'
+    width: '300px',
+    backgroundColor: '#f5ebd8',
   }
 
   useEffect(() => {
@@ -41,18 +44,21 @@ const RelatedCard = (props) => {
 
   if (props.relatedProduct) {
     return (
-      <div style={componentStyle}>
-        <div >
-          <button onClick={handleModalClick}>star</button>
-        </div>
-        <div onClick={handleCardClick} >
-          <div> {productImage === null ? <img src={noImg} style={{width:'150px'}} /> : <img style={{width:'150px'}} src={productImage} />} </div>
-          <div>Name: {props.relatedProduct.name}</div>
-
-          <div>Category: {props.relatedProduct.category}</div>
-          <div>description: {props.relatedProduct.description}</div>
-          <div>price: {props.relatedProduct.default_price} </div>
-          <div>rating: {props.relatedProduct.rating} </div>
+      <div style={componentStyle} >
+        <div>
+          <div style={{backgroundColor: '#f5ebd8'}}>
+            <button onClick={handleModalClick} className='cards' ><AiOutlineStar size='25' /></button>
+          </div>
+          <div onClick={handleCardClick} className='cards'>
+            <div >
+              <div> {productImage === null ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} /> : <img style={{height: '200px', margin: 'auto', display: 'block'}} src={productImage} />} </div>
+            </div>
+            <div><b>Name: </b>{props.relatedProduct.name}</div>
+            <div><b>Category: </b>{props.relatedProduct.category}</div>
+            <div><b>description: </b> {props.relatedProduct.description}</div>
+            <div><b>price: </b> {props.relatedProduct.default_price} </div>
+            <div><b>rating: </b> {props.relatedProduct.rating} </div>
+          </div>
         </div>
       </div>
     )

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useMemo } from 'react';
 import OutfitCard from './OutfitCard.jsx';
 import AddOutfitCard from './AddOutfitCard.jsx';
+import Styles from './Styles.css';
 
 const OutfitList = (props) => {
 
@@ -39,8 +40,8 @@ const OutfitList = (props) => {
   }
 
   return (
-    <div style={{display: 'flex', columnGap: '8px'}}>
-      {renderedOutfits[0] === 0 ? null : <button onClick={previousCard}style={{height: '24px'}} >previous</button>}
+    <div style={{display: 'flex', columnGap: '50px', justifyContent: 'center'}}>
+      {renderedOutfits[0] === 0 ? null : <button onClick={previousCard}style={{height: '475px', color: '#e49b34' }} className='arrow'>{'<'}</button>}
 
       {renderedOutfits.map((displayIndex, index) => {
         if (displayIndex === 0) {
@@ -63,7 +64,7 @@ const OutfitList = (props) => {
       })
       }
 
-      {renderedOutfits[2] === props.outfitProducts.length || renderedOutfits[1] === props.outfitProducts.length || props.outfitProducts.length === 0 ? null : <button onClick={nextCard} style={{height: '24px'}}>next</button>}
+      {renderedOutfits[2] === props.outfitProducts.length || renderedOutfits[1] === props.outfitProducts.length || props.outfitProducts.length === 0 ? null : <button onClick={nextCard} style={{height: '475px', color: '#e49b34' }} className='arrow' >{'>'}</button>}
     </div>
   )
 }
