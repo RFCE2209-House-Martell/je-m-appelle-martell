@@ -54,10 +54,10 @@ const Ratings = (props) => {
   }, [sortedData]);
 
   return (
-    <div>
+    <div id='ratings-and-reviews-widget'>
       <RatingsSection metaData={metaData} setAvgStars={props.setAvgStars} avgStars={props.avgStars} reviewStar={reviewStar} setReviewStar={setReviewStar}/>
       <ReviewsSection reviewData={reviewData} reviewStar={reviewStar} setSortedData={setSortedData} sortedData={sortedData} showModal={showModal} setShowModal={setShowModal} getReviews={getReviews}/>
-      <AddReview showModal={showModal} setShowModal={setShowModal} characteristics={metaData.characteristics}/>
+      <AddReview showModal={showModal} setShowModal={setShowModal} characteristics={metaData.characteristics} productId={props.productId}/>
     </div>
   );
 }
