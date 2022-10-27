@@ -74,7 +74,7 @@ const ImageGallery = (props) => {
 
       <div className="carousel">
         {selected === 0 ? null: <button className="arrow arrowL" onClick={() => handleArrows('left')}>{'<'}</button>}
-        <img src={mainImg} alt="main image" className="mainImg" onClick={zoomIn}/>
+        <img src={mainImg} id="main-image" alt="main image" className="mainImg" onClick={zoomIn}/>
         {selected === photos.length - 1 || photos.length === 0 ? null : <button className="arrow arrowR" onClick={() => handleArrows('right')}>{'>'}</button>}
         {zoom ? <ExpandedView img={mainImg} setZoom={setZoom} selected={selected} photos={photos} handleArrows={handleArrows}/> : null}
       </div>
