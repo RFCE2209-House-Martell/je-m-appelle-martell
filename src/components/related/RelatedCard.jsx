@@ -4,9 +4,10 @@ import Modal from '../sharedFolder/modal.jsx';
 
 const RelatedCard = (props) => {
 
+  var noImg = require('../overview/unavailable.jpeg').default;
+
   const [productImage, setProductImage] = useState([])
 
-  // var noImg = require('./unavailable.jpeg').default;
 
   const componentStyle = {
     border: '2px solid black',
@@ -65,7 +66,7 @@ const RelatedCard = (props) => {
           <button onClick={handleModalClick}>star</button>
         </div>
         <div onClick={handleCardClick} >
-          <div> {productImage === null ? null : <img style={{width: '150px'}}src={productImage} />} </div>
+          <div> {productImage === null ? <img src={noImg} style={{width='150px'}} /> : <img style={{width: '150px'}}src={productImage} />} </div>
           <name>Name: {props.relatedProduct.name}</name>
           <div>Category: {props.relatedProduct.category}</div>
           <div>description: {props.relatedProduct.description}</div>

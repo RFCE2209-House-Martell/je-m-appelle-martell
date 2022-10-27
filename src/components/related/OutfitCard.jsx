@@ -5,6 +5,8 @@ const OutfitCard = (props) => {
 
   const [productImage, setProductImage] = useState('')
 
+  var noImg = require('./unavailable.jpeg').default;
+
   const componentStyle = {
     border: '2px solid black',
     alignSelf: '300px',
@@ -19,17 +21,6 @@ const OutfitCard = (props) => {
     })
     .then(data => {
       setProductImage(data.data.results[0].photos[0].thumbnail_url)
-      // data.data.map((id) => {
-      //   for (let i = 0; i < props.allProducts.length; i++) {
-      //     if (id === props.allProducts[i].id) {
-      //       tempArr.push(props.allProducts[i])
-      //     } else {
-      //       null
-      //     }
-      //   }
-      // })
-      // setRelatedProducts(tempArr)
-      // setRenderedProducts([0, 1, 2])
     })
     .catch(err => {
       console.log(err)
