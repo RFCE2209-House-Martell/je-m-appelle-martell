@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../sharedFolder/modal.jsx';
 import StarRating from './starRating.jsx'
+import s3API from '../../s3/api.js';
 
 const AddReview = (props) => {
   if (props.showModal === false) {
@@ -20,20 +21,62 @@ const AddReview = (props) => {
   };
 
   const [recommended, setRecommended] = useState(false)
-  const [revForm, setRevForm] = useState({})
+  const [revForm, setRevForm] = useState({product_id: props.productId, rating: 0, summary: '', body: '', recommend: false, name: '', email: '', photos: [], characteristics: {}})
+  let picturesArray = []
+
+
 
   const newInput = (e) => {
     setRevForm({...revForm, [e.target.name]: e.target.value});
   }
 
+  const charHandler = (e) => {
+    setRevForm({...revForm, characteristics: {...revForm.characteristics, [e.target.name]: e.target.value}})
+  }
+
+  const picturesHandler = (e) => {
+    console.log(e.target.files)
+
+    let pictures = Object.keys(e.target.files).map((photo, index) => {
+      return new Promise((resolve, reject) => {
+        s3API.getSecureS3URL(e.target.files[index])
+        .then(res => {
+          resolve(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      })
+    })
+
+    Promise.all(pictures)
+    .then((data) => {
+      data.forEach(res => {
+        if (res) {
+          picturesArray.push(res)
+        }
+      })
+      setRevForm({...revForm, photos: picturesArray})
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  const handleSubmit = () => {
+
+  }
+
 
   return (
     <Modal styles={modalStyles} show={props.showModal} onClose={() => props.setShowModal(false)}>
-    <div className='modal-body'>
+    <form className='modal-body' action={console.log(revForm)}>
       <div>
         Write a review
       </div>
-      <div><StarRating revForm={revForm} setRevForm={setRevForm}/></div>
+      <div>
+        <StarRating revForm={revForm} setRevForm={setRevForm}/>
+      </div>
       <fieldset>
         <div>Recommend? </div>
         <div>
@@ -53,11 +96,11 @@ const AddReview = (props) => {
       </div>
       <div>
         Add Photos
-        <input type='file' accept='image/*' id='revAddImage' plaecholder='Add Image'></input>
+        <input type='file' multiple accept='image/*' id='revAddImage' plaecholder='Add Image' onChange={e => picturesHandler(e)}></input>
       </div>
       <div>
         {Object.keys(props.characteristics).map((charKey, index) => {
-          return(<div>{charKey}<input type='range' name={props.characteristics[charKey].id} key={charKey+index} max='5' min='1' onChange={e => newInput(e)} required></input></div>)
+          return(<div>{charKey}<input type='range' name={props.characteristics[charKey].id} key={charKey+index} max='5' min='1' onChange={e => charHandler(e)} required></input></div>)
         })}
       </div>
       <div>
@@ -66,9 +109,9 @@ const AddReview = (props) => {
       <div>
         Username: <input type='text' name='name' id='revUsername' onChange={e => newInput(e)} required></input>
       </div>
-      <button onClick={e => (props.setShowModal(false), console.log(revForm))}>Submit</button>
-      <button onClick={e => props.setShowModal(false)}>Cancel</button>
-      </div>
+        <button type='submit' onClick={e => (props.setShowModal(false))}>Submit</button>
+        <button onClick={e => props.setShowModal(false)}>Cancel</button>
+    </form>
     </Modal>
 
     );
