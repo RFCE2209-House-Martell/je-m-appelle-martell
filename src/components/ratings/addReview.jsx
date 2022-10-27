@@ -38,6 +38,12 @@ const AddReview = (props) => {
   }
 
   const picturesHandler = (e) => {
+    setRevForm({...revForm, characteristics: {...revForm.characteristics, [e.target.name]: e.target.value}})
+  }
+
+  const picturesHandler = (e) => {
+    console.log(e.target.files)
+
     let pictures = Object.keys(e.target.files).map((photo, index) => {
       return new Promise((resolve, reject) => {
         s3API.getSecureS3URL(e.target.files[index])
@@ -94,7 +100,7 @@ const AddReview = (props) => {
 
   return (
     <Modal styles={modalStyles} show={props.showModal} onClose={() => props.setShowModal(false)}>
-    <div className='modal-body'>
+    <form className='modal-body' action={console.log(revForm)}>
       <div>
         Write a review
       </div>

@@ -12,6 +12,8 @@ import { HiOutlineSun, HiMoon } from "react-icons/hi";
 import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
+import Logger from './components/logger/logger.jsx';
+import loggerAPI from './components/logger/api.js';
 
 const App = () => {
   const [productId, setProductId] = useState(66642);
@@ -113,18 +115,27 @@ const App = () => {
     setLightMode(!lightMode);
   };
 
+  const handleElementClick = (e) => {
+    if (e.target.id) {
+      return loggerAPI.logUserInteraction(e).then((res) => {
+        console.log('Result from logger' + res);
+      }).catch((err) => console.log('Err in logger' + err));
+    };
+  }
+
   return (
     <>
-      <div>
-        <Modal className='compare' show={showCompare} onClose={() => setShowCompare(false)} styles={compareModalStyle} >
-          <button onClick={() => {setShowCompare(false)}}>X</button>
-            <h3 style={{justifyContent: 'center', display: 'flex'}}>Comparision</h3>
-          <table>
-            <tr>
-              <th>{overviewProductName}</th>
-              <th>Feature</th>
-              <th>{relatedProductName}</th>
-            </tr>
+      <Logger logHandler={(e) => handleElementClick(e)}>
+        <div>
+          <Modal className='compare' show={showCompare} onClose={() => setShowCompare(false)} styles={compareModalStyle} >
+            <button onClick={() => { setShowCompare(false) }}>X</button>
+            <h3 style={{ justifyContent: 'center', display: 'flex' }}>Comparision</h3>
+            <table>
+              <tr>
+                <th>{overviewProductName}</th>
+                <th>Feature</th>
+                <th>{relatedProductName}</th>
+              </tr>
               {Object.keys(traits).map((trait) => {
                 return (
                   <tr>
@@ -134,31 +145,27 @@ const App = () => {
                   </tr>
                 )
               })}
-          </table>
-        </Modal>
-        <div className="header">
-          <img className="logo" src={require('./components/sharedFolder/martell-logo.png').default} alt="martell-logo" />
-          <div onClick={showCart}>
-            <IconContext.Provider value={{size: '25px'}}>
-              { lightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch"/> }
-            </IconContext.Provider>
-            <div className="cart">
+            </table>
+          </Modal>
+          <div className="header">
+            <img className="logo" src={require('./components/sharedFolder/martell-logo.png').default} alt="martell-logo" />
+            <div className="cart" onClick={showCart}>
               <div className="cartCount">{cart.length}</div>
-              <IconContext.Provider value={{size: '40px'}}>
-                <AiOutlineShoppingCart className="cartIcon"/>
+              <IconContext.Provider value={{ size: '40px' }}>
+                <AiOutlineShoppingCart className="cartIcon" />
               </IconContext.Provider>
             </div>
           </div>
+          <div className="app">
+            <Overview productId={productId} avgStars={avgStars} />
+            <RelatedApp changeRelatedProductFeatures={changeRelatedProductFeatures} setShowCompare={setShowCompare} productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
+            <QuestionsAnswersContainer productId={productId} />
+            <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
+          </div>
         </div>
-        <div className="app">
-          <Overview productId={productId} avgStars={avgStars} />
-          <RelatedApp changeRelatedProductFeatures={changeRelatedProductFeatures} setShowCompare={setShowCompare} productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
-          <QuestionsAnswersContainer productId={productId} />
-          <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
-        </div>
-      </div>
+      </Logger>
     </>
-);
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
