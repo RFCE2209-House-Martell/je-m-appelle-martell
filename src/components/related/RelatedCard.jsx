@@ -4,6 +4,10 @@ import Modal from '../sharedFolder/modal.jsx';
 
 const RelatedCard = (props) => {
 
+  const [productImage, setProductImage] = useState([])
+
+  // var noImg = require('./unavailable.jpeg').default;
+
   const componentStyle = {
     border: '2px solid black',
     alignSelf: '300px',
@@ -18,6 +22,7 @@ const RelatedCard = (props) => {
         },
       })
       .then(data => {
+        console.log('DATA', data)
         props.updateRelated(data.data)
       })
       .catch(err => {
@@ -25,6 +30,23 @@ const RelatedCard = (props) => {
       })
     }
   }, [props.productId])
+
+  useEffect(() => {
+    if (props.relatedProduct) {
+      console.log(props.relatedProduct)
+      axios.get (`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/styles`, {
+        headers: {
+          'Authorization': process.env.REACT_APP_API_KEY
+        },
+      })
+      .then(data => {
+        setProductImage(data.data.results[0].photos[0].thumbnail_url)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }, [props.allProducts, props.productId, props.relatedProduct])
 
   const handleCardClick = (e) => {
     props.setProductId(props.relatedProduct.id)
@@ -43,11 +65,11 @@ const RelatedCard = (props) => {
           <button onClick={handleModalClick}>star</button>
         </div>
         <div onClick={handleCardClick} >
-          <div> <img /> </div>
+          <div> <img style={{width: '150px'}}src={productImage} /> </div>
           <name>Name: {props.relatedProduct.name}</name>
           <div>Category: {props.relatedProduct.category}</div>
           <div>description: {props.relatedProduct.description}</div>
-          <div>price: {props.relatedProduct.price} </div>
+          <div>price: {props.relatedProduct.default_price} </div>
           <div>rating: {props.relatedProduct.rating} </div>
         </div>
       </div>

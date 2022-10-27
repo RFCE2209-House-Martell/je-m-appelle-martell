@@ -6,8 +6,26 @@ import AddOutfitCard from './AddOutfitCard.jsx';
 const OutfitList = (props) => {
 
   const [renderedOutfits, setRenderedOutfits] = useState([0, 1, 2])
+  const [productImage, setProductImage] = useState([])
 
   //function to add to this state from addProduct card click and adds the overview item (located in main index)
+
+  // useEffect(() => {
+  //   if (props.relatedProduct) {
+  //     console.log(props.relatedProduct)
+  //     axios.get (`${process.env.REACT_APP_BASE_URL}products/${props.relatedProduct.id}/styles`, {
+  //       headers: {
+  //         'Authorization': process.env.REACT_APP_API_KEY
+  //       },
+  //     })
+  //     .then(data => {
+  //       setProductImage(data.data.results[0].photos[0].thumbnail_url)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  //   }
+  // }, [props.allProducts, props.productId, props.relatedProduct])
 
   const addToOutfit = (aProductId) => {
     const product = props.allProducts.find(({id}) => {
