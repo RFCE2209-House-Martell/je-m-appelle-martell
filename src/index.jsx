@@ -8,6 +8,7 @@ import QuestionsAnswersContainer from './components/questions/questionsAnswersCo
 import Ratings from './components/ratings/ratings.jsx';
 import './components/sharedFolder/martell-logo.png';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { HiOutlineSun, HiMoon } from "react-icons/hi";
 import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
@@ -22,6 +23,7 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
+  const [nightMode, setNightMode] = useState(false);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
@@ -96,6 +98,19 @@ const App = () => {
     console.log(cart);
   };
 
+  var flipSwitch = () => {
+    if (!nightMode) {
+      document.body.style.backgroundColor = "	#282828";
+      document.body.style.color = "white";
+      document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "invert(90%)");
+    } else {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "none");
+    }
+    setNightMode(!nightMode);
+  };
+
   return (
     <>
       <div>
@@ -121,6 +136,9 @@ const App = () => {
         </Modal>
         <div className="header">
           <img className="logo" src={require('./components/sharedFolder/martell-logo.png').default} alt="martell-logo" />
+          <IconContext.Provider value={{size: '25px'}}>
+            { nightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch moon"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch sun"/> }
+          </IconContext.Provider>
           <div className="cart" onClick={showCart}>
             <div className="cartCount">{cart.length}</div>
             <IconContext.Provider value={{size: '40px'}}>
