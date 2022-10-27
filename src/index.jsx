@@ -23,7 +23,7 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
-  const [nightMode, setNightMode] = useState(false);
+  const [nightMode, setNightMode] = useState(true);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
@@ -99,7 +99,7 @@ const App = () => {
   };
 
   var flipSwitch = () => {
-    if (!nightMode) {
+    if (nightMode) {
       document.body.style.backgroundColor = "	#282828";
       document.body.style.color = "white";
       document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "invert(90%)");
@@ -136,10 +136,10 @@ const App = () => {
         </Modal>
         <div className="header">
           <img className="logo" src={require('./components/sharedFolder/martell-logo.png').default} alt="martell-logo" />
-          <IconContext.Provider value={{size: '25px'}}>
-            { nightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch moon"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch sun"/> }
-          </IconContext.Provider>
           <div className="cart" onClick={showCart}>
+            <IconContext.Provider value={{size: '25px'}}>
+              { nightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch moon"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch sun"/> }
+            </IconContext.Provider>
             <div className="cartCount">{cart.length}</div>
             <IconContext.Provider value={{size: '40px'}}>
               <AiOutlineShoppingCart className="cartIcon"/>
