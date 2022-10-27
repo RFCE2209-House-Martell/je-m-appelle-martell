@@ -60,14 +60,16 @@ const QuestionsAnswersContainer = (props) => {
   }, [searchInput, questionCount, questionPage, productId]);
 
   return (
-    <div id="qa-widget" className="qa-main-container">
-      <h1 data-testid="feature-heading" className="feature-heading">QUESTIONS AND ANSWERS</h1>
-      <div>
-        <AnswerSearchBar productId={productId} Input={searchInput} onSearch={onHandleSearch} />
-        <div className="qa-section-container">
-          <QuestionList productId={productId} questions={questions} answerPage={answerPage} answerCount={answerCount} helpfulSubmit={onHandleHelpfulSubmit} />
+    <div className="top-qa-container">
+      <div id="qa-widget" className="qa-main-container">
+        <h1 data-testid="feature-heading" className="feature-heading">QUESTIONS AND ANSWERS</h1>
+        <div>
+          <AnswerSearchBar productId={productId} Input={searchInput} onSearch={onHandleSearch} />
+          <div className="qa-section-container">
+            <QuestionList productId={productId} questions={questions} answerPage={answerPage} answerCount={answerCount} helpfulSubmit={onHandleHelpfulSubmit} />
+          </div>
+          <QuestionsFooter productId={productId} loadMoreAnswers={onLoadMoreAnswers} loadMoreQuestions={onLoadMoreQuestions} />
         </div>
-        <QuestionsFooter productId={productId} loadMoreAnswers={onLoadMoreAnswers} loadMoreQuestions={onLoadMoreQuestions} />
       </div>
     </div>
   );

@@ -11,12 +11,15 @@ const Answer = (props) => {
 
       <div className="answer-options">
         <div data-testid="tester-name">by {answer.answerer_name} - {date} | </div>
-        <div>Helpful? <button onClick={() => props.helpfulSubmit(answer.answer_id)}>Yes</button> ({answer.helpfulness}) | </div>
-        <button onClick={() => props.reportAnswer(answer.answer_id)}>Report</button>
+
+        <div className="answer-buttons">
+          <div> Helpful? <button onClick={() => props.helpfulSubmit(answer.answer_id)}>Yes</button> ({answer.helpfulness}) | </div>
+          <button onClick={() => props.reportAnswer(answer.answer_id)}>Report</button>
+        </div>
       </div>
 
       <div>{answer.photos.map((photo, index) => {
-        return (<img src={`${photo.url.split(':')[1]}`} key={index} />)
+        return (<img className="answer-image" src={`${photo.url.split(':')[1]}`} key={index} />)
       })}</div>
       <br></br>
     </div>

@@ -3,9 +3,19 @@
   width: auto;
 }
 
+.top-qa-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .qa-main-container {
-  width: auto;
-  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
+  width: 50%;
 }
 
 .qa-section-container {
@@ -16,12 +26,13 @@
 }
 
 .feature-heading {
-  color: rgb(70, 69, 69);
+  /* color: rgb(70, 69, 69); */
 }
 
 .search-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 36px;
 }
 
 .search-bar {
@@ -47,6 +58,13 @@
   width: 50px;
 }
 
+.question-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .question-container {
   display: flex;
   flex-direction: row;
@@ -61,32 +79,46 @@
   justify-content: space-between;
 }
 
+.question-body-container {
+  /* display: flex;
+  width: 80%;
+  flex-wrap: wrap; */
+}
+
 .question-body {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
   font-weight: 900;
   font-size: 24px;
-  color: rgb(73, 73, 73);
+  /* color: rgb(73, 73, 73); */
 }
 
 .answer-body {
   font-weight: 900;
   font-size: 24px;
-  color: rgb(73, 73, 73);
+  /* color: rgb(73, 73, 73); */
 }
 
 .answer-text {
-  color: rgb(144, 143, 143);
+  /* color: rgb(144, 143, 143); */
   font-size: 18px;
 }
 
 .answer-options {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 30%;
+  /* width: 100%; */
   margin-top: 16px;
   margin-bottom: 16px;
   color: gray;
   flex-wrap: wrap;
+  padding-left: 36px;
+}
+
+.answer-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 .answer-container button {
@@ -94,6 +126,13 @@
   border: none;
   text-decoration: underline;
   color: gray;
+}
+
+.answer-image {
+  height: 75px;
+  width: 75px;
+  margin-left: 10px;
+  border: 1px solid black;
 }
 
 .question-container button {
@@ -132,7 +171,7 @@
 
 .footer-button-container-button:hover {
   color: blue;
-  background-color: rgb(248, 248, 248);
+  /* background-color: rgb(248, 248, 248); */
   transition: 250ms ease-in-out;
 }
 
@@ -189,4 +228,35 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+@media screen and (max-width: 1038px) {
+  .qa-main-container {
+    width: 100%;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .footer-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    min-height: 300px;
+  }
+
+  .footer-button-container-button {
+    width: 100%;
+  }
+
+  .add-question-button {
+    margin: 0;
+    width: 100%;
+  }
+
 }
