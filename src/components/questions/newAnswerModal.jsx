@@ -63,7 +63,7 @@ const NewAnswerModal = (props) => {
 
           <div className="input-container">
             <label>PHOTOS</label>
-            <input type="file" name="photos" multiple accept="image/*" onChange={(e) => handleImageUpload(e)} />
+            <input className="image-upload-input" type="file" name="photos" multiple accept="image/*" placeholder="select images to upload" onChange={(e) => handleImageUpload(e)} />
           </div>
 
           <div className="modal-footer">

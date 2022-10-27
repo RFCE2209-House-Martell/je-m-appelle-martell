@@ -13,7 +13,7 @@ const Question = (props) => {
       <br></br>
       <div className="question-container">
         <div className="question-body-container"><strong className="question-body">Q: {question_body}</strong></div>
-        <div>Helpful?  <button onClick={() => props.helpfulSubmit(question_id)}>Yes</button> ({question_helpfulness})</div>
+        <div className="question-options-container">Helpful?  <button onClick={() => props.helpfulSubmit(question_id)}>Yes</button> ({question_helpfulness})</div>
         <NewAnswerModal questionId={question_id} />
       </div>
 
