@@ -12,6 +12,7 @@ import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
 import Logger from './components/logger/logger.jsx';
+import loggerAPI from './components/logger/api.js';
 
 const App = () => {
   const [productId, setProductId] = useState(66642);
@@ -98,15 +99,11 @@ const App = () => {
   };
 
   const handleElementClick = (e) => {
-    console.log(e.target);
-
-    // const ele = e.target.id;
-
-    // if (e.target.id) {
-    //   return api.logUserInteraction(ele).then((res) => {
-    //     console.log('Result from logger' + res);
-    //   }).catch((err) => console.log('Err in logger' + err));
-    // };
+    if (e.target.id) {
+      return loggerAPI.logUserInteraction(e).then((res) => {
+        console.log('Result from logger' + res);
+      }).catch((err) => console.log('Err in logger' + err));
+    };
   }
 
   return (
