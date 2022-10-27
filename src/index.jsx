@@ -23,7 +23,9 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
-  const [nightMode, setNightMode] = useState(true);
+  const [lightMode, setLightMode] = useState(true); // light mode is true when light mode, and false when dark mode
+  // feel free to pass into your components to change any colors you want to change
+  // see lines 103-114 of this file to see how I changed the colors of things
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
@@ -99,7 +101,7 @@ const App = () => {
   };
 
   var flipSwitch = () => {
-    if (nightMode) {
+    if (lightMode) {
       document.body.style.backgroundColor = "	#282828";
       document.body.style.color = "white";
       document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "invert(90%)");
@@ -108,7 +110,7 @@ const App = () => {
       document.body.style.color = "black";
       document.querySelectorAll('.single-star-container').forEach((star) => star.style.filter = "none");
     }
-    setNightMode(!nightMode);
+    setLightMode(!lightMode);
   };
 
   return (
@@ -136,14 +138,16 @@ const App = () => {
         </Modal>
         <div className="header">
           <img className="logo" src={require('./components/sharedFolder/martell-logo.png').default} alt="martell-logo" />
-          <div className="cart" onClick={showCart}>
+          <div onClick={showCart}>
             <IconContext.Provider value={{size: '25px'}}>
-              { nightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch moon"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch sun"/> }
+              { lightMode ? <HiMoon onClick={flipSwitch} className="lightSwitch"/> : <HiOutlineSun onClick={flipSwitch} className="lightSwitch"/> }
             </IconContext.Provider>
-            <div className="cartCount">{cart.length}</div>
-            <IconContext.Provider value={{size: '40px'}}>
-              <AiOutlineShoppingCart className="cartIcon"/>
-            </IconContext.Provider>
+            <div className="cart">
+              <div className="cartCount">{cart.length}</div>
+              <IconContext.Provider value={{size: '40px'}}>
+                <AiOutlineShoppingCart className="cartIcon"/>
+              </IconContext.Provider>
+            </div>
           </div>
         </div>
         <div className="app">
