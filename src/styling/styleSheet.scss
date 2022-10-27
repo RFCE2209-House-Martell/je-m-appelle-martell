@@ -1,3 +1,8 @@
+$red: #900505;
+$orange: #e49b34;
+$yellow: #ffe2b3;
+$cream: #f5ebd8;
+
 body, button, input {
   font-family: Verdana;
 }
@@ -9,16 +14,25 @@ button {
 }
 
 button:hover {
-  background-color: #f5ebd8;
+  background-color: $cream;
 }
 
 .header {
-  background-color: #900505;
+  background-color: $red;
   display: grid;
-  grid-template-columns: 90vw 10vw;
+  grid-template-columns: 85vw 15vw;
   align-items: center;
+  width: 100.5vw;
   height: 70px;
   margin: -10px;
+}
+
+.lightSwitch {
+  position: absolute;
+  right: 90px;
+  top: 22px;
+  justify-self: end;
+  color: white;
 }
 
 .logo {
@@ -29,22 +43,23 @@ button:hover {
 .cartCount {
   position: absolute;
   font-size: 10px;
-  margin-left: 13px;
+  right: 7.5px;
   margin-top: 10px;
   width: 20px;
   text-align: center;
 }
 
 .cart {
+  position: absolute;
   color: white;
   align-self: center;
-  margin-top: 8px;
   justify-self: end;
-  margin-right: 2vw;
+  right: 30px;
+  top: 15px;
 }
 
 .cart:hover {
-  color: #e49b34;
+  color: $orange;
 }
 
 .app {

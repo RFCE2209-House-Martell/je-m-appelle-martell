@@ -37,7 +37,6 @@ const StarComponent = (props) => {
   return (
     <div>
       {stars.map((star, index) => {
-        // console.log(star, index)
         return (
           <div className='single-star-container' key={index}>
             <div className='single-star-fill' style={{'width': `${parseInt(star*16)}px`}}>
