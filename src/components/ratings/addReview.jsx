@@ -38,10 +38,6 @@ const AddReview = (props) => {
   }
 
   const picturesHandler = (e) => {
-    setRevForm({...revForm, characteristics: {...revForm.characteristics, [e.target.name]: e.target.value}})
-  }
-
-  const picturesHandler = (e) => {
     console.log(e.target.files)
 
     let pictures = Object.keys(e.target.files).map((photo, index) => {
@@ -100,7 +96,7 @@ const AddReview = (props) => {
 
   return (
     <Modal styles={modalStyles} show={props.showModal} onClose={() => props.setShowModal(false)}>
-    <form className='modal-body' action={console.log(revForm)}>
+    <div className='modal-body' action={console.log(revForm)}>
       <div>
         Write a review
       </div>
