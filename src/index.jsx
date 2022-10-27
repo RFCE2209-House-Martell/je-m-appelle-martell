@@ -11,6 +11,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import axios from 'axios';
 import Modal from './components/sharedFolder/modal.jsx';
+
 const App = () => {
   const [productId, setProductId] = useState(66642);
   const [avgStars, setAvgStars] = useState(0);
@@ -21,6 +22,7 @@ const App = () => {
   const [relatedProductName, setRelatedProductName] = useState('');
   const [relatedProductFeatures, setRelatedProductFeatures] = useState([]);
   const [overviewProductFeatures, setOverviewProductFeatures] = useState([]);
+
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}cart`, {
       headers: {
@@ -62,12 +64,14 @@ const App = () => {
   }
 
   const traits = {};
+
   overviewProductFeatures.forEach((trait) => {
     if (!traits[trait.feature]) {
       traits[trait.feature] = {}
     }
     traits[trait.feature].overviewProductFeatures = trait.value
   })
+
   relatedProductFeatures.forEach((trait) => {
     if (!traits[trait.feature]) {
       traits[trait.feature] = {}
