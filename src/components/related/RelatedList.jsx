@@ -8,6 +8,7 @@ const RelatedList = (props) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [renderedProducts, setRenderedProducts] = useState([0, 1, 2]);
 
+
   // var noImg = require('./unavailable.jpeg').default;
 
   useEffect(() => {
