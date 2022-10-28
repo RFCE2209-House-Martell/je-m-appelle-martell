@@ -34,7 +34,9 @@ const RelatedApp = (props) => {
 
   return (
     <div>
-      <h1>Related Products</h1>
+      <div>
+      <h1 style={{textAlign: 'center'}} >Related Products</h1>
+      </div>
       <RelatedList
       setShowCompare={props.setShowCompare}
       allProducts={allProducts}
@@ -47,7 +49,7 @@ const RelatedApp = (props) => {
       outfitProducts={props.outfitProducts}
       />
 
-      <h1>Your Outfit</h1>
+      <h1 style={{textAlign: 'center'}} >Your Outfit</h1>
       <OutfitList allProducts={allProducts}
       relatedProducts={relatedProducts}
       productId={props.productId}

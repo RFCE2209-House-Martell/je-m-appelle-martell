@@ -4,7 +4,6 @@ import Modal from '../sharedFolder/modal.jsx';
 import noImg from './unavailable.jpeg';
 import Styles from './Styles.css';
 import { AiOutlineStar } from "react-icons/ai";
-// var noImg = require('../overview/unavailable.jpeg').default;
 
 const RelatedCard = (props) => {
 
@@ -14,7 +13,6 @@ const RelatedCard = (props) => {
     border: '2px solid black',
     alignSelf: '300px',
     width: '300px',
-    backgroundColor: '#f5ebd8',
   }
 
   useEffect(() => {
@@ -44,10 +42,10 @@ const RelatedCard = (props) => {
 
   if (props.relatedProduct) {
     return (
-      <div style={componentStyle} >
-        <div>
-          <div style={{backgroundColor: '#f5ebd8'}}>
-            <button onClick={handleModalClick} className='cards' ><AiOutlineStar size='25' /></button>
+      <div style={componentStyle} className='test'>
+        <div >
+          <div className=''>
+            <button onClick={handleModalClick} className='test cards'  ><AiOutlineStar size='25' /></button>
           </div>
           <div onClick={handleCardClick} className='cards'>
             <div >

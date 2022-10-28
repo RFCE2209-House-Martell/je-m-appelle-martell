@@ -1,15 +1,23 @@
-.lists {
-  display: flex;
-  justify-content: center;
 
-}
 
-.cards {
-  background-color: #f5ebd8;
-}
 
 .cards:hover {
   background-color: #e49b34;
   opacity: 1;
 }
 
+.button {
+  background-color: #f5ebd8;
+}
+
+.button:hover {
+  background-color: #e49b34;
+}
+
+.test {
+  background-color: #f5ebd8;
+}
+
+.test:hover {
+  background-color: #e49b34;
+}
