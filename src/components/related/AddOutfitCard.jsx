@@ -10,7 +10,6 @@ const AddOutfitCard = (props) => {
     border: '2px solid black',
     alignSelf: '300px',
     width: '300px',
-    backgroundColor: '#f5ebd8',
   }
 
   const handleClick = (e) => {
@@ -20,7 +19,7 @@ const AddOutfitCard = (props) => {
 
   return (
     <div style={componentStyle}>
-      <div> <button className='cards' style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick} style={{height: '475px', width: '300px'}} ><BsBookmarkPlus size='75'/></button> </div>
+      <div> <button className='cards test' style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick} style={{height: '475px', width: '300px'}} ><BsBookmarkPlus size='75'/></button> </div>
     </div>
   )
 }

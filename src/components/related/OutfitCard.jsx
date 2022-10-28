@@ -14,7 +14,6 @@ const OutfitCard = (props) => {
     border: '2px solid black',
     alignSelf: '300px',
     width: '300px',
-    backgroundColor: '#f5ebd8',
   }
 
   useEffect(() => {
@@ -30,7 +29,7 @@ const OutfitCard = (props) => {
       console.log(err)
     })
   }, [props.product])
-console.log('stuff', props.product)
+
   const handleCardClick = (e) => {
 
     props.setProductId(props.product.id)
@@ -43,17 +42,17 @@ console.log('stuff', props.product)
     props.setOutfitProducts(filteredOutfits)
   }
   return (
-    <div style={componentStyle} >
+    <div style={componentStyle} className='test'>
       <div >
-        <div style={{backgroundColor: '#f5ebd8'}}>
-          <button className='cards' onClick={handleClick} ><CiCircleRemove size='25'/></button>
+        <div >
+          <button className='cards test' onClick={handleClick} ><CiCircleRemove size='25'/></button>
         </div>
         <div onClick={handleCardClick} className='cards'>
           <div> {productImage === null ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} /> : <img src={productImage} style={{height: '200px', margin: 'auto', display: 'block'}} />} </div>
           <div><b>Name: </b> {props.product.name}</div>
           <div><b>Category: </b>{props.product.category}</div>
           <div><b>description: </b>{props.product.description}</div>
-          <div><b>price: </b>{props.product.price} </div>
+          <div><b>price: </b>{props.product.default_price} </div>
           <div><b>rating: </b>{props.product.rating} </div>
         </div>
       </div>
