@@ -24,7 +24,7 @@ const NewAnswerModal = (props) => {
   };
 
   useEffect(() => {
-    console.log(formData, 'FORM DATA IN USE EFFECT');
+
   }, [formData.photos]);
 
   const modalStyles = {
