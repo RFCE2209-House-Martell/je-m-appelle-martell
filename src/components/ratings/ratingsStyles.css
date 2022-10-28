@@ -271,6 +271,11 @@ textarea {
   font-size: 16px;
 }
 
+.helpful-and-report {
+  font-size: small;
+  color: grey;
+}
+
 .helpful-yes {
   margin-bottom: 1em;
   cursor: pointer;
@@ -278,6 +283,8 @@ textarea {
   border: 0;
   border-bottom: 2px solid;
   border-radius: 0;
+  font-size: small;
+  color: grey;
 }
 
 .report-button {
@@ -287,4 +294,6 @@ textarea {
   border: 0;
   border-bottom: 2px solid;
   border-radius: 0;
+  font-size: small;
+  color: grey;
 }
