@@ -44,7 +44,7 @@ const AddtoCart = (props) => {
           headers: {
             'Authorization': process.env.REACT_APP_API_KEY
           }
-        }).then((data) => props.setCart(data.data));
+        }).then((data) => setCart(data.data));
       });
     }
   }

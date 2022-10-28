@@ -47,7 +47,6 @@ const App = () => {
           count += Number(data.data.ratings[num]);
           sum += (num * data.data.ratings[num]);
         }
-        console.log(sum/count);
         setAvgStars(sum/count);
     }).catch((err) => {
       console.log(err);

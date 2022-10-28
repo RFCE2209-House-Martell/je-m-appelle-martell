@@ -28,14 +28,6 @@ test('should render Image Gallery module', async () => {
   expect(rightArrow).toBeInTheDocument();
 });
 
-// test('should render Product Details module', async () => {
-//   render(<ProductDetails data={dummyData}/>);
-
-//   const color = screen.queryByText('Color');
-
-//   expect(color).toBeInTheDocument();
-// });
-
 test('should render Style Selector module', async () => {
   render(<StyleSelector data={dummyData}/>);
 
