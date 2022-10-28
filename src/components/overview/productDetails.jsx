@@ -6,7 +6,6 @@ import StarComponent from '../sharedFolder/starComponent.jsx';
 
 const ProductDetails = (props) => {
   const [data, setData] = useState({});
-  const [ratings, setRatings] = useState({});
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_BASE_URL}products/${props.productId}`, {
@@ -18,27 +17,7 @@ const ProductDetails = (props) => {
     }).catch((err) => {
       console.log(err);
     });
-
-    axios.get(`${process.env.REACT_APP_BASE_URL}reviews/meta/?product_id=${props.productId}`, {
-      headers: {
-        'Authorization': process.env.REACT_APP_API_KEY
-      }
-    }).then((data) => {
-      setRatings(data.data.ratings);
-    }).catch((err) => {
-      console.log(err);
-    });
   }, [props.productId]);
-
-  var avgStars = () => {
-    let sum = 0;
-    let count = 0;
-    for (let num in ratings) {
-      count += Number(ratings[num]);
-      sum += (num * ratings[num]);
-    }
-    return sum/count;
-  }
 
   if (JSON.stringify(data) !== '{}') {
     var category = data.category.toUpperCase();
@@ -60,7 +39,7 @@ const ProductDetails = (props) => {
     <div className="details">
       <div className="category">{category}</div>
       <h1 className="productName">{title}</h1>
-      <StarComponent stars={avgStars()}/>
+      <StarComponent stars={props.avgStars}/>
       {salesPrice === null ? <h2 className='price'>{`$${price}`}</h2> : <h2 className='price'>{`$${salesPrice}\t`}<s>{`$${price}`}</s></h2>}
       <p>{description}</p>
       <p className="share">Share</p>
