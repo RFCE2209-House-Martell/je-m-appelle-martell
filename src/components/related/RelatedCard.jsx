@@ -49,7 +49,10 @@ const RelatedCard = (props) => {
           </div>
           <div onClick={handleCardClick} className='cards'>
             <div >
-              <div> {productImage === null ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} /> : <img style={{height: '200px', margin: 'auto', display: 'block'}} src={productImage} />} </div>
+              <div> {productImage === null || productImage[0] === 'u'
+              ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} />
+              : <img style={{height: '200px', margin: 'auto', display: 'block', maxWidth: '300px'}} src={productImage} />} </div>
+              {console.log(productImage)}
             </div>
             <div><b>Name: </b>{props.relatedProduct.name}</div>
             <div><b>Category: </b>{props.relatedProduct.category}</div>

@@ -19,7 +19,7 @@ const AddOutfitCard = (props) => {
 
   return (
     <div style={componentStyle}>
-      <div> <button className='cards test' style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick} style={{height: '475px', width: '300px'}} ><BsBookmarkPlus size='75'/></button> </div>
+      <div> <button className='cards test' style={{display: 'flex', justifyContent: 'center'}} onClick={handleClick} style={{maxHeight: '700px', minHeight: '475px', width: '300px'}} ><BsBookmarkPlus size='75'/></button> </div>
     </div>
   )
 }
