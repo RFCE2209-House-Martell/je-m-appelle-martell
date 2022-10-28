@@ -3,6 +3,8 @@ import axios from 'axios';
 import Modal from '../sharedFolder/modal.jsx';
 import noImg from './unavailable.jpeg';
 import Styles from './Styles.css';
+import StarComponent from '../sharedFolder/starComponent.jsx';
+
 import { AiOutlineStar } from "react-icons/ai";
 
 const RelatedCard = (props) => {
@@ -40,11 +42,17 @@ const RelatedCard = (props) => {
     props.changeRelatedProductFeatures(props.relatedProduct.id)
   }
 
+
+  const getStars = async(id) => {
+    const star = await props.getProductRating(id)
+    return star
+  }
+
   if (props.relatedProduct) {
     return (
       <div style={componentStyle} className='test'>
         <div >
-          <div className=''>
+          <div className='cards'>
             <button onClick={handleModalClick} className='test cards'  ><AiOutlineStar size='25' /></button>
           </div>
           <div onClick={handleCardClick} className='cards'>
@@ -57,7 +65,7 @@ const RelatedCard = (props) => {
             <div><b>Category: </b>{props.relatedProduct.category}</div>
             <div><b>description: </b> {props.relatedProduct.description}</div>
             <div><b>price: </b> {props.relatedProduct.default_price} </div>
-            <div><b>rating: </b> {props.relatedProduct.rating} </div>
+            <div><b>rating: </b><StarComponent stars={getStars(props.relatedProduct.id)} /></div>
           </div>
         </div>
       </div>
