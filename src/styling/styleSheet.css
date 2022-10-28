@@ -61,4 +61,12 @@ button:hover {
   margin-top: 20px;
 }
 
+.footer {
+  margin-top: 100px;
+  margin-left: 10%;
+  font-size: small;
+  color: grey;
+
+}
+
 /*# sourceMappingURL=styleSheet.css.map */

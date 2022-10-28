@@ -16,7 +16,7 @@ import Logger from './components/logger/logger.jsx';
 import loggerAPI from './components/logger/api.js';
 
 const App = () => {
-  const [productId, setProductId] = useState(66642);
+  const [productId, setProductId] = useState(66658);
   const [avgStars, setAvgStars] = useState(0);
   const [outfitProducts, setOutfitProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -166,6 +166,11 @@ const App = () => {
             <RelatedApp changeRelatedProductFeatures={changeRelatedProductFeatures} setShowCompare={setShowCompare} productId={productId} setProductId={setProductId} outfitProducts={outfitProducts} setOutfitProducts={setOutfitProducts} />
             <QuestionsAnswersContainer productId={productId} />
             <Ratings productId={productId} avgStars={avgStars} setAvgStars={setAvgStars} />
+          </div>
+          <div>
+            <div className='footer'>
+              Copyright 2022 House Martell
+            </div>
           </div>
         </div>
       </Logger>
