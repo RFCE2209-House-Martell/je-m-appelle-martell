@@ -49,7 +49,7 @@ const QuestionsAnswersContainer = (props) => {
     const loadQuestions = () => {
       if (searchInput === '') {
         API.getQuestionsById(productId, questionPage, questionCount).then((res) => {
-          setQuestions(res.reverse());
+          setQuestions(res);
         });
       } else {
         const filteredQuestions = questions.filter((question) => question.question_body.toLowerCase().includes(searchInput.toLowerCase()));
