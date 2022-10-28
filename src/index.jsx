@@ -35,6 +35,23 @@ const App = () => {
         'Authorization': process.env.REACT_APP_API_KEY
       }
     }).then((data) => setCart(data.data));
+
+    axios.get(`${process.env.REACT_APP_BASE_URL}reviews/meta/?product_id=${productId}`, {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_KEY
+      }
+    }).then((data) => {
+        let sum = 0;
+        let count = 0;
+        for (let num in data.data.ratings) {
+          count += Number(data.data.ratings[num]);
+          sum += (num * data.data.ratings[num]);
+        }
+        console.log(sum/count);
+        setAvgStars(sum/count);
+    }).catch((err) => {
+      console.log(err);
+    });
   }, []);
 
   const changeRelatedProductFeatures = (id) => {

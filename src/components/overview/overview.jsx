@@ -24,12 +24,11 @@ const Overview = (props) => {
     });
   }, [props.productId]);
 
-
   return (
     <div className="widget" id="overview-widget">
       <ImageGallery data={data} styleId={styleId} setSocialPhoto={setSocialPhoto}/>
       <div className="productDetails">
-        <ProductDetails productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
+        <ProductDetails avgStars={props.avgStars} productId={props.productId} data={data} styleId={styleId} socialPhoto={socialPhoto}/>
         <StyleSelector productId={props.productId} data={data} setStyleId={setStyleId}/>
         <AddtoCart data={data} styleId={styleId} setCart={props.setCart}/>
       </div>
