@@ -65,7 +65,6 @@ const RelatedCard = (props) => {
             <div><b>Category: </b>{props.relatedProduct.category}</div>
             <div><b>description: </b> {props.relatedProduct.description}</div>
             <div><b>price: </b> {props.relatedProduct.default_price} </div>
-            <div><b>rating: </b><StarComponent stars={getStars(props.relatedProduct.id)} /></div>
           </div>
         </div>
       </div>

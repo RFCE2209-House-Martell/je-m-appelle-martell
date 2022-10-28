@@ -53,7 +53,6 @@ const OutfitCard = (props) => {
           <div><b>Category: </b>{props.product.category}</div>
           <div><b>description: </b>{props.product.description}</div>
           <div><b>price: </b>{props.product.default_price} </div>
-          <div><b>rating: </b>{props.product.rating} </div>
         </div>
       </div>
     </div>
