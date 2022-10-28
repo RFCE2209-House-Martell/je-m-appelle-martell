@@ -3,6 +3,7 @@ import axios from 'axios';
 import Modal from '../sharedFolder/modal.jsx';
 import StarRating from './starRating.jsx'
 import s3API from '../../s3/api.js';
+import CharAddReview from './charAddReview.jsx';
 
 const token = process.env.REACT_APP_API_KEY;
 
@@ -26,6 +27,8 @@ const AddReview = (props) => {
   const [recommended, setRecommended] = useState(false)
   const [revForm, setRevForm] = useState({product_id: props.productId, rating: 0, summary: '', body: '', recommend: false, name: '', email: '', photos: [], characteristics: {}})
   let picturesArray = []
+  const [bodyCount, setBodyCount] = useState(0);
+  const [titleCount, setTitleCount] = useState(0);
 
 
 
@@ -38,7 +41,6 @@ const AddReview = (props) => {
   }
 
   const picturesHandler = (e) => {
-    console.log(e.target.files)
 
     let pictures = Object.keys(e.target.files).map((photo, index) => {
       return new Promise((resolve, reject) => {
@@ -67,7 +69,6 @@ const AddReview = (props) => {
   }
 
   const handleSubmit = () => {
-    console.log(revForm)
     props.setShowModal(false);
     axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews',
     {
@@ -96,10 +97,10 @@ const AddReview = (props) => {
 
   return (
     <Modal styles={modalStyles} show={props.showModal} onClose={() => props.setShowModal(false)}>
-    <div className='modal-body' action={console.log(revForm)}>
-      <div>
+    <div className='modal-body'>
+      <h1>
         Write a review
-      </div>
+      </h1>
       <div>
         <StarRating revForm={revForm} setRevForm={setRevForm}/>
       </div>
@@ -107,18 +108,20 @@ const AddReview = (props) => {
         <div>Recommend? </div>
         <div>
           <div>
-            <input type='radio' name='recommend' id='recYes' value={true} onChange={e => newInput(e)} required></input><label htmlFor='recYes'>Yes</label>
+            <input type='radio' name='recommend' id='recYes' value={true} onChange={e => (newInput(e))} required></input><label htmlFor='recYes'>Yes</label>
           </div>
           <div>
-            <input type='radio' name='recommend' id='recNo' value={false} onChange={e => newInput(e)}></input><label htmlFor='recNo'>No</label>
+            <input type='radio' name='recommend' id='recNo' value={false} onChange={e => (newInput(e))}></input><label htmlFor='recNo'>No</label>
           </div>
         </div>
       </fieldset>
       <div>
-        <input type='text' id='rev-title' name='summary' maxLength='60' placeholder='Title' onChange={e => newInput(e)} required></input>
+        <textarea type='text' id='rev-title' name='summary' maxLength='60' placeholder='Title' onChange={e => (newInput(e), setTitleCount(e.target.value.length))} required></textarea>
+        <div className='remaining-characters'>Remaining Characters: {60-titleCount}</div>
       </div>
       <div>
-        <input type='text' id='rev-body' maxLength='1000' name='body' minLength='50' placeholder='Body' onChange={e => newInput(e)}required></input>
+        <textarea type='text' id='rev-body' maxLength='1000' name='body' minLength='50' placeholder='Body' onChange={e => (newInput(e), setBodyCount(e.target.value.length))}required></textarea>
+        <div className='remaining-characters'>Remaining Characters: {1000-bodyCount}</div>
       </div>
       <div>
         Add Photos
@@ -126,7 +129,7 @@ const AddReview = (props) => {
       </div>
       <div>
         {Object.keys(props.characteristics).map((charKey, index) => {
-          return(<div>{charKey}<input type='range' name={props.characteristics[charKey].id} key={charKey+index} max='5' min='1' onChange={e => charHandler(e)} required></input></div>)
+          return(<CharAddReview charKey={charKey} obj={props.characteristics[charKey]} name={props.characteristics[charKey].id} key={index} charHandler={charHandler}/>)
         })}
       </div>
       <div>

@@ -16,7 +16,7 @@ const StarRating = (props) => {
             <span className='star-individual-rating'>&#9733;</span>
           </button>
         )
-      })}
+      })} {props.revForm.rating === 1 ? 'Poor' : props.revForm.rating === 2 ? 'Fair' : props.revForm.rating === 3 ? 'Average' : props.revForm.rating === 4 ? 'Good' : props.revForm.rating === 5 ? 'Great' : ''}
     </div>
   )
 }

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const CharacteristicsCreator = (props) => {
+const CharAddReview = (props) => {
 
   return (
     <li className='char-list'>
       <div className='char-container'>
       {props.charKey}
       </div>
-      <input className='char-slider' type='range' key={props.charKey} value={props.obj.value} max='5' readOnly={true}></input>
+      <input className='char-slider-rev' name={props.name} type='range' key={props.charKey} min='1' max='5' onChange={e => props.charHandler(e)}></input>
       <div className='characters'>
         <div className='character-one'></div>
         <div className='character-two'></div>
@@ -35,4 +35,4 @@ const CharacteristicsCreator = (props) => {
   )
 }
 
-export default CharacteristicsCreator;
+export default CharAddReview;
