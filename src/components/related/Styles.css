@@ -21,3 +21,21 @@
 .test:hover {
   background-color: #e49b34;
 }
+
+.single-star-outline {
+  height: 18px;
+  width: 16px;
+}
+
+.single-star-fill {
+  position: relative;
+  display: inline-block;
+  height: 18px;
+  background-color: #000;
+}
+
+.single-star-container {
+  height: 18px;
+  width: 16px;
+  display: inline-block;
+}

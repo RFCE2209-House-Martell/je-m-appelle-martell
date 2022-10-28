@@ -67,7 +67,9 @@ const RelatedList = (props) => {
         setRelatedProducts={setRelatedProducts}
         relatedProduct={relatedProducts[productIndex]}
         updateRelated={updateRelated}
-        allProducts={props.allProducts} />
+        allProducts={props.allProducts}
+        getProductRating={props.getProductRating}
+        />
       })}
 
       {renderedProducts[2] === relatedProducts.length ? null : <button onClick={nextCard} style={{height: '475px', color: '#e49b34' }} className='arrow' >{'>'}</button>}

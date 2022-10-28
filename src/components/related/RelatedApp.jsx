@@ -9,6 +9,8 @@ const RelatedApp = (props) => {
 
   const [allProducts, setAllProducts] = useState([])
   const [relatedProducts, setRelatedProducts] = useState([]);
+  const [productRatings, setProductRatings] = useState([]);
+
 
   useEffect(() => {
     axios.get (`${process.env.REACT_APP_BASE_URL}products`, {
@@ -26,6 +28,36 @@ const RelatedApp = (props) => {
       console.log(err)
     })
   }, [])
+
+  const findAvgStars = (ratingsObj) => {
+    var arr = Object.keys(ratingsObj);
+    let count = 0
+    for (let i = 0; i < arr.length; i++) {
+      count += Number(arr[i])
+    }
+
+    const avg = count/arr.length
+
+    return avg
+  }
+
+  const getProductRating = (id) => {
+    return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/reviews/meta', {
+      headers: {
+        'Authorization': process.env.REACT_APP_API_KEY
+      },
+      params: {
+        product_id: id
+      }
+    })
+    .then(res => {
+      const productRatingAvg = findAvgStars(res.data.ratings)
+      return productRatingAvg;
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
   const updateRelated = (productId) => {
     const filteredRelated = relatedProducts.filter(id => id !== productId)
@@ -47,6 +79,7 @@ const RelatedApp = (props) => {
       updateRelated={updateRelated}
       setRelatedProducts={setRelatedProducts}
       outfitProducts={props.outfitProducts}
+      getProductRating={getProductRating}
       />
 
       <h1 style={{textAlign: 'center'}} >Your Outfit</h1>
@@ -56,7 +89,9 @@ const RelatedApp = (props) => {
       outfitProducts={props.outfitProducts}
       setOutfitProducts={props.setOutfitProducts}
       setProductId={props.setProductId}
-      updateRelated={updateRelated}/>
+      updateRelated={updateRelated}
+      getProductRating={getProductRating}
+      />
     </div>
   );
 }
