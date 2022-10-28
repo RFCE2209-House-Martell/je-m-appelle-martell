@@ -48,7 +48,7 @@ const OutfitCard = (props) => {
           <button className='cards test' onClick={handleClick} ><CiCircleRemove size='25'/></button>
         </div>
         <div onClick={handleCardClick} className='cards'>
-          <div> {productImage === null ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} /> : <img src={productImage} style={{height: '200px', margin: 'auto', display: 'block'}} />} </div>
+          <div> {productImage === null || productImage[0] === 'u' ? <img src={noImg} style={{width:'300px', height:'200px', objectFit:'cover'}} /> : <img src={productImage} style={{height: '200px', margin: 'auto', display: 'block', maxWidth: '300px'}} />} </div>
           <div><b>Name: </b> {props.product.name}</div>
           <div><b>Category: </b>{props.product.category}</div>
           <div><b>description: </b>{props.product.description}</div>
