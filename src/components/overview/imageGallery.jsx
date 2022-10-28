@@ -11,6 +11,17 @@ const ImageGallery = (props) => {
   const [zoom, setZoom] = useState(false);
 
   var noImg = require('./unavailable.jpeg').default;
+
+  const isValidUrl = urlString=> {
+    var urlPattern = new RegExp('^(https?:\\/\\/)?'+ // validate protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // validate domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // validate OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // validate port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // validate query string
+    '(\\#[-a-z\\d_]*)?$','i'); // validate fragment locator
+    return !!urlPattern.test(urlString);
+  }
+
   // check for changes to style
   useEffect(() => {
     if (JSON.stringify(props.data) !== '{}') {
@@ -22,7 +33,7 @@ const ImageGallery = (props) => {
         if (selected >= photoList.length) {
           tempSelected = photoList.length - 1;
         }
-        if (photoList[tempSelected].url !== null) {
+        if (photoList[tempSelected].url !== null && isValidUrl(photoList[tempSelected].url)) {
           setMainImg(photoList[tempSelected].url);
           setPhotos(photoList);
         } else {
@@ -68,6 +79,9 @@ const ImageGallery = (props) => {
       <div className="thumbnailContainer">
         {thumbnails.map((thumbnail, key) => {
           let marked = (key === selected);
+          if (!isValidUrl(thumbnail)) {
+            thumbnail = noImg;
+          }
           return (marked ? <img alt="thumbnail image(s)" className="thumbnail selected" src={thumbnail} key={key} onClick={(e) => clickHandler(key)}/> : <img alt="thumbnail image(s)" className="thumbnail" src={thumbnail} key={key} onClick={(e) => clickHandler(key)}/>);
         })}
       </div>
