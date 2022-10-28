@@ -14,8 +14,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 50px;
   margin-bottom: 50px;
-  width: 50%;
+  width: 70%;
 }
 
 .qa-section-container {
@@ -146,11 +147,11 @@
 }
 
 .question-container button:hover {
-  color: blue;
+  color: #900505;
 }
 
 .answer-container button:hover {
-  color: blue;
+  color: #900505;
 }
 
 .footer-container {
@@ -174,7 +175,6 @@
 }
 
 .footer-button-container-button:hover {
-  color: blue;
   /* background-color: rgb(248, 248, 248); */
   transition: 250ms ease-in-out;
 }
@@ -188,7 +188,7 @@
 
 .load-answers-button:hover {
   background-color: white !important;
-  color: blue;
+  color: #900505;
 }
 
 .add-question-button {
@@ -244,9 +244,10 @@
 }
 
 .modal-footer button:hover {
-  outline: none!important;
-  text-decoration: none!important;
-  background-color: rgb(255, 246, 225)!important;
+  outline: none !important;
+  text-decoration: none !important;
+  background-color: rgb(255, 246, 225) !important;
+  color: black;
 }
 
 .input-container {
