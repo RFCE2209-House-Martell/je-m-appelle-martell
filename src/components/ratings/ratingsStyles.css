@@ -24,6 +24,12 @@
   margin: 1vw;
 }
 
+.rec-stars {
+  font-size: small;
+  margin-bottom: 1vw;
+  color: grey;
+}
+
 .progress-bars {
   appearance: none;
   width: 70%;
@@ -54,20 +60,42 @@
 
 .char-container {
   position: relative;
-  width: 100%;
+  width: 300%;
   margin: 10px;
 }
 
 .char-slider {
   appearance: none;
-  width: 20%;
   background-color: transparent;
   height: 15px;
+  width: 20%;
+  justify-content: center;
   margin: none;
   position: absolute;
 }
 
 .char-slider::-webkit-slider-thumb {
+  appearance: none;
+  margin: none;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+
+  border-top: 13px solid #900505;
+}
+
+.char-slider-rev {
+  appearance: none;
+  background-color: transparent;
+  height: 15px;
+  width: 378px;
+  justify-content: center;
+  margin: none;
+  position: absolute;
+}
+
+.char-slider-rev::-webkit-slider-thumb {
   appearance: none;
   margin: none;
   width: 0;
@@ -111,26 +139,36 @@
 .char-small {
   flex: 1;
   text-align: left;
+  font-size: small;
+  color: grey;
 }
 
 .char-perfect-fit {
   flex: 1;
   text-align: center;
+  font-size: small;
+  color: grey;
 }
 
 .char-large {
   flex: 1;
   text-align: right;
+  font-size: small;
+  color: grey;
 }
 
 .char-poor {
   flex: 1;
   text-align: left;
+  font-size: small;
+  color: grey;
 }
 
 .char-perfect-qual {
   flex: 1;
   text-align: right;
+  font-size: small;
+  color: grey;
 }
 
 .reviewsSection {
@@ -160,6 +198,7 @@ select {
   border-radius: 0;
   padding: 1vw;
 }
+
 
 .stars-and-date {
   display: flex;
@@ -213,6 +252,15 @@ select {
   margin-top: 40px;
   padding: 24px;
   font-size: 16px;
+}
+
+textarea {
+  margin-top: 1vw;
+}
+
+.remaining-characters {
+  font-size: small;
+  color: grey;
 }
 
 .more-results-button {
